@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_printf.c                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/22 16:17:31 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/01/22 16:53:03 by sgaudin          ###   ########.fr       */
+/*   Created: 2016/01/25 10:38:00 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/01/25 10:38:39 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int		main(void)
-{
-	char 	*str = "Coucou je suis Simon";
-	int		nb = 42;
+# include "libft.h"
+#include <stdarg.h>
 
-	printf("%d\n", nb);
-	printf("%s\n", str);
-	return (0);
-}
+#endif
