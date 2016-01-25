@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftp_putstr.c                                       :+:      :+:    :+:   */
+/*   ftp_putchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 13:38:00 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/01/25 16:50:23 by sgaudin          ###   ########.fr       */
+/*   Created: 2016/01/25 16:04:34 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/01/25 16:40:16 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ftp_putstr(uint8_t *str)
+int		ftp_putchar(uint32_t c)
 {
-	write(1, str, ftp_strlen(str));
-	return (ftp_strlen(str));
+	write(1, &c, 1);
+	return (1);
 }

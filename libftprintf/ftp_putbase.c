@@ -6,14 +6,13 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 13:53:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/01/25 16:02:36 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/01/25 17:34:57 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
-int		ftp_putbase(uint32_t n, uint32_t base)
+int		ftp_putbase(uint32_t n, uint32_t base, uint8_t flag)
 {
 	int len;
 
@@ -21,7 +20,7 @@ int		ftp_putbase(uint32_t n, uint32_t base)
 	if (base > 0 && base <= 10)
 	{
 		if (n >= base)
-			len += ftp_putbase((n / base), base);
+			len += ftp_putbase((n / base), base, flag);
 		ft_putchar((n % base) + '0');
 		len++;
 	}
@@ -29,11 +28,11 @@ int		ftp_putbase(uint32_t n, uint32_t base)
 	{
 		if (n >= 16)
 		{
-			len += ftp_putbase((n / 16), base);
+			len += ftp_putbase((n / 16), base, flag);
 			n %= 16;
 		}
 		if ((n % 16) >= 10)
-			ft_putchar((n % 10) + 'A');
+			ft_putchar((n % 10) + flag);
 		else
 			ft_putchar((n % 16) + '0');
 		len++;
