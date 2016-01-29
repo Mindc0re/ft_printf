@@ -6,12 +6,11 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 10:35:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/01/29 14:14:53 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/01/29 14:09:07 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-#include "../libftprintf/libftprintf.h"
+#include "../libptf/libftprintf.h"
 #include <stdio.h>
 #include <math.h>
 
@@ -22,8 +21,8 @@ t_printf	*init_tab_ptr(void)
 	{
 		list_ptf = (t_printf*)malloc(sizeof(*list));
 		list_ptf->ptr_fct = malloc(sizeof(list_ptf->ptr_fct) * 255);
+		list_ptf->ptr_fct['s'] = &
 	}
-	return (list_ptf);
 }
 
 int		parser(char *str, int i, va_list args)
