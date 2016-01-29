@@ -6,13 +6,13 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:43:08 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/01/25 18:00:34 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/01/29 11:36:27 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ftp_putnbr(int n)
+int		ftp_putnbr(int32_t n)
 {
 	int sign;
 

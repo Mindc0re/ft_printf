@@ -6,12 +6,24 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 10:35:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/01/25 17:53:06 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/01/29 14:02:47 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf/libftprintf.h"
 #include <stdio.h>
+#include <math.h>
+
+t_printf	*init_tab_ptr(void)
+{
+	static t_printf	*list_ptf = NULL;
+	if (!list_ptf)
+	{
+		list_ptf = (t_printf*)malloc(sizeof(*list));
+		list_ptf->ptr_fct = malloc(sizeof(list_ptf->ptr_fct) * 255);
+		list_ptf->ptr_fct['s'] = &
+	}
+}
 
 int		parser(char *str, int i, va_list args)
 {
@@ -23,7 +35,7 @@ int		parser(char *str, int i, va_list args)
 	else if (str[i] == 'd' || str[i] == 'i')
 		return (ftp_putnbr(va_arg(args, uint32_t)));
 	else if (str[i] == 'c')
-		return (ftp_putchar(va_arg(args, uint32_t)));
+		return (ftp_putchar((uint8_t)va_arg(args, uint32_t)));
 	else if (str[i] == 'u')
 		return (ftp_putbase(va_arg(args, uint32_t), 10, 0));
 	else if (str[i] == 'o')
@@ -42,6 +54,19 @@ int		parser(char *str, int i, va_list args)
 	return (0);
 }
 
+int		detect(char *s, int *i)
+{
+	*i= *i + 1;
+	if (s[*i] == 's' || s[*i] == 'S' || s[*i] == 'p' || s[*i] == 'd'
+		|| s[*i] == 'D' || s[*i] == 'i' || s[*i] == 'o' || s[*i] == 'O'
+		|| s[*i] == 'u' || s[*i] == 'U' || s[*i] == 'x' || s[*i] == 'X'
+		|| s[*i] == 'c' || s[*i] == 'C' || s[*i] == '%' || s[*i] == '#'
+		|| s[*i] == '0' || s[*i] == '-' || s[*i] == '+' || s[*i] == 'h'
+		|| s[*i] == 'l' || s[*i] == 'j' || s[*i] == 'z')
+		return (1);
+	else
+		return (0);
+}
 int		ft_printf(char *str, ...)
 {
 	va_list args;
@@ -60,8 +85,10 @@ int		ft_printf(char *str, ...)
 		}
 		else
 		{
-			len += parser(str, i + 1, args);
-			i++;
+			if (detect(str, &i))
+				len += parser(str, i, args);
+			else
+				i++;
 		}
 		i++;
 	}
@@ -75,12 +102,10 @@ int		main(void)
 
 	ret_ft = ft_printf("FT_PRINTF : Coucou je suis %s et j'ai %d ans, ceci est la lettre %c et voici 500 en hexadecimal : %x et %X\n", "Simon", 17, 'Q', 500, 500);
 	ret = printf("   PRINTF : Coucou je suis %s et j'ai %d ans, ceci est la lettre %c et voici 500 en hexadecimal : %x et %X\n", "Simon", 17, 'Q', 500, 500);
-	printf("Printf retourne %d caracteres, et ft_printf retourne %d caracteres", ret, ret_ft);
+	printf("Printf retourne %d caracteres, et ft_printf retourne %d caracteres\n", ret, ret_ft);
 
-	printf("\n   PRINTF : Test adresse de ret : %p", &ret);
-	ft_printf("\nFT_PRINTF : Test adresse de ret : %p\n", &ret);
+//	printf("\n   PRINTF : Test adresse de ret : %p", &ret);
+//	ft_printf("\nFT_PRINTF : Test adresse de ret : %p\n", &ret);
 
-	printf("\n   PRINTF : Test flag i : %i, flag u : %u", 42, 42);
-	ft_printf("\nFT_PRINTF : Test flag i : %i, flag u : %u\n", 42, 42);
 	return (0);
 }
