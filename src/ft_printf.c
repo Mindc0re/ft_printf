@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 10:35:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/01/29 14:15:59 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/01/29 15:32:26 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,84 +15,70 @@
 #include <stdio.h>
 #include <math.h>
 
-t_printf	*init_tab_ptr(void)
+int		parser(char c, va_list args)
 {
-	static t_printf	*list_ptf = NULL;
-	if (!list_ptf)
-	{
-		list_ptf = (t_printf*)malloc(sizeof(*list_ptf));
-	}
-	return (list_ptf);
-}
-
-int		parser(char *str, int i, va_list args)
-{
-	int		tmp;
-
-	tmp = 0;
-	if (str[i] == 's')
+	if (c == 's')
 		return (ftp_putstr(va_arg(args, uint8_t *)));
-	else if (str[i] == 'd' || str[i] == 'i')
+	else if (c == 'd' || c == 'i')
 		return (ftp_putnbr(va_arg(args, uint32_t)));
-	else if (str[i] == 'c')
+	else if (c == 'c')
 		return (ftp_putchar((uint8_t)va_arg(args, uint32_t)));
-	else if (str[i] == 'u')
+	else if (c == 'u')
 		return (ftp_putbase(va_arg(args, uint32_t), 10, 0));
-	else if (str[i] == 'o')
+	else if (c == 'o')
 		return (ftp_putbase(va_arg(args, uint32_t), 8, 0));
-	else if (str[i] == 'x')
+	else if (c == 'x')
 		return (ftp_putbase(va_arg(args, uint32_t), 16, 'a'));
-	else if (str[i] == 'X')
+	else if (c == 'X')
 		return (ftp_putbase(va_arg(args, uint32_t), 16, 'A'));
-	else if (str[i] == 'p')
+	else if (c == 'p')
 	{
 		ft_putstr("0x7fff");
 		return (ftp_putbase(va_arg(args, uint32_t), 16, 'a'));
 	}
-	else if (str[i] == '%')
+	else if (c == '%')
 		return (ftp_putchar('%'));
 	return (0);
 }
 
-int		detect(char *s, int *i)
+int		detect(char *s, t_docker data)
 {
-	*i= *i + 1;
-	if (s[*i] == 's' || s[*i] == 'S' || s[*i] == 'p' || s[*i] == 'd'
-		|| s[*i] == 'D' || s[*i] == 'i' || s[*i] == 'o' || s[*i] == 'O'
-		|| s[*i] == 'u' || s[*i] == 'U' || s[*i] == 'x' || s[*i] == 'X'
-		|| s[*i] == 'c' || s[*i] == 'C' || s[*i] == '%' || s[*i] == '#'
-		|| s[*i] == '0' || s[*i] == '-' || s[*i] == '+' || s[*i] == 'h'
-		|| s[*i] == 'l' || s[*i] == 'j' || s[*i] == 'z')
+	data.i++;
+	if (s[data.i] == 's' || s[data.i] == 'S' || s[data.i] == 'p' || s[data.i] == 'd'
+		|| s[data.i] == 'D' || s[data.i] == 'i' || s[data.i] == 'o' || s[data.i] == 'O'
+		|| s[data.i] == 'u' || s[data.i] == 'U' || s[data.i] == 'x' || s[data.i] == 'X'
+		|| s[data.i] == 'c' || s[data.i] == 'C' || s[data.i] == '%' || s[data.i] == '#'
+		|| s[data.i] == '0' || s[data.i] == '-' || s[data.i] == '+' || s[data.i] == 'h'
+		|| s[data.i] == 'l' || s[data.i] == 'j' || s[data.i] == 'z')
 		return (1);
 	else
 		return (0);
 }
+
 int		ft_printf(char *str, ...)
 {
-	va_list args;
-	int		i;
-	int		len;
+	va_list 	args;
+	t_docker	data;
 
-	i = 0;
-	len = 0;
+	data.i = 0;
+	data.len = 0;
 	va_start(args, str);
-	while (str[i])
+	while (str[data.i])
 	{
-		if (str[i] != '%')
+		if (str[data.i] != '%')
 		{
-			ft_putchar(str[i]);
-			len++;
+			ft_putchar(str[data.i]);
+			data.i++;
+			data.len++;
 		}
 		else
 		{
-			if (detect(str, &i))
-				len += parser(str, i, args);
-			else
-				i++;
+			if (detect(str, data))
+				data.len += parser(str[data.i + 1], args);
+			data.i += 2;
 		}
-		i++;
 	}
-	return (len);
+	return (data.len);
 }
 
 int		main(void)

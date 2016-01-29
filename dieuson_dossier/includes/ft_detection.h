@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 09:18:56 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/01/28 15:22:38 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/01/29 14:39:50 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,35 +25,15 @@ typedef	struct		s_form
 	char			type;
 
 	enum {
-		h ,
-		hh,
-		l,
-		ll,
-		j,
-		z
-	} length;
+					h,
+					hh,
+					l,
+					ll,
+					j,
+					z
+	}				length;
 }					t_form;
-char				*ft_detect_type(char **str, t_form *form, va_list arguments);
 char				*ft_detect_length(char **str, t_form *form);
 char				*ft_detect_flags(char **str, t_form *form);
-int					ftp_int(char **str, t_form *form, int nb);
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 09:55:34 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/01/28 09:40:55 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/01/29 14:40:18 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct		s_docker
 {
 	int				i;
+	int				(*ptr_fct[256])(char *, int, va_list);
 }					t_docker;
 
 int			ftp_flag_hh(char *str, t_docker *data, va_list pointeur);
