@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/01/29 14:10:39 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/01/29 14:20:22 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -26,5 +26,9 @@ clean:
 
 fclean: clean
 	rm -rf $(NAME)
+
+push:
+	git commit -am "makefile pushed"
+	git push
 
 re: fclean all
