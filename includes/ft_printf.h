@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 09:55:34 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/01/29 14:59:25 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/01 18:08:13 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 # include <stdarg.h>
 # include "libft.h"
 # include "ft_detection.h"
+# include "../libptf/libftprintf.h"
 
 typedef struct		s_docker
 {
 	int				i;
 	int				len;
-	int				(*ptr_fct[256])(char *, int, va_list);
+	int				(*fct[256])(char *, va_list, struct s_docker *);
 }					t_docker;
 
 int			ftp_flag_hh(char *str, t_docker *data, va_list pointeur);
@@ -35,6 +36,10 @@ int			ftp_putstr(uint8_t *str);
 int			ftp_strlen(uint8_t *str);
 int			ftp_putnbr(int32_t n);
 
+int		call_putstr(char *str, va_list args, t_docker *data);
+int		call_putchar(char *str, va_list args, t_docker *data);
+int		call_putnbr(char *str, va_list args, t_docker *data);
+int		call_putbase(char *str, va_list args, t_docker *data);
+void	init_tabptr(t_docker *data);
+
 #endif
-
-
