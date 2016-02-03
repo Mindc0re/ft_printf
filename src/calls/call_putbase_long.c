@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   call_putbase_long.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 14:18:19 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/03 08:58:34 by sgaudin          ###   ########.fr       */
+/*   Created: 2016/02/03 09:07:37 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/02/03 09:18:07 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "../../includes/ft_printf.h"
 
-# include "libft.h"
-# include <stdarg.h>
-
-int			ftp_putbase(uint32_t n, uint32_t base, uint8_t flag);
-int			ftp_putchar(uint32_t c);
-int			ftp_putstr(uint8_t *str);
-int			ftp_strlen(uint8_t *str);
-int			ftp_putnbr(int32_t n);
-int			ftp_putnbr_long(long int n);
-int			ftp_putbase_long(long int n, long int base);
-
-#endif
+int			call_putbase_long(char *str, va_list args, t_docker *data)
+{
+	if (str[data->i] == 'O')
+		return (ftp_putbase_long(va_arg(args, long int), 8));
+	else if (str[data->i] == 'U')
+		return (ftp_putbase_long(va_arg(args, long int), 10));
+	else
+		return (0);
+}

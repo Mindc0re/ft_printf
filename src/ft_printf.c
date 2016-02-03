@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 10:35:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/01 18:25:46 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/03 09:14:40 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ void	init_tabptr(t_docker *data)
 	data->fct['o'] = &call_putbase;
 	data->fct['x'] = &call_putbase;
 	data->fct['X'] = &call_putbase;
+	data->fct['D'] = &call_putnbr_long;
+	data->fct['O'] = &call_putbase_long;
+	data->fct['U'] = &call_putbase_long;
 }
 
 
@@ -113,8 +116,10 @@ int		main(void)
 
 	ret_ft = ft_printf("FT_PRINTF : Coucou je suis %s et j'ai %d ans, ceci est la lettre %c et voici 500 en hexadecimal : %x et %X\n", "Simon", 17, 'Q', 500, 500);
 	ret = printf("   PRINTF : Coucou je suis %s et j'ai %d ans, ceci est la lettre %c et voici 500 en hexadecimal : %x et %X\n", "Simon", 17, 'Q', 500, 500);
-	printf("Printf retourne %d caracteres, et ft_printf retourne %d caracteres\n", ret, ret_ft);
 
+	ret_ft += ft_printf("FT_PRINTF : Ceci est un %De test : Vla un int en base 8 : %o, et un long int en base 8 : %O, et puis vla un long int en base 10 : %U\n", 2, 255, 255, 255);
+	ret += printf("   PRINTF : Ceci est un %De test : Vla un int en base 8 : %o, et un long int en base 8 : %O, et puis vla un long int en base 10 : %U\n", 2, 255, 255, 255);
+	printf("Printf retourne %d caracteres, et ft_printf retourne %d caracteres\n", ret, ret_ft);
 //	printf("\n   PRINTF : Test adresse de ret : %p", &ret);
 //	ft_printf("\nFT_PRINTF : Test adresse de ret : %p\n", &ret);
 

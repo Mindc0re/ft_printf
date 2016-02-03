@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ftp_putnbr_long.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 14:18:19 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/03 08:58:34 by sgaudin          ###   ########.fr       */
+/*   Created: 2016/02/03 08:44:49 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/02/03 09:20:23 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-# include "libft.h"
-# include <stdarg.h>
+int		ftp_putnbr_long(long int n)
+{
+	int		sign;
 
-int			ftp_putbase(uint32_t n, uint32_t base, uint8_t flag);
-int			ftp_putchar(uint32_t c);
-int			ftp_putstr(uint8_t *str);
-int			ftp_strlen(uint8_t *str);
-int			ftp_putnbr(int32_t n);
-int			ftp_putnbr_long(long int n);
-int			ftp_putbase_long(long int n, long int base);
-
-#endif
+	sign = 0;
+	if (n == -2147483648)
+		return (ft_strlen("-2147483648"));
+	else
+	{
+		if (n < 0)
+		{
+			ftp_putchar('-');
+			sign = 1;
+			n = -n;
+		}
+		if (n >= 10)
+			ftp_putnbr_long(n / 10);
+		ftp_putchar((n % 10) + '0');
+	}
+	return (ft_strlen(ft_itoa(n)) + sign);
+}

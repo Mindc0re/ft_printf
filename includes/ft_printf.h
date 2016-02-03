@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 09:55:34 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/03 08:40:24 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/03 09:11:05 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int					call_putstr(char *str, va_list args, t_docker *data);
 int					call_putchar(char *str, va_list args, t_docker *data);
 int					call_putnbr(char *str, va_list args, t_docker *data);
 int					call_putbase(char *str, va_list args, t_docker *data);
+int					call_putbase_long(char *str, va_list args, t_docker *data);
+int					call_putnbr_long(char *str, va_list args, t_docker *data);
 void				init_tabptr(t_docker *data);
 
 #endif
