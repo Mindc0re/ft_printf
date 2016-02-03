@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 09:55:34 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/01 18:32:55 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/03 08:40:24 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,30 @@ typedef struct		s_docker
 	int				i;
 	int				len;
 	int				(*fct[256])(char *, va_list, struct s_docker *);
+
+	int				dieze;
+	int				zero;
+	int				less;
+	int				more;
+	int				space;
+	int				dot;
+	int				width;
+	int				precision;
+	char			type;
+
+	enum {
+					h,
+					hh,
+					l,
+					ll,
+					j,
+					z
+	}				length;
 }					t_docker;
+
+char				*ft_detect_length(char **str, t_form *form);
+char				*ft_detect_flags(char **str, t_form *form);
+char				*ft_detect_width(char **str, t_form *form, int val);
 
 int					ftp_flag_hh(char *str, t_docker *data, va_list pointeur);
 int					ftp_flag_hh_i(char c, t_docker *data);

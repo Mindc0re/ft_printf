@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 09:18:56 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/02 11:00:28 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/03 08:39:54 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef		FT_DETECTION_H
@@ -39,21 +39,3 @@ char				*ft_detect_length(char **str, t_form *form);
 char				*ft_detect_flags(char **str, t_form *form);
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
