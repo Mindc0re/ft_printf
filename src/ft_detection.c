@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 09:15:49 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/04 11:40:15 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/04 15:49:56 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ char			*ft_detect_flags(char *str, t_docker *data)
 		if (str[data->i] == '#')
 			data->dieze = 1;
 		else if (str[data->i] == '+')
+		{
+			if (data->zero == 1)
+				data->zero = 0;
 			data->more = 1;
-		else if (str[data->i] == '0')
+		}
+		else if (str[data->i] == '0' && data->more == 0)
 			data->zero = 1;
 		else if (str[data->i] == '.')
 			data->dot = 1;

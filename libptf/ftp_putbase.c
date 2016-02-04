@@ -6,13 +6,13 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 13:53:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 13:41:41 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/04 14:11:57 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ftp_putbase(uint32_t n, uint32_t base, uint8_t flag, int dieze)
+int		ftp_putbase(uint32_t n, uint32_t base, uint8_t flag, uint32_t dieze)
 {
 	int len;
 

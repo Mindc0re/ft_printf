@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 10:35:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 12:14:36 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/04 15:38:47 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ int		detect(char *s, t_docker *data)
 		|| s[data->i] == 'u' || s[data->i] == 'U' || s[data->i] == 'x' || s[data->i] == 'X'
 		|| s[data->i] == 'c' || s[data->i] == 'C' || s[data->i] == '%' || s[data->i] == '#'
 		|| s[data->i] == '0' || s[data->i] == '-' || s[data->i] == '+' || s[data->i] == 'h'
-		|| s[data->i] == 'l' || s[data->i] == 'j' || s[data->i] == 'z')
+		|| s[data->i] == 'l' || s[data->i] == 'j' || s[data->i] == 'z'
+		|| (s[data->i] == ' ' && s[data->i - 1] == '%'))
 		return (1);
 	else
 		return (0);
