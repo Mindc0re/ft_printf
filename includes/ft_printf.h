@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 09:55:34 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/03 13:44:43 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/04 11:29:07 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ typedef struct		s_docker
 	}				length;
 }					t_docker;
 
-char				*ft_detect_length(char **str, t_docker *data);
-char				*ft_detect_flags(char **str, t_docker *data);
-char				*ft_detect_width(char **str, t_docker *data, int who);
+char				*ft_detect_length(char *str, t_docker *data);
+char				*ft_detect_flags(char *str, t_docker *data);
+char				*ft_detect_width(char *str, t_docker *data, int who);
 int					ft_printf(char *str, ...);
 
 int					ftp_flag_hh(char *str, t_docker *data, va_list pointeur);
@@ -60,7 +60,7 @@ int					ftp_putstr(uint8_t *str);
 int					ftp_strlen(uint8_t *str);
 int					ftp_putnbr(int32_t n);
 
-int					call_putstr(char **str, va_list args, t_docker *data);
+int					call_putstr(char *str, va_list args, t_docker *data);
 int					call_putchar(char *str, va_list args, t_docker *data);
 int					call_putnbr(char *str, va_list args, t_docker *data);
 int					call_putbase(char *str, va_list args, t_docker *data);
