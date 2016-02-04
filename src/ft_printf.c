@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 10:35:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 09:46:13 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/04 10:23:18 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,19 @@ void	init_tabptr(t_docker *data)
 	data->fct['U'] = &call_putbase_long;
 }
 
+void int_structure(t_docker *data)
+{
+	data->dieze = 0;
+	data->zero = 0;
+	data->less = 0;
+	data->more = 0;
+	data->space = 0;
+	data->dot = 0;
+	data->width = 0;
+	data->precision = 0;
+	data->type = 0;
+	data->length = 0;
+}
 
 int		parser(char c, va_list args, char *str, t_docker *data)
 {
@@ -36,11 +49,10 @@ int		parser(char c, va_list args, char *str, t_docker *data)
 		return (ftp_putchar('%'));
 	else
 	{
-		ft_detect_flags((&str), data);
-		ft_detect_length((&str), data);
-		ft_putstr(str + data->i);
-		ft_putchar(str[data->i]);
-		if (str[data->i] == 's')
+		str += data->i;
+		ft_detect_flags(&str, data);
+		ft_detect_length(&str, data);
+		if (*str == 's')
 			return (call_putstr(&str, args, data));
 		else
 			return ((*data->fct[(int)c])(str, args, data));
