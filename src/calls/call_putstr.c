@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 15:40:21 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 10:09:31 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/04 11:42:43 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,32 +44,36 @@ int					ftp_dot(char *str, t_docker *data, unsigned int len)
 	return (i);
 }
 
-int		call_putstr(char **str, va_list args, t_docker *data)
+int		call_putstr(char *str, va_list args, t_docker *data)
 {
 	int len;
 	char *argument;
 
 	argument = va_arg(args, char *);
-	len = data->i;
-	if (data->less == 1)
+	len = data->len;
+	if (data->less == 1 && str != NULL)
 	{
 		write(1, argument, ft_strlen(argument));
-		data->i += ftp_less((data->width - ft_strlen(argument)));
+		data->len += ftp_less((data->width - ft_strlen(argument)));
 	}
 	else if (data->width >= 0  && data->less == 0)
 	{
-		data->i += ftp_less((data->width - ft_strlen(argument)));
+		data->len += ftp_less((data->width - ft_strlen(argument)));
 		write(1, argument, ft_strlen(argument));
 	}
 	else if (data->dot == 1)
 		return (ftp_dot(argument, data, data->precision));
 	else
-		write(1, argument, ft_strlen(argument));
-//	data->i += ft_strlen(argument);
-	str += 1;
-	return (data->i - len);
-/*	if (str[data->i] == 's')
-		return (ftp_putstr(va_arg(args, uint8_t *)));
-	else
-	return (0);*/
+		data->len += ftp_putstr((uint8_t *)argument);
+	return (1);
 }
+
+
+
+
+
+
+
+
+
+
