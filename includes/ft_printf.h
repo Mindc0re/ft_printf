@@ -6,7 +6,12 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 09:55:34 by dvirgile          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/02/04 17:15:50 by dvirgile         ###   ########.fr       */
+=======
+/*   Updated: 2016/02/04 12:31:01 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/04 11:29:07 by dvirgile         ###   ########.fr       */
+>>>>>>> 0535add0c270cc7bb8a3f1ba6d282cd00527d6ae
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +59,7 @@ int					ftp_flag_hh_o(unsigned char u, t_docker *data);
 int					ftp_flag_hh_u(unsigned char u, t_docker *data);
 int					ftp_flag_x(unsigned char u, t_docker *data, char letter);
 
-int					ftp_putbase(uint32_t n, uint32_t base, uint8_t flag);
+int					ftp_putbase(uint32_t n, uint32_t base, uint8_t flag, int dieze);
 int					ftp_putchar(uint32_t c);
 int					ftp_putstr(uint8_t *str);
 int					ftp_strlen(uint8_t *str);

@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 11:56:02 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/04 13:28:49 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,15 @@
 int		call_putbase(char *str, va_list args, t_docker *data)
 {
 	if (str[data->i] == 'u')
-		return (ftp_putbase(va_arg(args, uint32_t), 10, 0));
+		return (ftp_putbase(va_arg(args, uint32_t), 10, 0, data->dieze));
 	else if (str[data->i] == 'o')
-		return (ftp_putbase(va_arg(args, uint32_t), 8, 0));
+	{
+		return (ftp_putbase(va_arg(args, uint32_t), 8, 0, data->dieze));
+	}
 	else if (str[data->i] == 'x')
-	{
-		if (data->dieze == 1)
-			ft_putstr("0x");
-		return (ftp_putbase(va_arg(args, uint32_t), 16, 'a') + 2);
-	}
+		return (ftp_putbase(va_arg(args, uint32_t), 16, 'a', data->dieze));
 	else if (str[data->i] == 'X')
-	{
-		if (data->dieze == 1)
-			ft_putstr("0X");
-		return (ftp_putbase(va_arg(args, uint32_t), 16, 'A') + 2);
-	}
+		return (ftp_putbase(va_arg(args, uint32_t), 16, 'A', data->dieze));
 	else
 		return (0);
 }
