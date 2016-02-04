@@ -6,7 +6,15 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 10:35:55 by sgaudin           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/02/04 15:38:47 by sgaudin          ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2016/02/04 17:48:23 by dvirgile         ###   ########.fr       */
+=======
+/*   Updated: 2016/02/04 12:14:36 by sgaudin          ###   ########.fr       */
+>>>>>>> 0535add0c270cc7bb8a3f1ba6d282cd00527d6ae
+>>>>>>> 259255a5d80444d1ad35414472aebcaee5ef0e75
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +49,7 @@ void init_structure(t_docker *data)
 	data->precision = 0;
 	data->type = 0;
 	data->length = 0;
+	data->choice = 1;
 }
 
 int		parser(va_list args, char *str, t_docker *data)
@@ -59,6 +68,7 @@ int		parser(va_list args, char *str, t_docker *data)
 int		detect(char *s, t_docker *data)
 {
 	data->i++;
+<<<<<<< HEAD
 	if (s[data->i] == 's' || s[data->i] == 'S' || s[data->i] == 'p' || s[data->i] == 'd'
 		|| s[data->i] == 'D' || s[data->i] == 'i' || s[data->i] == 'o' || s[data->i] == 'O'
 		|| s[data->i] == 'u' || s[data->i] == 'U' || s[data->i] == 'x' || s[data->i] == 'X'
@@ -66,6 +76,17 @@ int		detect(char *s, t_docker *data)
 		|| s[data->i] == '0' || s[data->i] == '-' || s[data->i] == '+' || s[data->i] == 'h'
 		|| s[data->i] == 'l' || s[data->i] == 'j' || s[data->i] == 'z'
 		|| (s[data->i] == ' ' && s[data->i - 1] == '%'))
+=======
+	if (s[data->i] == 's' || s[data->i] == 'S' || s[data->i] == 'p' ||
+		s[data->i] == 'd' || s[data->i] == 'D' || s[data->i] == 'i' ||
+		s[data->i] == 'o' || s[data->i] == 'O' || s[data->i] == 'u' ||
+		s[data->i] == 'U' || s[data->i] == 'x' || s[data->i] == 'X'	||
+		s[data->i] == 'c' || s[data->i] == 'C' || s[data->i] == '%' ||
+		s[data->i] == '#' || s[data->i] == '0' || s[data->i] == '-' ||
+		s[data->i] == '+' || s[data->i] == 'h' || s[data->i] == 'l' ||
+		s[data->i] == 'j' || s[data->i] == 'z' || s[data->i] == '.' ||
+		(s[data->i] >= '0' && s[data->i] <= '9'))
+>>>>>>> 259255a5d80444d1ad35414472aebcaee5ef0e75
 		return (1);
 	else
 		return (0);
@@ -77,9 +98,10 @@ int		ft_printf(char *str, ...)
 	t_docker	*data;
 
 	data = (t_docker*)malloc(sizeof(data));
-	init_tabptr(data);
 	data->i = 0;
 	data->len = 0;
+	init_tabptr(data);
+	init_structure(data);
 	va_start(args, str);
 	while (str[data->i])
 	{
@@ -99,3 +121,4 @@ int		ft_printf(char *str, ...)
 	}
 	return (data->len);
 }
+

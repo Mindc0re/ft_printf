@@ -6,8 +6,16 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 09:55:34 by dvirgile          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/02/04 17:02:08 by sgaudin          ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2016/02/04 17:15:50 by dvirgile         ###   ########.fr       */
+=======
+/*   Updated: 2016/02/04 12:31:01 by sgaudin          ###   ########.fr       */
+>>>>>>> 259255a5d80444d1ad35414472aebcaee5ef0e75
 /*   Updated: 2016/02/04 11:29:07 by dvirgile         ###   ########.fr       */
+>>>>>>> 0535add0c270cc7bb8a3f1ba6d282cd00527d6ae
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +31,6 @@ typedef struct		s_docker
 	int				i;
 	int				len;
 	int				(*fct[256])(char *, va_list, struct s_docker *);
-
 	int				dieze;
 	int				zero;
 	int				less;
@@ -33,6 +40,7 @@ typedef struct		s_docker
 	int				width;
 	int				precision;
 	char			type;
+	int				choice;
 
 	enum {
 					h,
