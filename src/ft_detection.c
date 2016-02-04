@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/28 09:15:49 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/04 11:40:15 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/04 13:26:14 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 char			*ft_detect_flags(char *str, t_docker *data)
 {
 	if (str[data->i] == '#' || str[data->i] == '0' || str[data->i] == '-' ||
-		str[data->i] == '+'	|| str[data->i] == ' ' || str[data->i] == '.')
+		str[data->i] == '+'	|| str[data->i] == ' ' || str[data->i] == '.' ||
+		(str[data->i] >= '0' && str[data->i] <= '9'))
 	{
 		if (str[data->i] == ' ' && str[data->i - 1] == '%')
 			data->space = 1;
@@ -34,10 +35,10 @@ char			*ft_detect_flags(char *str, t_docker *data)
 		{
 			data->zero = 0;
 			data->less = 1;
+			ft_putstr("\n\n\n");
 			ft_detect_width(str, data, -1);
 		}
-		else
-			ft_detect_width(str, data, 1);
+		ft_detect_width(str, data, 1);
 		data->i++;
 		ft_detect_flags(str, data);
 	}

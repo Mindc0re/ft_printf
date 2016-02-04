@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 15:40:21 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 11:59:21 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/04 12:40:52 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,10 @@ int					ftp_dot(char *str, t_docker *data, unsigned int len)
 
 int		call_putstr(char *str, va_list args, t_docker *data)
 {
-	int len;
 	char *argument;
 
+	ft_putstr("\n\ntest\n\n");
 	argument = va_arg(args, char *);
-	len = data->len;
 	if (data->less == 1 && str != NULL)
 	{
 		write(1, argument, ft_strlen(argument));
@@ -65,5 +64,5 @@ int		call_putstr(char *str, va_list args, t_docker *data)
 		return (ftp_dot(argument, data, data->precision));
 	else
 		data->len += ftp_putstr((uint8_t *)argument);
-	return (1);
+	return (0);
 }
