@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 10:04:00 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/04 12:38:55 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/04 13:41:06 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int		main(void)
 	int ret = 0;
 
 
-	ret_ft = ft_printf("%s", "Coucou");
-	ret = printf("%s", "Coucou");
+	ret_ft = ft_printf("%#o\n", 0);
+	ret = printf("%#o\n", 0);
 
 //	ret_ft = ft_printf("FT_PRINTF : Simon = %s, c = %c\n", "Simon", 'c');
 //	ret = printf("___PRINTF : Simon = %s, c = %c\n", "Simon", 'c');
