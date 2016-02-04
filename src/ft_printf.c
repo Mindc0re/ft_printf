@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 10:35:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 10:23:18 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/04 11:30:38 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,12 @@ int		parser(char c, va_list args, char *str, t_docker *data)
 		return (ftp_putchar('%'));
 	else
 	{
-		str += data->i;
-		ft_detect_flags(&str, data);
-		ft_detect_length(&str, data);
-		if (*str == 's')
-			return (call_putstr(&str, args, data));
-		else
-			return ((*data->fct[(int)c])(str, args, data));
+		ft_putstr("\nstart\n");
+		ft_putchar(str[data->i]);
+		ft_putstr("\nend\n");
+		ft_detect_flags(str, data);
+		ft_detect_length(str, data);
+		return ((*data->fct[(int)c])(str, args, data));
 	}
 	return (0);
 }
