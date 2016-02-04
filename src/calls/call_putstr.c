@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 15:40:21 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 11:42:43 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/04 11:59:21 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,13 +67,3 @@ int		call_putstr(char *str, va_list args, t_docker *data)
 		data->len += ftp_putstr((uint8_t *)argument);
 	return (1);
 }
-
-
-
-
-
-
-
-
-
-
