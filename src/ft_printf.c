@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 10:35:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 11:43:14 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/04 12:14:36 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_tabptr(t_docker *data)
 	data->fct['U'] = &call_putbase_long;
 }
 
-void int_structure(t_docker *data)
+void init_structure(t_docker *data)
 {
 	data->dieze = 0;
 	data->zero = 0;
@@ -43,15 +43,15 @@ void int_structure(t_docker *data)
 	data->length = 0;
 }
 
-int		parser(char c, va_list args, char *str, t_docker *data)
+int		parser(va_list args, char *str, t_docker *data)
 {
-	if (c == '%')
+	if (str[data->i] == '%')
 		return (ftp_putchar('%'));
 	else
 	{
 		ft_detect_flags(str, data);
 		ft_detect_length(str, data);
-		return ((*data->fct[(int)c])(str, args, data));
+		return ((*data->fct[(int)str[data->i]])(str, args, data));
 	}
 	return (0);
 }
@@ -91,7 +91,8 @@ int		ft_printf(char *str, ...)
 		else
 		{
 			if (detect(str, data))
-				data->len += parser(str[data->i], args, str, data);
+				data->len += parser(args, str, data);
+			init_structure(data);
 			data->i += 1;
 		}
 	}
