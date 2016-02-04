@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 10:35:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 12:44:08 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/04 17:48:23 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ void	init_tabptr(t_docker *data)
 
 void init_structure(t_docker *data)
 {
-	data->i = 0;
-	data->len = 0;
 	data->dieze = 0;
 	data->zero = 0;
 	data->less = 0;
@@ -43,6 +41,7 @@ void init_structure(t_docker *data)
 	data->precision = 0;
 	data->type = 0;
 	data->length = 0;
+	data->choice = 1;
 }
 
 int		parser(va_list args, char *str, t_docker *data)
@@ -52,9 +51,6 @@ int		parser(va_list args, char *str, t_docker *data)
 	else
 	{
 		ft_detect_flags(str, data);
-		ft_putstr("\n\n");
-		ft_putchar(str[data->i]);
-		ft_putstr("\n\n");
 		ft_detect_length(str, data);
 		return ((*data->fct[(int)str[data->i]])(str, args, data));
 	}
@@ -64,12 +60,14 @@ int		parser(va_list args, char *str, t_docker *data)
 int		detect(char *s, t_docker *data)
 {
 	data->i++;
-	if (s[data->i] == 's' || s[data->i] == 'S' || s[data->i] == 'p' || s[data->i] == 'd'
-		|| s[data->i] == 'D' || s[data->i] == 'i' || s[data->i] == 'o' || s[data->i] == 'O'
-		|| s[data->i] == 'u' || s[data->i] == 'U' || s[data->i] == 'x' || s[data->i] == 'X'
-		|| s[data->i] == 'c' || s[data->i] == 'C' || s[data->i] == '%' || s[data->i] == '#'
-		|| s[data->i] == '0' || s[data->i] == '-' || s[data->i] == '+' || s[data->i] == 'h'
-		|| s[data->i] == 'l' || s[data->i] == 'j' || s[data->i] == 'z' ||
+	if (s[data->i] == 's' || s[data->i] == 'S' || s[data->i] == 'p' ||
+		s[data->i] == 'd' || s[data->i] == 'D' || s[data->i] == 'i' ||
+		s[data->i] == 'o' || s[data->i] == 'O' || s[data->i] == 'u' ||
+		s[data->i] == 'U' || s[data->i] == 'x' || s[data->i] == 'X'	||
+		s[data->i] == 'c' || s[data->i] == 'C' || s[data->i] == '%' ||
+		s[data->i] == '#' || s[data->i] == '0' || s[data->i] == '-' ||
+		s[data->i] == '+' || s[data->i] == 'h' || s[data->i] == 'l' ||
+		s[data->i] == 'j' || s[data->i] == 'z' || s[data->i] == '.' ||
 		(s[data->i] >= '0' && s[data->i] <= '9'))
 		return (1);
 	else
@@ -82,6 +80,8 @@ int		ft_printf(char *str, ...)
 	t_docker	*data;
 
 	data = (t_docker*)malloc(sizeof(data));
+	data->i = 0;
+	data->len = 0;
 	init_tabptr(data);
 	init_structure(data);
 	va_start(args, str);
@@ -97,6 +97,7 @@ int		ft_printf(char *str, ...)
 		{
 			if (detect(str, data))
 				data->len += parser(args, str, data);
+			init_structure(data);
 			data->i += 1;
 		}
 	}
