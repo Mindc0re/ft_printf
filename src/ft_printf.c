@@ -5,16 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/01/25 10:35:55 by sgaudin           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/02/04 15:38:47 by sgaudin          ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2016/02/04 17:48:23 by dvirgile         ###   ########.fr       */
-=======
-/*   Updated: 2016/02/04 12:14:36 by sgaudin          ###   ########.fr       */
->>>>>>> 0535add0c270cc7bb8a3f1ba6d282cd00527d6ae
->>>>>>> 259255a5d80444d1ad35414472aebcaee5ef0e75
+/*   Created: 2016/02/05 11:19:18 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/02/05 11:20:39 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,25 +60,16 @@ int		parser(va_list args, char *str, t_docker *data)
 int		detect(char *s, t_docker *data)
 {
 	data->i++;
-<<<<<<< HEAD
-	if (s[data->i] == 's' || s[data->i] == 'S' || s[data->i] == 'p' || s[data->i] == 'd'
-		|| s[data->i] == 'D' || s[data->i] == 'i' || s[data->i] == 'o' || s[data->i] == 'O'
-		|| s[data->i] == 'u' || s[data->i] == 'U' || s[data->i] == 'x' || s[data->i] == 'X'
-		|| s[data->i] == 'c' || s[data->i] == 'C' || s[data->i] == '%' || s[data->i] == '#'
-		|| s[data->i] == '0' || s[data->i] == '-' || s[data->i] == '+' || s[data->i] == 'h'
-		|| s[data->i] == 'l' || s[data->i] == 'j' || s[data->i] == 'z'
+	if (s[data->i] == 's' || s[data->i] == 'S' || s[data->i] == 'p'
+		|| s[data->i] == 'd' || s[data->i] == 'D' || s[data->i] == 'i'
+		|| s[data->i] == 'o' || s[data->i] == 'O' || s[data->i] == 'u'
+		|| s[data->i] == 'U' || s[data->i] == 'x' || s[data->i] == 'X'
+		|| s[data->i] == 'c' || s[data->i] == 'C' || s[data->i] == '%'
+		|| s[data->i] == '#' || s[data->i] == '0' || s[data->i] == '-'
+		|| s[data->i] == '+' || s[data->i] == 'h' || s[data->i] == 'l'
+		|| s[data->i] == 'j' || s[data->i] == 'z' || s[data->i] == '.'
+		|| (s[data->i] >= '0' && s[data->i] <= '9')
 		|| (s[data->i] == ' ' && s[data->i - 1] == '%'))
-=======
-	if (s[data->i] == 's' || s[data->i] == 'S' || s[data->i] == 'p' ||
-		s[data->i] == 'd' || s[data->i] == 'D' || s[data->i] == 'i' ||
-		s[data->i] == 'o' || s[data->i] == 'O' || s[data->i] == 'u' ||
-		s[data->i] == 'U' || s[data->i] == 'x' || s[data->i] == 'X'	||
-		s[data->i] == 'c' || s[data->i] == 'C' || s[data->i] == '%' ||
-		s[data->i] == '#' || s[data->i] == '0' || s[data->i] == '-' ||
-		s[data->i] == '+' || s[data->i] == 'h' || s[data->i] == 'l' ||
-		s[data->i] == 'j' || s[data->i] == 'z' || s[data->i] == '.' ||
-		(s[data->i] >= '0' && s[data->i] <= '9'))
->>>>>>> 259255a5d80444d1ad35414472aebcaee5ef0e75
 		return (1);
 	else
 		return (0);
