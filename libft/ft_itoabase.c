@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 14:19:50 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/07 14:29:20 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/07 16:29:10 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static long		size(long n, int base)
 	return (size);
 }
 
-char			*ft_itoabase(int n, int base)
+char			*ft_itoa_base(int n, int base)
 {
 	char	*str;
 	int		i;

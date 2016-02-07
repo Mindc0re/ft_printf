@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 14:45:04 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/07 14:24:14 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/07 16:30:47 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 
 char				*ft_itoa(int n);
-char				*ft_itoabase(int n, int base);
+char				*ft_itoa_base(int n, int base);
 
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
@@ -107,4 +107,5 @@ void				ft_printhex(unsigned char n);
 char				*ft_strtolower(char *str);
 char				*ft_strtoupper(char *str);
 
+int					ft_putwchar(wchar_t c);
 #endif
