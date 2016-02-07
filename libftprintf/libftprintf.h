@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 14:18:19 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 17:02:31 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/05 14:17:04 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <stdarg.h>
+# include <wchar.h>
 
 int			ftp_putbase(uint32_t n, uint32_t base, uint8_t flag, uint32_t dieze);
 int			ftp_putchar(uint32_t c);
