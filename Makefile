@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/02/04 12:01:34 by dvirgile         ###   ########.fr        #
+#    Updated: 2016/02/08 14:25:53 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -16,12 +16,15 @@ NAME = ft_printf
 
 TILDE = ./src/*.c~ ./src/calls/*.c~  includes/*.h~ includes/*.h.gch Makefile~ ./libptf/*.h~ ./libptf/*.h.gch ./libptf/*.c~ a.out
 
+LIBFT = ./libft/
+
 CC = gcc -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME):
-	$(CC) src/ft_printf.c main.c src/ft_detection.c src/calls/*.c libptf/*.c libptf/*.h includes/*.h -L./includes/ -lft
+	make -C $(LIBFT) re
+	$(CC) src/ft_printf.c main.c src/ft_detection.c src/calls/*.c libftprintf/*.c libftprintf/*.h includes/*.h -L./libft -lft
 
 clean:
 	rm -rf $(TILDE)

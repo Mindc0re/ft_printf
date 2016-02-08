@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 14:45:04 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/07 16:30:47 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/08 15:34:26 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
 int					ft_atoi(const char *str);
+int					ft_atoibase(char *nb, int base);
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -74,6 +75,8 @@ char				**ft_strsplit(char const *s, char c);
 
 char				*ft_itoa(int n);
 char				*ft_itoa_base(int n, int base);
+
+int					ft_recursive_pow(int n, int power);
 
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);

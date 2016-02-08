@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/05 11:23:28 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/08 14:26:38 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <stdarg.h>
 # include "libft.h"
-# include "../libptf/libftprintf.h"
+# include "../libftprintf/libftprintf.h"
 
 typedef struct		s_docker
 {
