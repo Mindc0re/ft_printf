@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:19:18 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/05 11:20:39 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/08 17:40:37 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	init_tabptr(t_docker *data)
 	data->fct['D'] = &call_putnbr_long;
 	data->fct['O'] = &call_putbase_long;
 	data->fct['U'] = &call_putbase_long;
+	data->fct['C'] = &call_putwchar;
+	data->fct['S'] = &call_putwstr;
 }
 
 void init_structure(t_docker *data)

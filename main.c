@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:22:04 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/05 11:35:24 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/08 17:55:35 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int		main(void)
 	int ret_ft = 0;
 	int ret = 0;
 
-	ret_ft = ft_printf("%#X\n", 1869);
-	ret = printf("%#X\n", 1869);
+	ret_ft = ft_printf("%S\n", L"éèêëēßàæ");
+//	ret = printf("%#S\n", "éèêëēßàæ");
 
 //	ret_ft = ft_printf("FT_PRINTF : Simon = %-5.2s test\n", "SimonSimon");
 //	ret = printf("___PRINTF : Simon = %-5.2s test\n", "SimonSimon");

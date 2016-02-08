@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/08 14:26:38 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/08 17:45:12 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include "libft.h"
+# include "../libft/includes/libft.h"
 # include "../libftprintf/libftprintf.h"
 
 typedef struct		s_docker
@@ -66,6 +66,8 @@ int					call_putnbr(char *str, va_list args, t_docker *data);
 int					call_putbase(char *str, va_list args, t_docker *data);
 int					call_putbase_long(char *str, va_list args, t_docker *data);
 int					call_putnbr_long(char *str, va_list args, t_docker *data);
+int					call_putwchar(char *str, va_list args, t_docker *data);
+int					call_putwstr(char *str, va_list args, t_docker *data);
 void				init_tabptr(t_docker *data);
 
 #endif
