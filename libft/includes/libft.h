@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 14:45:04 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/08 15:34:26 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/08 17:33:24 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,4 +111,5 @@ char				*ft_strtolower(char *str);
 char				*ft_strtoupper(char *str);
 
 int					ft_putwchar(wchar_t c);
+int					ft_putwstr(wchar_t *str);
 #endif
