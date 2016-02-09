@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/09 11:02:47 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/09 11:09:49 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ int		call_putbase(char *str, va_list args, t_docker *data)
 {
 	int result;
 	int length;
+	int prec;
 
 	result = va_arg(args, uint32_t);
 	if (data->dot == 1 && data->precision != 0)
 	{
 		length = (int)ft_strlen(ft_itoa(data->precision));
+		prec = length;
 		while (length >= 0)
 		{
 			ftp_putchar('0');
@@ -28,13 +30,13 @@ int		call_putbase(char *str, va_list args, t_docker *data)
 		}
 	}
 	if (str[data->i] == 'u')
-		return (ftp_putbase(result, 10, 0, data->dieze));
+		return (ftp_putbase(result, 10, 0, data->dieze) + prec);
 	else if (str[data->i] == 'o')
-		return (ftp_putbase(result, 8, 0, data->dieze));
+		return (ftp_putbase(result, 8, 0, data->dieze) + prec);
 	else if (str[data->i] == 'x')
-		return (ftp_putbase(result, 16, 'a', data->dieze));
+		return (ftp_putbase(result, 16, 'a', data->dieze) + prec);
 	else if (str[data->i] == 'X')
-		return (ftp_putbase(result, 16, 'A', data->dieze));
+		return (ftp_putbase(result, 16, 'A', data->dieze) + prec);
 	else
 		return (0);
 }
