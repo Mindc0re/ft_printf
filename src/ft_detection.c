@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:20:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/05 11:20:59 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/10 11:12:52 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ char			*ft_detect_width(char *str, t_docker *data, int who)
 	if (str[data->i] >= '0' && str[data->i] <= '9')
 	{
 		result = result * 10 + (str[data->i] - 48);
-		if (who == -1)
+		if (who == -1 || who == 0)
 			data->width  = result;
-		else if (who == 1 || who == 0)
+		else if (who == 1)
 		{
 			data->dot = 1;
 			data->precision = result;
@@ -74,6 +74,11 @@ char			*ft_detect_width(char *str, t_docker *data, int who)
 //		ft_putchar(str[data->i]);
 //		ft_putstr("\n\n");
 	}
+	else
+		result = 0;
+//	ft_putstr("\nnb\n");
+//	ft_putnbr(result);
+//	ft_putstr("\nnb\n");
 	return (str);
 }
 

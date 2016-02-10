@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:22:04 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/09 12:08:33 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/10 11:27:56 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int		main(void)
 	int ret_ft = 0;
 	int ret = 0;
 
-	ret_ft = ft_printf("%.5d\n", 255);
-	ret = printf("%.5d\n", 255);
+//	ret_ft = ft_printf("%.5d\n", 255);
+//	ret = printf("%.5d\n", 255);
 
-//	ret_ft = ft_printf("FT_PRINTF : Simon = %-5.2s test\n", "SimonSimon");
-//	ret = printf("___PRINTF : Simon = %-5.2s test\n", "SimonSimon");
+	ret_ft = ft_printf("FT_PRINTF : Simon = %-20.2s test\n", "SimonSimon");
+	ret = printf("___PRINTF : Simon = %-20.2s test\n", "SimonSimon");
 
 //	ret_ft = ft_printf("FT_PRINTF : Coucou je suis %-20s et j'ai %d ans, ceci est la lettre %c et voici 500 en hexadecimal : %x et %X\n", "Simon", 17, 'Q', 500, 500);
 //	ret = printf("   PRINTF : Coucou je suis %-20s et j'ai %d ans, ceci est la lettre %c et voici 500 en hexadecimal : %x et %X\n", "Simon", 17, 'Q', 500, 500);
