@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:20:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/10 11:12:52 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/10 14:31:14 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ char			*ft_detect_flags(char *str, t_docker *data)
 	{
 		if (str[data->i] == ' ' && str[data->i - 1] == '%')
 			data->space = 1;
-		else if (str[data->i] == ' ' && str[data->i - 1] != '%')
-			ft_putstr("error");
 		else if (str[data->i] == '#')
 			data->dieze = 1;
 		else if (str[data->i] == '+')
@@ -35,11 +33,13 @@ char			*ft_detect_flags(char *str, t_docker *data)
 			data->zero = 1;
 		else if (str[data->i] == '.')
 		{
+			data->result = 0;
 			data->choice = 1;
 			data->dot = 1;
 		}
 		if (str[data->i] == '-')
 		{
+			data->result = 0;
 			data->choice = -1;
 			data->zero = 0;
 			data->less = 1;
@@ -56,17 +56,15 @@ char			*ft_detect_flags(char *str, t_docker *data)
 
 char			*ft_detect_width(char *str, t_docker *data, int who)
 {
-	static int	result = 0;
-
 	if (str[data->i] >= '0' && str[data->i] <= '9')
 	{
-		result = result * 10 + (str[data->i] - 48);
+		data->result = data->result * 10 + (str[data->i] - 48);
 		if (who == -1 || who == 0)
-			data->width  = result;
+			data->width  = data->result;
 		else if (who == 1)
 		{
 			data->dot = 1;
-			data->precision = result;
+			data->precision = data->result;
 		}
 //		ft_putstr("\nnb\n");
 //		ft_putnbr(result);
@@ -74,8 +72,8 @@ char			*ft_detect_width(char *str, t_docker *data, int who)
 //		ft_putchar(str[data->i]);
 //		ft_putstr("\n\n");
 	}
-	else
-		result = 0;
+//	else
+//		data->result = 0;
 //	ft_putstr("\nnb\n");
 //	ft_putnbr(result);
 //	ft_putstr("\nnb\n");
