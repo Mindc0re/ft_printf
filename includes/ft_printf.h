@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/11 09:44:29 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/11 10:34:49 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int					ftp_octal(uint32_t nb, va_list args, t_docker *data);
 int					ftp_putchar(uint32_t c);
 int					ftp_putstr(uint8_t *str);
 int					ftp_strlen(uint8_t *str);
-int					ftp_putnbr(int32_t n, uint32_t space, uint32_t more);
+int					ftp_putnbr(int32_t n, uint32_t space, uint32_t more, int precision);
 
 int					call_putstr(char *str, va_list args, t_docker *data);
 int					call_putchar(char *str, va_list args, t_docker *data);
