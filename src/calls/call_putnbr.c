@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/11 15:32:15 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/11 16:28:37 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,22 +61,20 @@ int		call_putnbr(char *str, va_list args, t_docker *data)
 
 	result = va_arg(args, uint32_t);
 	prec = 0;
-//	len_nb = (int)ft_strlen(ft_itoa(result));
 	len_nb = longueur_nb(result);
 	length = 0;
 	if (data->less == 0 && data->width > 0)
 	{
 		if (data->dot == 1)
-		{
-			length = data->precision - len_nb + result >= 0 ? 0 : 1;
-		}
-		length = data->width - len_nb;
+			if ((data->precision - len_nb + (result >= 0 ? 0 : 1)) > 0)
+				length -= data->precision - len_nb + (result >= 0 ? 0 : 1);
+		length += data->width - len_nb;
 		data->len += len_nb;
 		data->len = ft_add_spaces(length, data->len, ' ');
 	}
 	if (data->dot == 1 && str)
 	{
-		data->len += length != (data->width - len_nb) ? len_nb : 0;
+		data->len += length != 0 ? 0 : len_nb;
 		length = data->precision - len_nb;
 		length = result >= 0 ? length : length + ftp_putchar('-');
 		prec = data->len;
@@ -91,6 +89,8 @@ int		call_putnbr(char *str, va_list args, t_docker *data)
 		data->len = ft_add_spaces(length, data->len, ' ');
 		return (0);
 	}
+	if (data->less == 0 && data->dot == 0)
+		data->len += len_nb;
 	ftp_putnbr(result, data->space, data->more, data->precision);
 	return (0);
 }

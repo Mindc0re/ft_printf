@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:22:04 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/10 14:44:09 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/11 16:28:21 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,18 @@ int		main(void)
 	int ret_ft = 0;
 	int ret = 0;
 
-//	ret_ft = ft_printf("test %-20d\n", 255);
-//	ret = printf("test %-20d\n\n", 255);
+	ret_ft = ft_printf("FT__ %20d\n", 123456789);
+	ret = printf("PR__ %20d\n", 123456789);
+//	ret_ft = ft_printf("FT__%d %-20d %-3d %.d %.9d %.3d %20.10d %20.2d %3.9d %3.3d\n", 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456);
 
-	ret_ft = ft_printf("FT_PRINTF %20s %-20s %s %3s %.s %.3s %20.3s\n", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon");
-	ret = printf("___PRINTF %20s %-20s %s %3s %.s %.3s %20.3s\n", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon");
+//	ret = printf("PR__%d %-20d %-3d %.d %.9d %.3d %20.10d %20.2d %3.9d %3.3d\n", 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456);
+
+//	ret_ft = ft_printf("FT__%-d %-20d %-3d %-.d %-.9d %-.3d %-20.10d %-20.2d %-3.9d %-3.3d\n", 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456);
+
+//	ret = printf("PR__%-d %-20d %-3d %-.d %-.9d %-.3d %-20.10d %-20.2d %-3.9d %-3.3d\n", 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456);
+
+//	ret_ft = ft_printf("FT_PRINTF %20s %-20s %s %3s %.s %.3s %20.3s %-20.3s\n", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon");
+//	ret = printf("___PRINTF %20s %-20s %s %3s %.s %.3s %20.3s %-20.3s\n", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon");
 
 //	ret_ft = ft_printf("FT_PRINTF : Simon = %-20.2s %.s %s %20s %2s test\n", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon");
 //	ret = printf("___PRINTF : Simon = %-20.2s %.s %s %20s %2s test\n", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon");

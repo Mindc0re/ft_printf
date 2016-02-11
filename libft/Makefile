@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 17:00:24 by sgaudin           #+#    #+#              #
-#    Updated: 2016/02/08 17:28:01 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/02/11 16:19:41 by dvirgile         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,13 @@ BINARY = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME):
-	gcc -Wall -Wextra -Werror -c -I./includes/ $(SRC)
-	ar rcs $(NAME) $(BINARY)
+	@gcc -Wall -Wextra -Werror -c -I./includes/ $(SRC)
+	@ar rcs $(NAME) $(BINARY)
 
 clean:
-	rm -rf $(BINARY)
+	@rm -rf $(BINARY)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re: fclean all

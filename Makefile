@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/02/10 11:32:59 by dvirgile         ###   ########.fr        #
+#    Updated: 2016/02/11 16:24:14 by dvirgile         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,18 +23,21 @@ CC = gcc -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	make -C $(LIBFT) re
-	$(CC) src/ft_printf.c main.c src/ft_detection.c src/calls/*.c libftprintf/*.c libftprintf/*.h includes/*.h -L./libft -lft
+	@echo "\033[32mCompilation\033[0m"
+	@make -C $(LIBFT) re
+	@$(CC) src/ft_printf.c main.c src/ft_detection.c src/calls/*.c libftprintf/*.c libftprintf/*.h includes/*.h -L./libft -lft
 
 clean:
-	make -C $(LIBFT) fclean
-	rm -rf $(TILDE)
+	@echo "\033[35mNettoyage des dossiers\033[0m"
+	@make -C $(LIBFT) fclean
+	@rm -rf $(TILDE)
 
 fclean: clean
-	rm -rf $(NAME)
+	@echo "\033[31mNettoyage de tous les dossiers\033[0m"
+	@rm -rf $(NAME)
 
 push:
-	git commit -am "makefile pushed"
-	git push
+	@git commit -am "makefile pushed"
+	@git push
 
 re: fclean all
