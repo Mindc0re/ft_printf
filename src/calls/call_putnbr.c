@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/11 17:39:15 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/12 12:35:38 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,18 @@ int		call_putnbr_bis(char *str, va_list args, t_docker *data)
 		return (0);
 }
 
-int		longueur_nb(uint32_t nb)
+int		longueur_nb(int32_t nb)
 {
 	int i;
+//	int signe;
 
 	i = 1;
+//	signe = nb >= 0 ? 0 : ftp_putchar('-');
+	i = nb >= 0 ? i : i + 1;//ftp_putchar('-');
+	nb = ft_abs(nb);
 	while (nb > 9)
 	{
-		nb /= 10;
+		nb = nb / 10;
 		i++;
 	}
 	return (i);
@@ -62,8 +66,11 @@ int		call_putnbr(char *str, va_list args, t_docker *data)
 
 	result = va_arg(args, uint32_t);
 	prec = 0;
-	len_nb = longueur_nb(result);
 	length = 0;
+	len_nb = longueur_nb(result);
+//	ft_putstr("\n\nnb\n\n");
+//	ft_putnbr(len_nb);
+//	ft_putstr("\n\nnb\n\n");
 	if (data->less == 0 && data->width > 0)
 	{
 		if (data->dot == 1)
@@ -73,11 +80,13 @@ int		call_putnbr(char *str, va_list args, t_docker *data)
 		data->len += len_nb;
 		data->len = ft_add_spaces(length, data->len, ' ');
 	}
+	if ((data->dot == 1 || data->less == 1) && result < 0)
+		ftp_putchar('-');
 	if (data->dot == 1 && str)
 	{
-		data->len += length != 0 ? 0 : len_nb;
+		data->len += length != 0 || (length != 1 && result < 0) ? 0 : len_nb;
 		length = data->precision - len_nb;
-		length = result >= 0 ? length : length + ftp_putchar('-');
+		length = result >= 0 ? length : length + 1;
 		prec = data->len;
 		data->len = ft_add_spaces(length, data->len, '0');
 	}
@@ -89,9 +98,11 @@ int		call_putnbr(char *str, va_list args, t_docker *data)
 		ftp_putnbr(result, data->space, data->more, data->precision);
 		data->len = ft_add_spaces(length, data->len, ' ');
 		return (0);
-	}
-	if (data->less == 0 && data->dot == 0)
+		}
+	if (data->less == 0 && data->dot == 0 && data->width == 0 && str)
 		data->len += len_nb;
+		if (data->less == 0 && data->dot == 0 && result < 0)
+			ftp_putchar('-');
 	ftp_putnbr(result, data->space, data->more, data->precision);
 	return (0);
 }
