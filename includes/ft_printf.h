@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/11 10:34:49 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/11 17:53:06 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,12 @@ typedef struct		s_docker
 	int				choice;
 
 	enum {
-					h,
-					hh,
-					l,
-					ll,
-					j,
-					z
+		h,
+		hh,
+		l,
+		ll,
+		j,
+		z
 	}				length;
 }					t_docker;
 int					ft_add_spaces(int nb_spaces, int len, char c);
@@ -71,6 +71,6 @@ int					call_putbase_long(char *str, va_list args, t_docker *data);
 int					call_putnbr_long(char *str, va_list args, t_docker *data);
 int					call_putwchar(char *str, va_list args, t_docker *data);
 int					call_putwstr(char *str, va_list args, t_docker *data);
-void				init_tabptr(t_docker *data);
+t_docker			*init_tabptr(void);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:19:18 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/10 14:10:44 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/11 17:51:38 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 #include <stdio.h>
 #include <math.h>
 
-void	init_tabptr(t_docker *data)
+t_docker	*init_tabptr(void)
 {
+	t_docker *data;
+
+	data = (t_docker *)malloc(sizeof(data));
 	data->fct['s'] = &call_putstr;
 	data->fct['c'] = &call_putchar;
 	data->fct['d'] = &call_putnbr;
@@ -29,9 +32,10 @@ void	init_tabptr(t_docker *data)
 	data->fct['U'] = &call_putbase_long;
 	data->fct['C'] = &call_putwchar;
 	data->fct['S'] = &call_putwstr;
+	return (data);
 }
 
-void init_structure(t_docker *data)
+void		init_structure(t_docker *data)
 {
 	data->dieze = 0;
 	data->zero = 0;
@@ -47,7 +51,7 @@ void init_structure(t_docker *data)
 	data->result = 0;
 }
 
-int		parser(va_list args, char *str, t_docker *data)
+int			parser(va_list args, char *str, t_docker *data)
 {
 	if (str[data->i] == '%')
 		return (ftp_putchar('%'));
@@ -60,7 +64,7 @@ int		parser(va_list args, char *str, t_docker *data)
 	return (0);
 }
 
-int		detect(char *s, t_docker *data)
+int			detect(char *s, t_docker *data)
 {
 	data->i++;
 	if (s[data->i] == 's' || s[data->i] == 'S' || s[data->i] == 'p'
@@ -78,15 +82,14 @@ int		detect(char *s, t_docker *data)
 		return (0);
 }
 
-int		ft_printf(char *str, ...)
+int			ft_printf(char *str, ...)
 {
-	va_list 	args;
+	va_list		args;
 	t_docker	*data;
 
-	data = (t_docker*)malloc(sizeof(data));
+	data = init_tabptr();
 	data->i = 0;
 	data->len = 0;
-	init_tabptr(data);
 	init_structure(data);
 	va_start(args, str);
 	while (str[data->i])
@@ -107,4 +110,3 @@ int		ft_printf(char *str, ...)
 	}
 	return (data->len);
 }
-

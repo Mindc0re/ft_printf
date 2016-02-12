@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:20:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/10 14:31:14 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/11 17:43:24 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 char			*ft_detect_flags(char *str, t_docker *data)
 {
 	if (str[data->i] == '#' || str[data->i] == '0' || str[data->i] == '-' ||
-		str[data->i] == '+'	|| str[data->i] == ' ' || str[data->i] == '.' ||
+		str[data->i] == '+' || str[data->i] == ' ' || str[data->i] == '.' ||
 		(str[data->i] >= '0' && str[data->i] <= '9'))
 	{
 		if (str[data->i] == ' ' && str[data->i - 1] == '%')
@@ -44,9 +44,9 @@ char			*ft_detect_flags(char *str, t_docker *data)
 			data->zero = 0;
 			data->less = 1;
 		}
-//		ft_putstr("\n\ntest");
-//		ft_putchar(str[data->i]);
-//		ft_putstr("\n\n");
+/*		ft_putstr("\n\ntest");
+		ft_putchar(str[data->i]);
+		ft_putstr("\n\n"); */
 		ft_detect_width(str, data, data->choice);
 		data->i++;
 		ft_detect_flags(str, data);
@@ -60,23 +60,23 @@ char			*ft_detect_width(char *str, t_docker *data, int who)
 	{
 		data->result = data->result * 10 + (str[data->i] - 48);
 		if (who == -1 || who == 0)
-			data->width  = data->result;
+			data->width = data->result;
 		else if (who == 1)
 		{
 			data->dot = 1;
 			data->precision = data->result;
 		}
-//		ft_putstr("\nnb\n");
-//		ft_putnbr(result);
-//		ft_putstr("\nchar\n");
-//		ft_putchar(str[data->i]);
-//		ft_putstr("\n\n");
+/*		ft_putstr("\nnb\n");
+		ft_putnbr(result);
+		ft_putstr("\nchar\n");
+		ft_putchar(str[data->i]);
+		ft_putstr("\n\n"); */
 	}
-//	else
-//		data->result = 0;
-//	ft_putstr("\nnb\n");
-//	ft_putnbr(result);
-//	ft_putstr("\nnb\n");
+/*	else
+	data->result = 0;
+	ft_putstr("\nnb\n");
+	ft_putnbr(result);
+	ft_putstr("\nnb\n"); */
 	return (str);
 }
 
