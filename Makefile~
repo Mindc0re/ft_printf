@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/02/12 09:47:21 by dvirgile         ###   ########.fr        #
+#    Updated: 2016/02/11 16:24:14 by dvirgile         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -37,9 +37,7 @@ fclean: clean
 	@rm -rf $(NAME)
 
 push:
-	@echo "Entrez votre commit"
-	@git add .
-	@read variable ; git commit -m $variable
+	@git commit -am "makefile pushed"
 	@git push
 
 re: fclean all
