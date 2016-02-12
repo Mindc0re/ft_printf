@@ -6,31 +6,23 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:20:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/11 17:43:24 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/12 12:06:14 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
 
-char			*ft_detect_flags(char *str, t_docker *data)
+void			ft_detect_flags(char *str, t_docker *data)
 {
-	if (str[data->i] == '#' || str[data->i] == '0' || str[data->i] == '-' ||
-		str[data->i] == '+' || str[data->i] == ' ' || str[data->i] == '.' ||
-		(str[data->i] >= '0' && str[data->i] <= '9'))
+	if (ft_strchr("#0123456789-+ .", str[data->i]))
 	{
+		data->dieze = str[data->i] == '#' ? 1 : 0;
+		data->more = str[data->i] == '+' ? 1 : 0;
+		data->space = str[data->i] == ' ' ? 0 : data->space;
+		data->zero = str[data->i] == '0' ? 1 : 0;
 		if (str[data->i] == ' ' && str[data->i - 1] == '%')
 			data->space = 1;
-		else if (str[data->i] == '#')
-			data->dieze = 1;
-		else if (str[data->i] == '+')
-		{
-			if (data->zero == 1)
-				data->zero = 0;
-			data->more = 1;
-		}
-		else if (str[data->i] == '0' && data->more == 0)
-			data->zero = 1;
 		else if (str[data->i] == '.')
 		{
 			data->result = 0;
@@ -44,14 +36,10 @@ char			*ft_detect_flags(char *str, t_docker *data)
 			data->zero = 0;
 			data->less = 1;
 		}
-/*		ft_putstr("\n\ntest");
-		ft_putchar(str[data->i]);
-		ft_putstr("\n\n"); */
 		ft_detect_width(str, data, data->choice);
 		data->i++;
 		ft_detect_flags(str, data);
 	}
-	return (str);
 }
 
 char			*ft_detect_width(char *str, t_docker *data, int who)
@@ -66,17 +54,7 @@ char			*ft_detect_width(char *str, t_docker *data, int who)
 			data->dot = 1;
 			data->precision = data->result;
 		}
-/*		ft_putstr("\nnb\n");
-		ft_putnbr(result);
-		ft_putstr("\nchar\n");
-		ft_putchar(str[data->i]);
-		ft_putstr("\n\n"); */
 	}
-/*	else
-	data->result = 0;
-	ft_putstr("\nnb\n");
-	ft_putnbr(result);
-	ft_putstr("\nnb\n"); */
 	return (str);
 }
 
