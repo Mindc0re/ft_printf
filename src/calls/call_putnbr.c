@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/12 12:35:38 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/12 14:45:38 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,6 @@ int		call_putnbr(char *str, va_list args, t_docker *data)
 	prec = 0;
 	length = 0;
 	len_nb = longueur_nb(result);
-//	ft_putstr("\n\nnb\n\n");
-//	ft_putnbr(len_nb);
-//	ft_putstr("\n\nnb\n\n");
 	if (data->less == 0 && data->width > 0)
 	{
 		if (data->dot == 1)
@@ -84,7 +81,7 @@ int		call_putnbr(char *str, va_list args, t_docker *data)
 		ftp_putchar('-');
 	if (data->dot == 1 && str)
 	{
-		data->len += length != 0 || (length != 1 && result < 0) ? 0 : len_nb;
+		data->len += (length == 0 || (length == 1 && result < 0)) ? len_nb : 0;
 		length = data->precision - len_nb;
 		length = result >= 0 ? length : length + 1;
 		prec = data->len;
