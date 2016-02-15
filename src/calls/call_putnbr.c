@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/12 14:45:38 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/15 09:46:41 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,9 @@ int		call_putnbr_bis(char *str, va_list args, t_docker *data)
 int		longueur_nb(int32_t nb)
 {
 	int i;
-//	int signe;
 
 	i = 1;
-//	signe = nb >= 0 ? 0 : ftp_putchar('-');
-	i = nb >= 0 ? i : i + 1;//ftp_putchar('-');
+	i = nb >= 0 ? i : i + 1;
 	nb = ft_abs(nb);
 	while (nb > 9)
 	{

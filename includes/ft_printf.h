@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/12 12:22:40 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 09:43:52 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <stdarg.h>
 # include "../libft/includes/libft.h"
 # include "../libftprintf/libftprintf.h"
+
+# define FT_INIT(type,name,value)		type name = value
 
 typedef struct		s_docker
 {
