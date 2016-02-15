@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 11:13:38 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 11:13:48 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 11:18:59 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void			ft_detect_flags(char *str, t_docker *data)
 		data->dieze = str[data->i] == '#' ? 1 : 0;
 		data->more = str[data->i] == '+' ? 1 : 0;
 		data->zero = (str[data->i] == '0' && str[data->i - 1] == '%') ? 1 : data->zero;
-		data->zero = str[data->i] == '0' ? 1 : 0;
 		data->space = (str[data->i] == ' ' && str[data->i - 1] == '%') ? 1 : 0;
 		if (str[data->i] == ' ' && str[data->i - 1] == '%')
 			data->space = 1;
@@ -59,27 +58,3 @@ char			*ft_detect_width(char *str, t_docker *data, int who)
 	}
 	return (str);
 }
-/*
-char			*ft_detect_length(char *str, t_docker *data)
-{
-	if (str[data->i] == 'h' && str[data->i + 1] != 'h')
-		data->length = h;
-	else if (str[data->i] == 'h' && str[data->i + 1] == 'h')
-	{
-		data->length = hh;
-		data->i += 2;
-	}
-	else if (str[data->i] == 'l' && str[data->i + 1] != 'l')
-		data->length = l;
-	else if (str[data->i] == 'l' && str[data->i + 1] == 'l')
-	{
-		data->length = ll;
-		data->i += 2;
-	}
-	else if (str[data->i] == 'j')
-		data->length = j;
-	else if (str[data->i] == 'z')
-		data->length = z;
-	return (str);
-}
-*/

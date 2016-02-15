@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 11:14:00 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 11:17:08 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 11:52:00 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		main(void)
 	int ret_ft = 0;
 	int ret = 0;
 
+/*
 	ret_ft = ft_printf("FT__ %.3d\n", -23456);
 	ret = printf("PR__ %.3d\n", -23456);
 
@@ -64,6 +65,7 @@ int		main(void)
 
 	ret_ft += ft_printf("FT_PRINTF : Ceci est un %De test : Vla un int en base 8 : %o, et un long int en base 8 : %O, et puis vla un long int en base 10 : %U\n", 2, 255, 255, 255);
 	ret += printf("   PRINTF : Ceci est un %De test : Vla un int en base 8 : %o, et un long int en base 8 : %O, et puis vla un long int en base 10 : %U\n", 2, 255, 255, 255);
+*/
 	printf("Printf retourne %d caracteres, et ft_printf retourne %d caracteres\n", ret, ret_ft);
 	//printf("\n   PRINTF : Test adresse de ret : %p", &ret);
 	//ft_printf("\nFT_PRINTF : Test adresse de ret : %p\n", &ret);
