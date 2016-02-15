@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:20:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 09:54:23 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 10:33:10 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char			*ft_detect_width(char *str, t_docker *data, int who)
 	}
 	return (str);
 }
-
+/*
 char			*ft_detect_length(char *str, t_docker *data)
 {
 	if (str[data->i] == 'h' && str[data->i + 1] != 'h')
@@ -78,3 +78,4 @@ char			*ft_detect_length(char *str, t_docker *data)
 		data->length = z;
 	return (str);
 }
+*/

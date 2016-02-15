@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/02/12 14:29:32 by dvirgile         ###   ########.fr        #
+#    Updated: 2016/02/15 10:36:51 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -25,7 +25,7 @@ all: $(NAME)
 $(NAME):
 	@printf "\033[31mCompilation\033[0m "
 	@make -C $(LIBFT) re
-	@$(CC) src/ft_printf.c main.c src/ft_detection.c src/calls/*.c libftprintf/*.c libftprintf/*.h includes/*.h -L./libft -lft
+	@$(CC) src/ft_printf.c main.c src/ft_detection.c src/ft_convert_length.c src/calls/*.c libftprintf/*.c libftprintf/*.h includes/*.h -L./libft -lft
 	@echo "\033[32m[OK]\033[0m"
 
 clean:

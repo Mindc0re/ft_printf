@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:19:18 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/11 17:51:38 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 10:34:38 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,13 @@ t_docker	*init_tabptr(void)
 	return (data);
 }
 
-void		init_structure(t_docker *data)
+void		init_structure(t_docker *data, int check)
 {
+	if (check == 1)
+	{
+		data->i = 0;
+		data->len = 0;
+	}
 	data->dieze = 0;
 	data->zero = 0;
 	data->less = 0;
@@ -58,7 +63,8 @@ int			parser(va_list args, char *str, t_docker *data)
 	else
 	{
 		ft_detect_flags(str, data);
-		ft_detect_length(str, data);
+//		ft_detect_length(str, data);
+		detect_conversion(str, data);
 		return ((*data->fct[(int)str[data->i]])(str, args, data));
 	}
 	return (0);
@@ -88,9 +94,7 @@ int			ft_printf(char *str, ...)
 	t_docker	*data;
 
 	data = init_tabptr();
-	data->i = 0;
-	data->len = 0;
-	init_structure(data);
+	init_structure(data, 1);
 	va_start(args, str);
 	while (str[data->i])
 	{
@@ -104,9 +108,11 @@ int			ft_printf(char *str, ...)
 		{
 			if (detect(str, data))
 				data->len += parser(args, str, data);
-			init_structure(data);
+			init_structure(data, 0);
 			data->i += 1;
 		}
 	}
+	va_end(args);
+	ft_memdel((void **)&data);
 	return (data->len);
 }

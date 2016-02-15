@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/05 11:22:04 by sgaudin           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/02/15 09:49:03 by dvirgile         ###   ########.fr       */
-=======
-/*   Updated: 2016/02/15 09:43:13 by sgaudin          ###   ########.fr       */
->>>>>>> 3dcd97e2a075bb78bdd83219c1bec6a2e5c713ec
+/*   Created: 2016/02/15 10:00:41 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/02/15 11:07:40 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +19,10 @@ int		main(void)
 	int ret_ft = 0;
 	int ret = 0;
 
-	ret_ft = ft_printf("FT__ %.3d\n", -23456);
-	ret = printf("PR__ %.3d\n", -23456);
+	ret_ft = ft_printf("COUCOU %s\n", "Simon");
+//	ret_ft = ft_printf("FT__ %.3d\n", -23456);
+//	ret = printf("PR__ %.3d\n", -23456);
 
-<<<<<<< HEAD
 /*	ret_ft += ft_printf("FT__%d %-20d %-3d %.d %.9d %.3d %20.10d %20.2d %3.9d %3.3d\n", -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456);
 =======
 	ret_ft += ft_printf("% d\n", 10);
