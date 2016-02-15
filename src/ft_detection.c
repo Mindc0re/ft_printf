@@ -6,7 +6,15 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:20:55 by sgaudin           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/02/15 10:33:10 by sgaudin          ###   ########.fr       */
+=======
+<<<<<<< HEAD
+/*   Updated: 2016/02/15 10:38:40 by dvirgile         ###   ########.fr       */
+=======
+/*   Updated: 2016/02/15 09:54:23 by sgaudin          ###   ########.fr       */
+>>>>>>> 1f70ea3cdfb19bf03f136d18d60a7dc9bd615985
+>>>>>>> c97f78d004355c8bda88c9e8761ae90d0b6dcdd1
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +27,20 @@ void			ft_detect_flags(char *str, t_docker *data)
 	{
 		data->dieze = str[data->i] == '#' ? 1 : 0;
 		data->more = str[data->i] == '+' ? 1 : 0;
+<<<<<<< HEAD
+		data->zero = (str[data->i] == '0' && str[data->i - 1] == '%') ? 1 : data->zero;
+=======
 		data->zero = str[data->i] == '0' ? 1 : 0;
+>>>>>>> 1f70ea3cdfb19bf03f136d18d60a7dc9bd615985
 		data->space = (str[data->i] == ' ' && str[data->i - 1] == '%') ? 1 : 0;
-		if (str[data->i] == '.')
+		if (str[data->i] == ' ' && str[data->i - 1] == '%')
+			data->space = 1;
+		else if (str[data->i] == '.')
 		{
 			data->result = 0;
 			data->choice = 1;
 			data->dot = 1;
+			data->zero = 0;
 		}
 		if (str[data->i] == '-')
 		{
