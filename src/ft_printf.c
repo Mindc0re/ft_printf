@@ -6,13 +6,12 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:19:18 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 11:38:08 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 13:22:28 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
-#include <math.h>
 
 t_docker	*init_tabptr(void)
 {
