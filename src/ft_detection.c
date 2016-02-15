@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:20:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/12 12:06:14 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 09:35:27 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ void			ft_detect_flags(char *str, t_docker *data)
 		data->more = str[data->i] == '+' ? 1 : 0;
 		data->space = str[data->i] == ' ' ? 0 : data->space;
 		data->zero = str[data->i] == '0' ? 1 : 0;
-		if (str[data->i] == ' ' && str[data->i - 1] == '%')
-			data->space = 1;
-		else if (str[data->i] == '.')
+		data->space = (str[data->i] == ' ' && str[data->i - 1] == '%') ? 1 : 0;
+		if (str[data->i] == '.')
 		{
 			data->result = 0;
 			data->choice = 1;
