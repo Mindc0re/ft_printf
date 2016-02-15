@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:19:18 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 13:22:28 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 17:30:32 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ int			parser(va_list args, char *str, t_docker *data)
 	{
 		ft_detect_flags(str, data);
 		detect_conversion(str, data);
-		return ((*data->fct[(int)str[data->i]])(str, args, data));
+		if (ft_check_valid(str, data))
+			return ((*data->fct[(int)str[data->i]])(str, args, data));
 	}
 	return (0);
 }

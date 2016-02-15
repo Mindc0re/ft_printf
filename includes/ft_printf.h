@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 14:12:53 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 17:37:45 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ typedef struct		s_docker
 	int				length;
 
 	enum {
-					hh,
+					hh = 1,
 					h,
-					l,
 					ll,
+					l,
 					j,
 					z
 	};
@@ -81,4 +81,5 @@ int					call_putwstr(char *str, va_list args, t_docker *data);
 t_docker			*init_tabptr(void);
 void				detect_conversion(char *str, t_docker *data);
 
+int					ft_check_valid(char *str, t_docker *data);
 #endif

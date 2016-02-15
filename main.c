@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 11:14:00 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 15:09:32 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 17:40:11 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		main(void)
 	int ret_ft = 0;
 	int ret = 0;
 
+	ft_printf("%lc\n", L'é');
 /*
 	ret_ft = ft_printf("FT__ %.3d\n", -23456);
 	ret = printf("PR__ %.3d\n", -23456);

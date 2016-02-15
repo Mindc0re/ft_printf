@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   call_putwstr.c                                     :+:      :+:    :+:   */
+/*   ft_check_valid.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/08 17:40:51 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 17:31:50 by sgaudin          ###   ########.fr       */
+/*   Created: 2016/02/15 16:54:43 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/02/15 16:56:24 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int		call_putwstr(char *str, va_list args, t_docker *data)
+int		ft_check_valid(char *str, t_docker *data)
 {
-	if (str[data->i] == 'S')
-		return (ft_putwstr(va_arg(args, wchar_t *)));
+	if (ft_strchr("sSpdDioOuUxXcC", str[data->i]))
+		return (1);
 	else
 		return (0);
 }

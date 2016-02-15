@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/02/15 15:03:07 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/02/15 17:44:04 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -42,7 +42,9 @@ $(NAME):
 	@printf "\033[32m   Library done !\n\033[0m"
 	@printf "\033[31mCompilation\033[0m "
 	@make -C $(LIBFT) re
-	@$(CC) main.c src/ft_printf.c src/ft_detection.c src/ft_convert_length.c src/calls/*.c libftprintf/*.c libftprintf/*.h includes/*.h -L./libft -lft
+	@$(CC) main.c src/ft_printf.c src/ft_detection.c src/ft_convert_length.c \
+	src/ft_check_valid.c src/calls/*.c libftprintf/*.c libftprintf/*.h \
+	includes/*.h -L./libft -lft
 	@echo "\033[32m[OK]\033[0m"
 
 clean:
@@ -56,6 +58,7 @@ fclean: clean
 	@rm -rf $(NAME) inutile
 	@rm -rf $(LIBBNRY)
 	@rm -rf libftprintf.a
+	@rm -rf $(L)*.o
 	@echo "\033[32m[OK]\033[0m"
 
 push:
@@ -68,6 +71,5 @@ inutile:
 	@find . -name "*~" -delete
 	@find . -name "*#" -delete
 	@find . -name "*.h.gch" -delete
-	@find . -name "*.o" -delete
 
 re: fclean all

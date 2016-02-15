@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 15:40:21 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 11:15:26 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 17:27:54 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,10 @@ int					call_putstr(char *str, va_list args, t_docker *data)
 {
 	uint8_t			*argument;
 
-	argument = va_arg(args, uint8_t *);
+	if (data->length == l)
+		return (ft_putwstr(va_arg(args, wchar_t *)));
+	else
+		argument = va_arg(args, uint8_t *);
 	if (data->width >= 1 && data->dot == 0 && data->less == 0)
 		data->len = ftp_distrib(data, argument, data->len, 3);
 	else if (data->dot == 1 && data->less == 1)
