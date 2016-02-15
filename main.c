@@ -5,13 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2016/02/15 10:00:41 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 11:07:40 by sgaudin          ###   ########.fr       */
-=======
-/*   Created: 2016/02/05 11:22:04 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 11:03:52 by dvirgile         ###   ########.fr       */
->>>>>>> c97f78d004355c8bda88c9e8761ae90d0b6dcdd1
+/*   Created: 2016/02/15 11:14:00 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/02/15 11:17:08 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +19,15 @@ int		main(void)
 	int ret_ft = 0;
 	int ret = 0;
 
-<<<<<<< HEAD
-	ret_ft = ft_printf("COUCOU %s\n", "Simon");
-//	ret_ft = ft_printf("FT__ %.3d\n", -23456);
-//	ret = printf("PR__ %.3d\n", -23456);
+	ret_ft = ft_printf("FT__ %.3d\n", -23456);
+	ret = printf("PR__ %.3d\n", -23456);
 
-/*	ret_ft += ft_printf("FT__%d %-20d %-3d %.d %.9d %.3d %20.10d %20.2d %3.9d %3.3d\n", -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456);
-=======
-	ret_ft += ft_printf("% d\n", 10);
+	ret_ft += ft_printf("FT__%d %-20d %-3d %.d %.9d %.3d %20.10d %20.2d %3.9d %3.3d\n", -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456);
+
 	ret += printf("% d\n", 10);
-=======
 	ret_ft = ft_printf("FT__ %020x\n", -23456);
 	ret = printf("PR__ %020x\n", -23456);
 
->>>>>>> c97f78d004355c8bda88c9e8761ae90d0b6dcdd1
 	ret_ft += ft_printf("FT__%d %-20d %-3d %.d %.9d %.3d %20.10d %20.2d %3.9d %3.3d\n", -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456);
 
 	ret += printf("PR__%d %-20d %-3d %.d %.9d %.3d %20.10d %20.2d %3.9d %3.3d\n", -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456);
@@ -54,7 +44,7 @@ int		main(void)
 
 	ret += printf("PR__%-d %-20d %-3d %-.d %-.9d %-.3d %-20.10d %-20.2d %-3.9d %-3.3d\n", 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456);
 
-/*
+
 	ret_ft += ft_printf("FT_PRINTF %20s %-20s %s %3s %.s %.3s %20.3s %-20.3s\n", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon");
 	ret += printf("___PRINTF %20s %-20s %s %3s %.s %.3s %20.3s %-20.3s\n", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon");
 
@@ -73,7 +63,7 @@ int		main(void)
 	ret += printf("   PRINTF : Coucou je suis %s et j'ai %d ans, ceci est la lettre %c et voici 500 en hexadecimal : %#x et %X\n", "Simon", 17, 'Q', 500, 500);
 
 	ret_ft += ft_printf("FT_PRINTF : Ceci est un %De test : Vla un int en base 8 : %o, et un long int en base 8 : %O, et puis vla un long int en base 10 : %U\n", 2, 255, 255, 255);
-	ret += printf("   PRINTF : Ceci est un %De test : Vla un int en base 8 : %o, et un long int en base 8 : %O, et puis vla un long int en base 10 : %U\n", 2, 255, 255, 255);*/
+	ret += printf("   PRINTF : Ceci est un %De test : Vla un int en base 8 : %o, et un long int en base 8 : %O, et puis vla un long int en base 10 : %U\n", 2, 255, 255, 255);
 	printf("Printf retourne %d caracteres, et ft_printf retourne %d caracteres\n", ret, ret_ft);
 	//printf("\n   PRINTF : Test adresse de ret : %p", &ret);
 	//ft_printf("\nFT_PRINTF : Test adresse de ret : %p\n", &ret);
