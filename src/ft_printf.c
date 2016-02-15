@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:19:18 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 10:34:38 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 11:38:15 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,5 @@ int			ft_printf(char *str, ...)
 		}
 	}
 	va_end(args);
-	ft_memdel((void **)&data);
 	return (data->len);
 }
