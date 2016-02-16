@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 10:04:14 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 10:30:54 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 17:37:08 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 
 void			detect_conversion(char *str, t_docker *data)
 {
-	data->length = (str[data->i] == 'h' && str[data->i + 1] == 'h') ? hh : 0;
-	data->length = (str[data->i] == 'h' && data->length != 1) ? h : 0;
-	data->length = (str[data->i] == 'l' && str[data->i + 1] == 'l') ? ll : 0;
-	data->length = (str[data->i] == 'l' && data->length != 3) ? l : 0;
-	data->length = (str[data->i] == 'j') ? j : 0;
-	data->length = (str[data->i] == 'z') ? z : 0;
+	data->length = (str[data->i] == 'h' && str[data->i + 1] == 'h') ? hh
+					: 0;
+	data->length = (str[data->i] == 'h' && data->length != hh) ? h
+					: data->length;
+	data->length = (str[data->i] == 'l' && str[data->i + 1] == 'l') ? ll
+					: data->length;
+	data->length = (str[data->i] == 'l' && data->length != ll) ? l
+					: data->length;
+	data->length = (str[data->i] == 'j') ? j : data->length;
+	data->length = (str[data->i] == 'z') ? z : data->length;
+	if (data->length == hh || data->length == ll)
+	{
+		ft_putnbr(data->length);
+		data->i += 2;
+	}
+	else if (data->length == l || data->length == h || data->length == j
+			|| data->length == z)
+		data->i++;
 }
 
 uintmax_t		unsigned_conversion(uintmax_t val, t_docker *data)

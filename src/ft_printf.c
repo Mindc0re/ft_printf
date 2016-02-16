@@ -6,13 +6,16 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:19:18 by sgaudin           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/02/15 11:38:15 by dvirgile         ###   ########.fr       */
+=======
+/*   Updated: 2016/02/15 17:30:32 by sgaudin          ###   ########.fr       */
+>>>>>>> d148e54c1d36a4574f4f74227a20d3227fb37409
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
-#include <math.h>
 
 t_docker	*init_tabptr(void)
 {
@@ -63,9 +66,9 @@ int			parser(va_list args, char *str, t_docker *data)
 	else
 	{
 		ft_detect_flags(str, data);
-//		ft_detect_length(str, data);
 		detect_conversion(str, data);
-		return ((*data->fct[(int)str[data->i]])(str, args, data));
+		if (ft_check_valid(str, data))
+			return ((*data->fct[(int)str[data->i]])(str, args, data));
 	}
 	return (0);
 }
@@ -101,7 +104,7 @@ int			ft_printf(char *str, ...)
 		if (str[data->i] != '%')
 		{
 			ft_putchar(str[data->i]);
-			data->i++;
+			data->i = (str[data->i == '\0'] ? data->i + 1 : data->i);
 			data->len++;
 		}
 		else
@@ -109,7 +112,7 @@ int			ft_printf(char *str, ...)
 			if (detect(str, data))
 				data->len += parser(args, str, data);
 			init_structure(data, 0);
-			data->i += 1;
+			data->i = (str[data->i == '\0'] ? data->i + 1 : data->i);
 		}
 	}
 	va_end(args);

@@ -6,14 +6,14 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 14:18:19 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/12 12:25:37 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/15 13:30:14 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 
-# include "libft.h"
+# include "../includes/libft.h"
 # include <stdarg.h>
 # include <wchar.h>
 
