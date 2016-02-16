@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 17:37:45 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/16 08:53:09 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct		s_docker
 }					t_docker;
 int					ft_printf(char *str, ...);
 
+int					longueur_nb(int32_t nb);
 int					ft_add_spaces(int nb_spaces, int len, char c);
 
 char				*ft_detect_length(char *str, t_docker *data);

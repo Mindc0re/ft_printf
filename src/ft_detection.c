@@ -5,16 +5,10 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2016/02/15 11:21:16 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/15 11:21:20 by dvirgile         ###   ########.fr       */
-=======
-/*   Created: 2016/02/15 11:13:38 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 11:18:59 by sgaudin          ###   ########.fr       */
->>>>>>> d148e54c1d36a4574f4f74227a20d3227fb37409
+/*   Created: 2016/02/16 08:50:02 by dvirgile          #+#    #+#             */
+/*   Updated: 2016/02/16 10:31:52 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
@@ -23,14 +17,10 @@ void			ft_detect_flags(char *str, t_docker *data)
 {
 	if (ft_strchr("#0123456789-+ .", str[data->i]))
 	{
-		data->dieze = str[data->i] == '#' ? 1 : 0;
+		data->dieze = (str[data->i] == '#' && str[data->i - 1] == '%') ? 1 : data->dieze;
 		data->more = str[data->i] == '+' ? 1 : 0;
 		data->zero = (str[data->i] == '0' && str[data->i - 1] == '%') ? 1 : data->zero;
-<<<<<<< HEAD
-		data->zero = str[data->i] == '0' ? 1 : 0;
-=======
->>>>>>> d148e54c1d36a4574f4f74227a20d3227fb37409
-		data->space = (str[data->i] == ' ' && str[data->i - 1] == '%') ? 1 : 0;
+		data->space = (str[data->i] == ' ' && str[data->i - 1] == '%') ? 1 : data->space;
 		if (str[data->i] == ' ' && str[data->i - 1] == '%')
 			data->space = 1;
 		else if (str[data->i] == '.')
