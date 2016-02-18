@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/18 09:52:52 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/18 14:29:37 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_docker	*init_tabptr(void)
 	data->fct['U'] = &call_putbase_long;
 	data->fct['C'] = &call_putwchar;
 	data->fct['S'] = &call_putwstr;
+	data->fct['p'] = &call_putadress;
 	return (data);
 }
 

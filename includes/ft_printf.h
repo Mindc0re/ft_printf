@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/18 11:45:51 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/18 14:33:29 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,21 @@ int					call_putbase_long(const char *str, va_list args, t_docker *data);
 int					call_putnbr_long(const char *str, va_list args, t_docker *data);
 int					call_putwchar(const char *str, va_list args, t_docker *data);
 int					call_putwstr(const char *str, va_list args, t_docker *data);
+int					call_putadress(const char *str, va_list args, t_docker *data);
+
 t_docker			*init_tabptr(void);
 void				detect_conversion(const char *str, t_docker *data);
 uintmax_t			unsigned_conversion(uintmax_t val, t_docker *data);
 intmax_t			signed_conversion(intmax_t val, t_docker *data);
 int					ft_check_valid(const char *str, t_docker *data);
 #endif
+
+
+
+
+
+
+
+
+
+
