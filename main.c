@@ -6,26 +6,30 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:27 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/18 14:38:00 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/18 15:30:27 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "includes/ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 #include <math.h>
 
 int		main(void)
 {
 	int ret_ft = 0;
 	int ret = 0;
-	short test_short = 97;
+/*	short test_short = 97;
 	unsigned char test_uchar = ']';
 	uint64_t test_ull = 256;
-	uintmax_t test = 89;
+	uintmax_t test = 89; */
 
-	ret_ft += ft_printf("FT__ ---> Test adresse : %p\n\n\n", &test);
-	ret += printf("____ ---> Test adresse : %p\n\n\n", &test);
+	ret_ft += ft_printf("\n\n\nFT__ ---> %d\n", INT_MIN);
+	ret += printf("\n\n\n____ ---> %d\n", INT_MIN);
+/*
+	ret_ft += ft_printf("FT__ ---> Test adresse : %p\n\n\n", NULL);
+	ret += printf("____ ---> Test adresse : %p\n\n\n", NULL);
 
 	ret_ft += ft_printf("FT__ Flags avec long int ---> %hhU\n", test_uchar);
 	ret += printf("____ Flags avec long int ---> %hhU\n", test_uchar);
@@ -47,7 +51,7 @@ int		main(void)
 
 	ret_ft += ft_printf("FT__ FLAG Z ---> %zd\n", test);
 	ret += printf("____ FLAG Z ---> %zd\n", test);
-
+*/
 //	ft_printf("%lc\n", L'é');
 //	ret_ft += ft_printf("FT__ %-20.9x\n", -23456);
 // ret += printf("PR__ %-20.9x\n", -23456);
@@ -84,8 +88,8 @@ int		main(void)
 	ret += printf("% d\n", 10);
 	ret_ft = ft_printf("FT__ %020x\n", -23456);
 	ret = printf("PR__ %020x\n", -23456);
-
-	ret_ft += ft_printf("FT__%d %-20d %-3d %.d %.9d %.3d %20.10d %20.2d %3.9d %3.3d\n", -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456);
+*/
+/*	ret_ft += ft_printf("FT__%d %-20d %-3d %.d %.9d %.3d %20.10d %20.2d %3.9d %3.3d\n", -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456);
 
 	ret += printf("PR__%d %-20d %-3d %.d %.9d %.3d %20.10d %20.2d %3.9d %3.3d\n", -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456, -23456);
 
@@ -100,8 +104,8 @@ int		main(void)
 	ret_ft += ft_printf("FT__%-d %-20d %-3d %-.d %-.9d %-.3d %-20.10d %-20.2d %-3.9d %-3.3d\n", 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456);
 
 	ret += printf("PR__%-d %-20d %-3d %-.d %-.9d %-.3d %-20.10d %-20.2d %-3.9d %-3.3d\n", 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456, 23456);
-*/
 
+*/
 /*	ret_ft += ft_printf("FT_PRINTF %20s %-20s %s %3s %.s %.3s %20.3s %-20.3s\n", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon");
 	ret += printf("___PRINTF %20s %-20s %s %3s %.s %.3s %20.3s %-20.3s\n", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon", "SimonSimon");
 

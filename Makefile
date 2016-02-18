@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/02/18 14:27:51 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/02/18 15:33:52 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -29,9 +29,6 @@ LIBSRC = $(L)ftp_octal.c $(L)ftp_putbase.c $(L)ftp_putbase_long.c \
 SRC = ./src/*.c ./src/calls/*.c
 
 SRCBIN = *.o
-#LIBBNRY = ftp_octal.o ftp_putbase.o ftp_putbase_long.o \
-	ftp_putchar.o ftp_putnbr.o ftp_putnbr_long.o \
-	ftp_putstr.o ftp_strlen.o
 LIBBNRY = $(LIBSRC:.c=.o)
 CC = gcc -Wall -Wextra -Werror
 
@@ -43,7 +40,7 @@ $(NAME):
 	@printf "\033[32m   Library done !\n\033[0m"
 	@printf "\033[31mCompilation\033[0m "
 	@gcc -Wall -Wextra -Werror -o $(NAME) -I./ $(LIBSRC) $(SRC) \
-	main.c -I./includes/libft.h -L./libft/ -lft
+	main2.c -I./includes/libft.h -L./libft/ -lft
 	@gcc -Wall -Wextra -Werror -c -I./ $(LIBSRC) $(SRC) -I./includes/libft.h
 	@mv $(SRCBIN) $(L)
 	@ar rcs libftprintf.a $(LIBBNRY) $(L)$(SRCBIN) ./includes/ft_printf.h
