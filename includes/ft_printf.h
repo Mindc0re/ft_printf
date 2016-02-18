@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/18 10:02:41 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/18 10:06:01 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,8 @@ int					ft_printf(const char *format, ...);
 int					longueur_nb(int32_t nb);
 int					ft_add_spaces(int nb_spaces, int len, char c);
 
-char				*ft_detect_length(char *str, t_docker *data);
 void				ft_detect_flags(const char *str, t_docker *data);
 void				ft_detect_width(const char *str, t_docker *data, int who);
-
-int					ftp_flag_hh(char *str, t_docker *data, va_list pointeur);
-int					ftp_flag_hh_i(char c, t_docker *data);
-int					ftp_flag_hh_o(unsigned char u, t_docker *data);
-int					ftp_flag_hh_u(unsigned char u, t_docker *data);
-int					ftp_flag_x(unsigned char u, t_docker *data, char letter);
 
 int					ftp_putbase(uint32_t n, uint32_t base, uint8_t flag,
 								uint32_t dieze);
