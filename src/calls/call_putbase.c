@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/16 12:46:46 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/18 09:31:00 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 int		len_base(uint32_t n, uint32_t base)
 {
-	int len;
-
-	len = 0;
+	FT_INIT(int, len, 0);
 	if (base > 0 && base <= 10)
 	{
 		if (n >= base)
@@ -38,20 +36,20 @@ int		len_base(uint32_t n, uint32_t base)
 int		putbase_part2(t_docker *data, uint32_t result, int base, uint8_t flag)
 {
 	FT_INIT(int, prec, 0);
-	FT_INIT(int, length, 0);
+	FT_INIT(int, length, data->less == 0 && data->width > 0 ? 1 : 0);
 	FT_INIT(int, len_nb, len_base(result, base));
 	if (data->dot == 1)
 	{
-		data->len += (data->precision - len_nb) > 0 ? 0 : len_nb;
+		data->len += (length == 0) ? len_nb : 0;
 		length = data->precision - len_nb;
 		prec = data->len;
 		data->len = ft_add_spaces(length, data->len, '0');
 	}
 	if (data->less == 1)
 	{
-		data->len += len_nb;
 		length = data->width - len_nb;
 		length -= prec != 0 ? (data->len - prec) : 0;
+		data->len += prec != 0 ? 0 : len_nb;
 		ftp_putbase(result, base, flag, data->dieze);
 		data->len = ft_add_spaces(length, data->len, ' ');
 		return (0);
@@ -71,7 +69,8 @@ int		distrib_putbase(t_docker *data, uint32_t result, int base, uint8_t flag)
 			length -= data->precision - len_nb;
 		length += data->width - len_nb - (data->dieze == 1 ? 2 : 0);
 		data->len += len_nb + (data->dieze == 1 ? 2 : 0);
-		data->len = ft_add_spaces(length, data->len, (data->zero == 1 ? '0' : ' '));
+		data->len = ft_add_spaces(length, data->len, (data->zero == 1 ?
+		'0' : ' '));
 	}
 	if (putbase_part2(data, result, base, flag) == 0)
 		return (0);
@@ -95,4 +94,3 @@ int		call_putbase(char *str, va_list args, t_docker *data)
 	else
 		return (0);
 }
-
