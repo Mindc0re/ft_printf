@@ -6,13 +6,13 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 10:04:14 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 17:37:08 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/18 09:53:58 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void			detect_conversion(char *str, t_docker *data)
+void			detect_conversion(const char *str, t_docker *data)
 {
 	data->length = (str[data->i] == 'h' && str[data->i + 1] == 'h') ? hh
 					: 0;

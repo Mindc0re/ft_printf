@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/16 10:26:15 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/18 09:52:52 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		init_structure(t_docker *data, int check)
 	data->result = 0;
 }
 
-int			parser(va_list args, char *str, t_docker *data)
+int			parser(va_list args, const char *str, t_docker *data)
 {
 	if (str[data->i] == '%')
 		return (ftp_putchar('%'));
@@ -69,7 +69,7 @@ int			parser(va_list args, char *str, t_docker *data)
 	return (0);
 }
 
-int			detect(char *s, t_docker *data)
+int			detect(const char *s, t_docker *data)
 {
 	data->i++;
 	if (s[data->i] == 's' || s[data->i] == 'S' || s[data->i] == 'p'
@@ -87,28 +87,28 @@ int			detect(char *s, t_docker *data)
 		return (0);
 }
 
-int			ft_printf(char *str, ...)
+int			ft_printf(const char *format, ...)
 {
 	va_list		args;
 	t_docker	*data;
 
 	data = init_tabptr();
 	init_structure(data, 1);
-	va_start(args, str);
-	while (str[data->i])
+	va_start(args, format);
+	while (format[data->i])
 	{
-		if (str[data->i] != '%')
+		if (format[data->i] != '%')
 		{
-			ft_putchar(str[data->i]);
-			data->i = (str[data->i == '\0'] ? data->i + 1 : data->i);
+			ft_putchar(format[data->i]);
+			data->i = (format[data->i == '\0'] ? data->i + 1 : data->i);
 			data->len++;
 		}
 		else
 		{
-			if (detect(str, data))
-				data->len += parser(args, str, data);
+			if (detect(format, data))
+				data->len += parser(args, format, data);
 			init_structure(data, 0);
-			data->i = (str[data->i == '\0'] ? data->i + 1 : data->i);
+			data->i = (format[data->i == '\0'] ? data->i + 1 : data->i);
 		}
 	}
 	va_end(args);

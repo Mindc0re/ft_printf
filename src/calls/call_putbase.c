@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/18 09:31:00 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/18 09:58:15 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		distrib_putbase(t_docker *data, uint32_t result, int base, uint8_t flag)
 	return (0);
 }
 
-int		call_putbase(char *str, va_list args, t_docker *data)
+int		call_putbase(const char *str, va_list args, t_docker *data)
 {
 	int result;
 
@@ -94,3 +94,8 @@ int		call_putbase(char *str, va_list args, t_docker *data)
 	else
 		return (0);
 }
+
+
+
+
+

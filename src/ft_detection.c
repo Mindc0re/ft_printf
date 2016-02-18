@@ -6,14 +6,14 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:02 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/16 10:31:52 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/18 10:02:16 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
 
-void			ft_detect_flags(char *str, t_docker *data)
+void			ft_detect_flags(const char *str, t_docker *data)
 {
 	if (ft_strchr("#0123456789-+ .", str[data->i]))
 	{
@@ -43,7 +43,7 @@ void			ft_detect_flags(char *str, t_docker *data)
 	}
 }
 
-char			*ft_detect_width(char *str, t_docker *data, int who)
+void			ft_detect_width(const char *str, t_docker *data, int who)
 {
 	if (str[data->i] >= '0' && str[data->i] <= '9')
 	{
@@ -56,5 +56,4 @@ char			*ft_detect_width(char *str, t_docker *data, int who)
 			data->precision = data->result;
 		}
 	}
-	return (str);
 }

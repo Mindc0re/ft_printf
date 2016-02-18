@@ -6,13 +6,13 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/15 10:56:15 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/18 09:59:18 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-int		call_putnbr_bis(char *str, va_list args, t_docker *data)
+int		call_putnbr_bis(const char *str, va_list args, t_docker *data)
 {
 	FT_INIT(int, result, va_arg(args, uint32_t));
 	FT_INIT(int, prec, 0);
@@ -78,7 +78,7 @@ int		call_putnbr_part2(t_docker *data, int length, int prec, int result)
 	return (1);
 }
 
-int		call_putnbr(char *str, va_list args, t_docker *data)
+int		call_putnbr(const char *str, va_list args, t_docker *data)
 {
 	FT_INIT(int, length, 0);
 	FT_INIT(int, result, va_arg(args, uint32_t));
