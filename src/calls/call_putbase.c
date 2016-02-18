@@ -6,27 +6,27 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/18 11:02:17 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/18 11:30:27 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-int		len_base(uint32_t n, uint32_t base)
+int		len_base(uint32_t nb, uint32_t base)
 {
 	FT_INIT(int, len, 0);
 	if (base > 0 && base <= 10)
 	{
-		if (n >= base)
-			len += len_base((n / base), base);
+		if (nb >= base)
+			len += len_base((nb / base), base);
 		len++;
 	}
 	else if (base == 16)
 	{
-		if (n >= 16)
+		if (nb >= 16)
 		{
-			len += len_base((n / 16), base);
-			n %= 16;
+			len += len_base((nb / 16), base);
+			nb %= 16;
 		}
 		len++;
 	}

@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:30 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/18 09:59:57 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/18 10:22:44 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ int					call_putstr(const char *str, va_list args, t_docker *data)
 {
 	uint8_t			*argument;
 
-	argument = va_arg(args, uint8_t *);
 	if (data->length == l)
 		return (ft_putwstr(va_arg(args, wchar_t *)));
 	else
