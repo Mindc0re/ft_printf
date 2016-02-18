@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/18 09:58:15 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/18 11:02:17 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int		call_putbase(const char *str, va_list args, t_docker *data)
 	int result;
 
 	result = va_arg(args, uint32_t);
+	result = unsigned_conversion(result, data);
 	if (str[data->i] == 'u')
 		return (distrib_putbase(data, result, 10, 'a'));
 	else if (str[data->i] == 'o')
@@ -94,8 +95,3 @@ int		call_putbase(const char *str, va_list args, t_docker *data)
 	else
 		return (0);
 }
-
-
-
-
-

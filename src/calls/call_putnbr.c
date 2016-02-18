@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/18 09:59:18 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/18 11:10:10 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int		call_putnbr(const char *str, va_list args, t_docker *data)
 	FT_INIT(int, result, va_arg(args, uint32_t));
 	FT_INIT(int, prec, 0);
 	FT_INIT(int, len_nb, longueur_nb(result));
+	result = signed_conversion(result, data);
 	if (data->zero == 1 && result < 0 && str != NULL)
 		ftp_putchar('-');
 	if (data->less == 0 && data->width > 0)
