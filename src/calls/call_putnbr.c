@@ -6,37 +6,11 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/18 11:10:10 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/18 13:49:16 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
-
-int		call_putnbr_bis(const char *str, va_list args, t_docker *data)
-{
-	FT_INIT(int, result, va_arg(args, uint32_t));
-	FT_INIT(int, prec, 0);
-	FT_INIT(int, length, 0);
-	result = va_arg(args, uint32_t);
-	if (data->dot == 1 && data->precision != 0)
-	{
-		length = data->precision - (int)ft_strlen(ft_itoa(result));
-		prec = result >= 0 ? length : length + 1;
-		if (result < 0)
-		{
-			length += 1;
-			prec += ftp_putchar('-');
-		}
-		result = ft_abs(result);
-		while ((length--) > 0)
-			ftp_putchar('0');
-	}
-	if (str[data->i] == 'd' || str[data->i] == 'i')
-		return (ftp_putnbr(result, data->space, data->more,
-				(int)ft_strlen(ft_itoa(result)) + prec));
-	else
-		return (0);
-}
 
 int		longueur_nb(int32_t nb)
 {
