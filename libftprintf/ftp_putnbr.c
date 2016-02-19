@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:43:08 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/19 12:16:06 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/19 18:05:24 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ int		ftp_putnbr(int32_t nb, t_docker *data)
 			data->len += ftp_putchar(' ');
 			data->space = 0;
 		}
-		if (n < 0)
-		{
-			data->space = 0;
-			n = -n;
-		}
-		else if (n >= 0 && data->more == 1)
+		if (n >= 0 && data->more == 1)
 		{
 			data->len += ftp_putchar('+');
 			data->more = 0;
+		}
+		if (n < 0)
+		{
+			data->more = 0;
+			data->space = 0;
+			n = -n;
 		}
 		if (n >= 10)
 			ftp_putnbr((n / 10), data);

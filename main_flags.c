@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 17:26:09 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/19 17:48:49 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/19 17:53:51 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ int		main(void)
 
 	/************* Tests flag # *************/
 
-	ret_ft = ft_printf("%#O\n", 1);
-	ret = printf("%#O\n", 1);
+	ret_ft = ft_printf("%+d\n", -42);
+	ret = printf("%+d\n", -42);
 	printf("\nPRINTF renvoie %d caracteres et FT_PRINTF renvoie %d caracteres\n", ret, ret_ft);
 	return (0);
 }
