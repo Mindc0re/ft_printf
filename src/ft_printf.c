@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/18 14:29:37 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/19 13:32:37 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,14 @@ int			parser(va_list args, const char *str, t_docker *data)
 int			detect(const char *s, t_docker *data)
 {
 	data->i++;
+	if ((s[data->i] == ' ' && s[data->i + 1] == ' ')
+		|| (s[data->i] == ' ' && s[data->i + 1] == '%'))
+	{
+		while (s[data->i] != '\0' && s[data->i] == ' ')
+			data->i++;
+		if (s[data->i] == '%')
+			return (1);
+	}
 	if (s[data->i] == 's' || s[data->i] == 'S' || s[data->i] == 'p'
 		|| s[data->i] == 'd' || s[data->i] == 'D' || s[data->i] == 'i'
 		|| s[data->i] == 'o' || s[data->i] == 'O' || s[data->i] == 'u'
@@ -101,7 +109,8 @@ int			ft_printf(const char *format, ...)
 		if (format[data->i] != '%')
 		{
 			ft_putchar(format[data->i]);
-			data->i = (format[data->i == '\0'] ? data->i + 1 : data->i);
+//			data->i = (format[data->i == '\0'] ? data->i + 1 : data->i);
+			data->i++;
 			data->len++;
 		}
 		else

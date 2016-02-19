@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/19 10:31:46 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/19 11:38:21 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <stdarg.h>
 # include "../libft/includes/libft.h"
-# include "../libftprintf/libftprintf.h"
 
 # define FT_INIT(type,name,value)		type name = value
 
@@ -46,6 +45,9 @@ typedef struct		s_docker
 					z
 	};
 }					t_docker;
+
+# include "../libftprintf/libftprintf.h"
+
 int					ft_printf(const char *format, ...);
 
 int					longueur_nb(int64_t nb);
@@ -62,10 +64,8 @@ int					ftp_octal(uint32_t nb, va_list args, t_docker *data);
 int					ftp_putchar(uint32_t c);
 int					ftp_putstr(uint8_t *str);
 int					ftp_strlen(uint8_t *str);
-int					ftp_putnbr(int32_t n, uint32_t space, uint32_t more,
-								int precision);
-int					ftp_putnbr_long(int64_t n, uint32_t space, uint32_t more,
-								int precision);
+int					ftp_putnbr(int32_t n, t_docker *data);
+int					ftp_putnbr_long(int64_t n, t_docker *data);
 
 int					call_putstr(const char *str, va_list args, t_docker *data);
 int					call_putchar(const char *str, va_list args, t_docker *data);

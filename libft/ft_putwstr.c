@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 17:00:37 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/08 17:32:41 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/19 14:17:41 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 int		ft_putwstr(wchar_t *str)
 {
 	int len;
+	int i;
 
 	len = 0;
-	while (*str)
+	i = 0;
+	while (str[i])
 	{
-		len += ft_putwchar(*str);
-		str++;
+		len += ft_putwchar(str[i]);
+		i++;
 	}
 	return (len);
 }
