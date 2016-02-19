@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:07:37 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/18 11:49:47 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/19 17:50:32 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		base_long_2(t_docker *data, long int result, int base, uint8_t flag)
 		return (0);
 	}
 	if (data->less == 0 && data->dot == 0 && data->width == 0)
-		data->len += len_nb + (data->dieze == 1 ? 2 : 0);
+		data->len += TER(result == 0, 1, (len_nb + (data->dieze == 1 ? TER(base == 8, 1, 2) : 0)));
 	return (1);
 }
 

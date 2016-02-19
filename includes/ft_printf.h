@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/19 11:38:21 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/19 17:40:48 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "../libft/includes/libft.h"
 
 # define FT_INIT(type,name,value)		type name = value
-
+# define TER(si,alors,sinon)		si ? alors : sinon
 typedef struct		s_docker
 {
 	int				result;

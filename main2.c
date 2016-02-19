@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 15:31:07 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/19 15:33:23 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/19 17:26:00 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ int		main(void)
 	ret = printf("s: %s, p: %p, d:%d\n", "a string", &atoi, 42);
 	ret_ft += ft_printf("%s %p %d %d %p %s %p %p %s\n", "a", &free, 1, 2, &malloc, "b", &free, &malloc, "c");
 	ret += printf("%s %p %d %d %p %s %p %p %s\n", "a", &free, 1, 2, &malloc, "b", &free, &malloc, "c");
+	ret_ft += ft_printf("%C %d %p %x %%\n", L'該', 42, &free, 42);
 	printf("\n\nPrintf retourne %d caracteres et ft_printf retourne %d caracteres\n\n", ret, ret_ft);
 	/******************** S conversions ************** */
 /*	ret_ft = ft_printf("%S\n", L"米");
@@ -122,13 +123,62 @@ int		main(void)
 	ret_ft += ft_printf("a%Sb%sc%S\n", L"我", "42", L"猫");
 	ret_ft = ft_printf("%S %S %S %S %S %S %S %S %S %S %S %S %S %S %S %S %S %S %S %S %S %S %S %S %S\n",
 				L"Α α", L"Β β", L"Γ γ", L"Δ δ", L"Ε ε", L"Ζ ζ", L"Η η", L"Θ θ", L"Ι ι", L"Κ κ", L"Λ λ", L"Μ μ",
-				L"Ν ν", L"Ξ ξ", L"Ο ο", L"Π π", L"Ρ ρ", L"Σ σ", L"Τ τ", L"Υ υ", L"Φ φ", L"Χ χ", L"Ψ ψ", L"Ω ω", L""); */
+				L"Ν ν", L"Ξ ξ", L"Ο ο", L"Π π", L"Ρ ρ", L"Σ σ", L"Τ τ", L"Υ υ", L"Φ φ", L"Χ χ", L"Ψ ψ", L"Ω ω", L"");
+				printf("\n\nPrintf retourne %d caracteres et ft_printf retourne %d caracteres\n\n", ret, ret_ft); */
+	/***************** u conversions ******************** */
+	ft_putstr("-------------- Tests u conversions ---------------\n\n");
+	ret_ft = ft_printf("%u\n", 42);
+	ret = printf("%u\n", 42);
+	ret_ft += ft_printf("before %u after\n", 42);
+	ret += printf("before %u after\n", 42);
+	ret_ft += ft_printf("%u %u %u %u %u\n", 1, 100, 999, 42, 999988888);
+	ret += printf("%u %u %u %u %u\n", 1, 100, 999, 42, 999988888);
+	ret_ft += ft_printf("a%u b%u c%u d\n", 0, 55555, 100000);
+	ret += printf("a%u b%u c%u d\n", 0, 55555, 100000);
+	ret_ft += ft_printf("%u\n", UINT_MAX);
+	ret += printf("%u\n", UINT_MAX);
 	printf("\n\nPrintf retourne %d caracteres et ft_printf retourne %d caracteres\n\n", ret, ret_ft);
-	/***************** O conversions ******************** */
-	ft_putstr("-------------- Tests U conversions ---------------\n\n");
-	ret_ft = ft_printf("%lU\n", ULONG_MAX / 2);
-	ret = printf("%lU\n", ULONG_MAX / 2);
+
+	/***************** C conversions ******************** */
+	ft_putstr("-------------- Tests C conversions ---------------\n\n");
+	ret_ft = ft_printf("%C\n", 'c');
+	ret = printf("%C\n", 'c');
+	ret_ft += ft_printf("%C%C\n", '4', '2');
+	ret += printf("%C%C\n", '4', '2');
+	ret_ft += ft_printf("%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
+%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\
+%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\n",
+						' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
+						'.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+						'<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+						'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+						'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+						'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+						't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|');
+	ret += printf("%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C \
+%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\
+%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C%C\n",
+				  ' ', '!', '"', '#', '$', '%', '&', '\'', '(', ')', '*', '+', ',', '-',
+				  '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';',
+				  '<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I',
+				  'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W',
+				  'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e',
+				  'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+				  't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|');
+	ret_ft += ft_printf("%C\n", L'猫');
+	ret += printf("%C\n", L'猫');
+	ret_ft += ft_printf("%C\n", L'δ');
+	ret += printf("%C\n", L'δ');
+	ret_ft += ft_printf("%C\n", L'요');
+	ret += printf("%C\n", L'요');
+	ret_ft += ft_printf("%C\n", L'莨');
+	ret += printf("%C\n", L'莨');
+	ret_ft += ft_printf("%C\n", L'ي');
+	ret += printf("%C\n", L'ي');
+	ret_ft += ft_printf("%C\n", 0);
+	ret += printf("%C\n", 0);
 	printf("\n\nPrintf retourne %d caracteres et ft_printf retourne %d caracteres\n\n", ret, ret_ft);
+
 /*
   	ret_ft += ft_printf(
 	ret += printf(
