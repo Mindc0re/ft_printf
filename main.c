@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:49:27 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/18 15:30:27 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/19 11:03:42 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,17 @@ int		main(void)
 {
 	int ret_ft = 0;
 	int ret = 0;
+//	int test = 2147483647;
+
+	ret_ft += ft_printf("FT__{%p}\n", &ret);
+	ret += printf("PR__{%p}\n", &ret);
 /*	short test_short = 97;
 	unsigned char test_uchar = ']';
 	uint64_t test_ull = 256;
 	uintmax_t test = 89; */
 
-	ret_ft += ft_printf("\n\n\nFT__ ---> %d\n", INT_MIN);
-	ret += printf("\n\n\n____ ---> %d\n", INT_MIN);
+//	ret_ft += ft_printf("\n\n\nFT__ ---> %d\n", INT_MIN);
+//	ret += printf("\n\n\n____ ---> %d\n", INT_MIN);
 /*
 	ret_ft += ft_printf("FT__ ---> Test adresse : %p\n\n\n", NULL);
 	ret += printf("____ ---> Test adresse : %p\n\n\n", NULL);

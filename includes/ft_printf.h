@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/18 14:33:29 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/19 10:31:46 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,13 @@ typedef struct		s_docker
 }					t_docker;
 int					ft_printf(const char *format, ...);
 
-int					longueur_nb(int32_t nb);
+int					longueur_nb(int64_t nb);
 int					len_base(uint32_t nb, uint32_t base);
 int					ft_add_spaces(int nb_spaces, int len, char c);
 
 void				ft_detect_flags(const char *str, t_docker *data);
 void				ft_detect_width(const char *str, t_docker *data, int who);
+int					distrib_putbase(t_docker *data, uint32_t result, int base, uint8_t flag);
 
 int					ftp_putbase(uint32_t n, uint32_t base, uint8_t flag,
 								uint32_t dieze);
@@ -62,6 +63,8 @@ int					ftp_putchar(uint32_t c);
 int					ftp_putstr(uint8_t *str);
 int					ftp_strlen(uint8_t *str);
 int					ftp_putnbr(int32_t n, uint32_t space, uint32_t more,
+								int precision);
+int					ftp_putnbr_long(int64_t n, uint32_t space, uint32_t more,
 								int precision);
 
 int					call_putstr(const char *str, va_list args, t_docker *data);
@@ -80,13 +83,3 @@ uintmax_t			unsigned_conversion(uintmax_t val, t_docker *data);
 intmax_t			signed_conversion(intmax_t val, t_docker *data);
 int					ft_check_valid(const char *str, t_docker *data);
 #endif
-
-
-
-
-
-
-
-
-
-

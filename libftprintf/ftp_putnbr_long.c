@@ -6,34 +6,28 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 08:44:49 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/04 17:01:47 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/19 09:52:21 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ftp_putnbr_long(long int n, int space, int more)
+int			ftp_putnbr_long(int64_t n, uint32_t space, uint32_t more, int precision)
 {
-	int		sign;
+	int		len;
 
-	sign = 0;
-	if (n == -2147483648)
-		return (ft_strlen("-2147483648"));
-	else
+	len = 0;
+	if (precision >= 0)
 	{
-		if (space == 1 && n >= 0)
-			sign += ftp_putchar(' ');
+		if (space == 1 && n > 0)
+			len += ftp_putchar(' ');
 		if (n < 0)
-		{
-			ftp_putchar('-');
-			sign = 1;
 			n = -n;
-		}
 		else if (n >= 0 && more == 1)
-			sign += ftp_putchar('+');
+			len += ftp_putchar('+');
 		if (n >= 10)
-			ftp_putnbr_long(n / 10, 0, 0);
-		ftp_putchar((n % 10) + '0');
+			len += ftp_putnbr((n / 10), 0, 0, precision--);
+		len += ftp_putchar((n % 10) + '0');
 	}
-	return (ft_strlen(ft_itoa(n)) + sign);
+	return (len);
 }
