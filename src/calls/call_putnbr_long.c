@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:02:53 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/19 15:43:37 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/22 15:57:54 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,29 @@
 int			putnbr_long_part2(t_docker *data, int length, int prec, int result)
 {
 	if (data->less == 0 && data->width > 0)
-		data->len += longueur_nb(result);
+		data->len += longueur_nb(result, data);
 	if ((data->dot == 1 || data->less == 1) && result < 0 && data->zero == 0)
 		ftp_putchar('-');
 	if (data->dot == 1)
 	{
 		data->len += (length == 0 || (length == 1 && result < 0))
-			? longueur_nb(result) : 0;
-		length = data->precision - longueur_nb(result);
+			? longueur_nb(result, data) : 0;
+		length = data->precision - longueur_nb(result, data);
 		length = result >= 0 ? length : length + 1;
 		prec = data->len;
 		data->len = ft_add_spaces(length, data->len, '0');
 	}
 	if (data->less == 1)
 	{
-		length = data->width - longueur_nb(result);
+		length = data->width - longueur_nb(result, data);
 		length -= prec != 0 ? (data->len - prec) : 0;
-		data->len += prec != 0 ? 0 : longueur_nb(result);
+		data->len += prec != 0 ? 0 : longueur_nb(result, data);
 		ftp_putnbr_long(result, data);
 		data->len = ft_add_spaces(length, data->len, ' ');
 		return (0);
 	}
 	if (data->less == 0 && data->dot == 0 && data->width == 0)
-		data->len += longueur_nb(result);
+		data->len += longueur_nb(result, data);
 	return (1);
 }
 
@@ -46,7 +46,7 @@ int			call_putnbr_long(const char *str, va_list args, t_docker *data)
 	FT_INIT(int, length, 0);
 	FT_INIT(int, result, va_arg(args, int64_t));
 	FT_INIT(int, prec, 0);
-	FT_INIT(int, len_nb, longueur_nb(result));
+	FT_INIT(int, len_nb, longueur_nb(result, data));
 	result = signed_conversion(result, data);
 	if (result == 0 && data->precision == 0 && data->width == 0 &&
 		data->dot == 1 && data->less == 0)

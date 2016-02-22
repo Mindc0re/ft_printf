@@ -6,25 +6,11 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:30 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/19 09:11:36 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/02/22 14:55:41 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
-
-int					ft_add_spaces(int nb_spaces, int len, char c)
-{
-	if (nb_spaces > 0)
-	{
-		while (nb_spaces > 0)
-		{
-			write(1, &c, 1);
-			nb_spaces--;
-			len++;
-		}
-	}
-	return (len);
-}
 
 int					ftp_dot(uint8_t *str, unsigned int len)
 {

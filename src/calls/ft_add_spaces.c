@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_flags.c                                       :+:      :+:    :+:   */
+/*   ft_add_spaces.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/19 17:26:09 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/22 15:51:53 by sgaudin          ###   ########.fr       */
+/*   Created: 2016/02/22 14:54:20 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/02/22 14:55:26 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
+#include "../../includes/ft_printf.h"
 
-int		main(void)
+int			ft_add_spaces(int nb_spaces, int len, char c)
 {
-	int ret_ft = 0;
-	int ret = 0;
-
-	/************* Tests flag # *************/
-
-	ret_ft = ft_printf("%+03d\n", 0);
-	ret = printf("%+03d\n", 0);
-	ret_ft = ft_printf("% 03d\n", 0);
-	ret = printf("% 03d\n", 0);
-	printf("\nPRINTF renvoie %d caracteres et FT_PRINTF renvoie %d caracteres\n", ret, ret_ft);
-	return (0);
+	if (nb_spaces > 0)
+	{
+		while (nb_spaces > 0)
+		{
+			ft_putchar(c);
+			nb_spaces--;
+			len++;
+		}
+	}
+	return (len);
 }

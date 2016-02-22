@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/02/19 17:28:38 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/02/22 15:48:44 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -39,9 +39,9 @@ $(NAME):
 	@make -C $(LIBFT) re
 	@printf "\033[32m   Library done !\n\033[0m"
 	@printf "\033[31mCompilation\033[0m "
-	@gcc -Wall -Wextra -Werror -o $(NAME) -I./includes/ft_printf.h $(LIBSRC) $(SRC) \
+	@gcc -o $(NAME) -I./includes/ft_printf.h $(LIBSRC) $(SRC) \
 	main_flags.c -I./includes/libft.h -L./libft/ -lft
-	@gcc -Wall -Wextra -Werror -c -I./ $(LIBSRC) $(SRC) -I./includes/libft.h
+	@gcc -c -I./ $(LIBSRC) $(SRC) -I./includes/libft.h
 	@mv $(SRCBIN) $(L)
 	@ar rcs libftprintf.a $(LIBBNRY) $(L)$(SRCBIN) ./includes/ft_printf.h
 	@echo "\033[32m[OK]\033[0m"
