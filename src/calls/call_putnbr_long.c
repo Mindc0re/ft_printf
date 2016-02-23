@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:02:53 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/22 15:57:54 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/23 15:03:54 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int			putnbr_long_part2(t_docker *data, int length, int prec, int result)
 int			call_putnbr_long(const char *str, va_list args, t_docker *data)
 {
 	FT_INIT(int, length, 0);
-	FT_INIT(int, result, va_arg(args, int64_t));
+	FT_INIT(intmax_t, result, va_arg(args, intmax_t));
 	FT_INIT(int, prec, 0);
 	FT_INIT(int, len_nb, longueur_nb(result, data));
 	result = signed_conversion(result, data);
@@ -59,7 +59,7 @@ int			call_putnbr_long(const char *str, va_list args, t_docker *data)
 			if ((data->precision - len_nb + (result >= 0 ? 0 : 1)) > 0)
 				length -= data->precision - len_nb + (result >= 0 ? 0 : 1);
 		length += data->width - len_nb;
-		data->len = ft_add_spaces(length, data->len,
+		data->len = ft_add_spaces(length, data->len,       // IL DEVRAIT PAS Y AVOIR UN += ICI ?
 								  (data->zero == 1 && data->dot == 0 ? '0' : ' '));
 	}
 	if (data->less == 0 && data->dot == 0 && result < 0 && data->zero == 0)

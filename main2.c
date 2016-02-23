@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 15:31:07 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/19 17:26:00 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/23 15:38:07 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ int		main(void)
 	printf("\n\nPrintf retourne %d caracteres et ft_printf retourne %d caracteres\n\n", ret, ret_ft);
 
 	/***************** C conversions ******************** */
-	ft_putstr("-------------- Tests C conversions ---------------\n\n");
+/*	ft_putstr("-------------- Tests C conversions ---------------\n\n");
 	ret_ft = ft_printf("%C\n", 'c');
 	ret = printf("%C\n", 'c');
 	ret_ft += ft_printf("%C%C\n", '4', '2');
@@ -178,9 +178,29 @@ int		main(void)
 	ret_ft += ft_printf("%C\n", 0);
 	ret += printf("%C\n", 0);
 	printf("\n\nPrintf retourne %d caracteres et ft_printf retourne %d caracteres\n\n", ret, ret_ft);
+*/
 
-/*
-  	ret_ft += ft_printf(
+	/******************** TEST O CONVERSION ***********************/
+	ft_putstr("Tests O conversion\n\n");
+/*	ret_ft = ft_printf("%O\n", 42);
+	ret = printf("%O\n", 42);
+	printf("\n\nPrintf retourne %d caracteres et ft_printf retourne %d caracteres\n\n", ret, ret_ft);
+	ret_ft = ft_printf("before %O after\n", 42);
+	ret = printf("before %O after\n", 42);
+	printf("\n\nPrintf retourne %d caracteres et ft_printf retourne %d caracteres\n\n", ret, ret_ft);
+	ret_ft = ft_printf("%O%O%O%O%O\n", 1, 100, 999, 42, 999988888);
+	ret = printf("%O%O%O%O%O\n", 1, 100, 999, 42, 999988888);
+	printf("\n\nPrintf retourne %d caracteres et ft_printf retourne %d caracteres\n\n", ret, ret_ft); */
+//	ret_ft = ft_printf("a%Ob%Oc%Od\n", 0, 55555, 100000);
+//	ret = printf("a%Ob%Oc%Od\n", 0, 55555, 100000);
+	ret_ft = ft_printf("%O\n", 0);
+	ret = printf("%O\n", 0);
+	printf("\n\nPrintf retourne %d caracteres et ft_printf retourne %d caracteres\n\n", ret, ret_ft);
+//	ret_ft = ft_printf("%O\n", LONG_MAX);
+//	ret = printf("%O\n", LONG_MAX);
+//	printf("\n\nPrintf retourne %d caracteres et ft_printf retourne %d caracteres\n\n", ret, ret_ft);
+
+/*  	ret_ft += ft_printf(
 	ret += printf(
 	ret_ft += ft_printf(
 	ret += printf( */
