@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 14:45:04 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/08 17:33:24 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/24 17:01:42 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void				ft_lstadd_bottom(t_list **alst, t_list *new);
 void				ft_print_list(t_list **alst);
 
 int					ft_sqrt(int n);
-int					ft_abs(int n);
+int64_t				ft_abs(int64_t n);
 void				ft_printbase(unsigned char n, int base);
 void				ft_printhex(unsigned char n);
 char				*ft_strtolower(char *str);

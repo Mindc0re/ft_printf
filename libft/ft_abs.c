@@ -6,13 +6,13 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 15:01:08 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/03 10:37:01 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/24 17:01:12 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-int		ft_abs(int nb)
+int64_t		ft_abs(int64_t nb)
 {
 	return ((nb < 0) ? -nb : nb);
 }

@@ -6,17 +6,14 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 17:43:08 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/22 15:46:38 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/24 17:26:04 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ftp_putnbr(int32_t nb, t_docker *data)
+int		ftp_putnbr(int64_t n, t_docker *data)
 {
-	int64_t		n;
-
-	n = nb;
 	if (data->precision >= 0)
 	{
 		if (data->space == 1 && data->more == 0 && n > 0)

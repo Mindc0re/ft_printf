@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/02/23 17:11:57 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/02/24 16:16:46 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -40,7 +40,7 @@ $(NAME):
 	@printf "\033[32m   Library done !\n\033[0m"
 	@printf "\033[31mCompilation\033[0m "
 	@gcc -o $(NAME) -I./includes/ft_printf.h $(LIBSRC) $(SRC) \
-	main2.c -I./includes/libft.h -L./libft/ -lft
+	main_flags.c -I./includes/libft.h -L./libft/ -lft
 	@gcc -c -I./ $(LIBSRC) $(SRC) -I./includes/libft.h
 	@mv $(SRCBIN) $(L)
 	@ar rcs libftprintf.a $(LIBBNRY) $(L)$(SRCBIN) ./includes/ft_printf.h

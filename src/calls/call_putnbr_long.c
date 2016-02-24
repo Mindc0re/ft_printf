@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:02:53 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/23 15:03:54 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/24 16:46:27 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int			call_putnbr_long(const char *str, va_list args, t_docker *data)
 			if ((data->precision - len_nb + (result >= 0 ? 0 : 1)) > 0)
 				length -= data->precision - len_nb + (result >= 0 ? 0 : 1);
 		length += data->width - len_nb;
-		data->len = ft_add_spaces(length, data->len,       // IL DEVRAIT PAS Y AVOIR UN += ICI ?
+		data->len = ft_add_spaces(length, data->len,
 								  (data->zero == 1 && data->dot == 0 ? '0' : ' '));
 	}
 	if (data->less == 0 && data->dot == 0 && result < 0 && data->zero == 0)

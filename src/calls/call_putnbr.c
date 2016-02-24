@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/23 14:58:38 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/24 17:47:41 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,17 @@ int		longueur_nb(int64_t nb, t_docker *data)
 	FT_INIT(int, i, 1);
 	i = nb >= 0 ? i : i + 1;
 	nb = ft_abs(nb);
-	while (nb > 9 && nb != -2147483648)
+	while (nb > 9)
 	{
 		nb = nb / 10;
 		i++;
 	}
 //	i = data->more == 1 ? i + 1 : i;
 //	i = data->space == 1 ? i + 1 : i;
-	if (nb == -2147483648)
-		i = 11;
 	return (i);
 }
 
-int		call_putnbr_part2(t_docker *data, int length, int prec, int result)
+int		call_putnbr_part2(t_docker *data, int length, int prec, intmax_t result)
 {
 	if (data->less == 0 && data->width > 0)
 		data->len += longueur_nb(result, data);
@@ -62,7 +60,7 @@ int		call_putnbr_part2(t_docker *data, int length, int prec, int result)
 int		call_putnbr(const char *str, va_list args, t_docker *data)
 {
 	FT_INIT(int, length, 0);
-	FT_INIT(int, result, va_arg(args, uint32_t));
+	FT_INIT(intmax_t, result, va_arg(args, intmax_t));
 	FT_INIT(int, prec, 0);
 	FT_INIT(int, len_nb, longueur_nb(result, data) + data->more + data->space);
 	result = signed_conversion(result, data);
