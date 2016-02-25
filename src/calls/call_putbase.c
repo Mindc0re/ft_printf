@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/23 16:17:49 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/25 18:20:18 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int		len_base(uint32_t nb, uint32_t base)
 	return (len);
 }
 
-int		putbase_part2(t_docker *data, uint32_t result, int base, uint8_t flag)
+int		putbase_part2(t_docker *data, uint64_t result, int base, uint8_t flag)
 {
 	FT_INIT(int, prec, 0);
 	FT_INIT(int, length, data->less == 0 && data->width > 0 ? 1 : 0);
@@ -61,7 +61,7 @@ int		putbase_part2(t_docker *data, uint32_t result, int base, uint8_t flag)
 	return (1);
 }
 
-int		distrib_putbase(t_docker *data, uint32_t result, int base, uint8_t flag)
+int		distrib_putbase(t_docker *data, uint64_t result, int base, uint8_t flag)
 {
 	FT_INIT(int, length, 0);
 	FT_INIT(int, len_nb, len_base(result, base));
@@ -84,7 +84,7 @@ int		call_putbase(const char *str, va_list args, t_docker *data)
 {
 	int result;
 
-	result = va_arg(args, uint32_t);
+	result = va_arg(args, uint64_t);
 	result = unsigned_conversion(result, data);
 	if (str[data->i] == 'u')
 	{

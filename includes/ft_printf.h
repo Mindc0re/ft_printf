@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/25 18:13:24 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/25 18:20:58 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int					ft_add_spaces(int nb_spaces, int len, char c);
 
 void				ft_detect_flags(const char *str, t_docker *data);
 void				ft_detect_width(const char *str, t_docker *data, int who);
-int					distrib_putbase(t_docker *data, uint32_t result, int base, uint8_t flag);
+int					distrib_putbase(t_docker *data, uint64_t result, int base, uint8_t flag);
 
 int					ftp_putbase(uint32_t n, uint32_t base, uint8_t flag,
 								uint32_t dieze);
