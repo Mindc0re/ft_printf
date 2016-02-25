@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/24 17:47:41 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/25 18:16:45 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ int		call_putnbr_part2(t_docker *data, int length, int prec, intmax_t result)
 
 int		call_putnbr(const char *str, va_list args, t_docker *data)
 {
+	if (data->length == l || data->length == ll)
+		return (call_putnbr_long(str, args, data));
 	FT_INIT(int, length, 0);
-	FT_INIT(intmax_t, result, va_arg(args, intmax_t));
+	FT_INIT(int32_t, result, va_arg(args, int32_t));
 	FT_INIT(int, prec, 0);
 	FT_INIT(int, len_nb, longueur_nb(result, data) + data->more + data->space);
 	result = signed_conversion(result, data);

@@ -6,13 +6,14 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:02:53 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/24 16:46:27 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/02/25 18:15:30 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
+#include <stdio.h>
 
-int			putnbr_long_part2(t_docker *data, int length, int prec, int result)
+int			putnbr_long_part2(t_docker *data, int length, int prec, int64_t result)
 {
 	if (data->less == 0 && data->width > 0)
 		data->len += longueur_nb(result, data);
