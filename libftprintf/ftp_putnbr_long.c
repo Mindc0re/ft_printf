@@ -6,11 +6,12 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 08:44:49 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/23 14:57:04 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/02 15:21:46 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
 int			ftp_putnbr_long(int64_t n, t_docker *data)
 {

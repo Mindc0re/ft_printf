@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:02:53 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/25 18:15:30 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/02 15:25:42 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			putnbr_long_part2(t_docker *data, int length, int prec, int64_t result)
 int			call_putnbr_long(const char *str, va_list args, t_docker *data)
 {
 	FT_INIT(int, length, 0);
-	FT_INIT(intmax_t, result, va_arg(args, intmax_t));
+	FT_INIT(int64_t, result, va_arg(args, int64_t));
 	FT_INIT(int, prec, 0);
 	FT_INIT(int, len_nb, longueur_nb(result, data));
 	result = signed_conversion(result, data);

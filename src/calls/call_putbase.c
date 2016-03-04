@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/25 18:20:18 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/04 16:03:04 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		distrib_putbase(t_docker *data, uint64_t result, int base, uint8_t flag)
 		if ((data->precision - len_nb) > 0)
 			length -= data->precision - len_nb;
 		length += data->width - len_nb - (data->dieze == 1 ? 2 : 0);
+		length += data->type == 'o' && data->dieze == 1 ? 1 : 0;
 		data->len += len_nb + (data->dieze == 1 ? 2 : 0);
 		data->len = ft_add_spaces(length, data->len, (data->zero == 1 ?
 		'0' : ' '));
@@ -82,10 +83,15 @@ int		distrib_putbase(t_docker *data, uint64_t result, int base, uint8_t flag)
 
 int		call_putbase(const char *str, va_list args, t_docker *data)
 {
-	int result;
-
-	result = va_arg(args, uint64_t);
+	uint64_t result;
+	result = va_arg(args, uint32_t);
 	result = unsigned_conversion(result, data);
+	if ((result / 1000000000) > 0)
+	{
+		FT_INIT(uint64_t, first, result / 1000000000);
+		FT_INIT(uint64_t, second, result - (result / 1000000000));
+	}
+	data->len -= str[data->i] == 'o' && data->dieze == 1 ? 1 : 0;
 	if (str[data->i] == 'u')
 	{
 		if (result == 0 && data->precision == 0 && data->width == 0 &&

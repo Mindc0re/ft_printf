@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/25 18:20:58 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/04 15:32:10 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int					call_putnbr_long(const char *str, va_list args, t_docker *data);
 int					call_putwchar(const char *str, va_list args, t_docker *data);
 int					call_putwstr(const char *str, va_list args, t_docker *data);
 int					call_putadress(const char *str, va_list args, t_docker *data);
+int					call_purcent(const char *str, va_list args, t_docker *data);
 
 t_docker			*init_tabptr(void);
 void				detect_conversion(const char *str, t_docker *data);

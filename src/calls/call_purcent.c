@@ -6,13 +6,13 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:30 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/04 16:37:03 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/04 15:39:57 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-int					ftp_dot(uint8_t *str, unsigned int len)
+int					ftp_dot_purcent(uint8_t *str, unsigned int len)
 {
 	int				i;
 
@@ -25,35 +25,35 @@ int					ftp_dot(uint8_t *str, unsigned int len)
 	return (i);
 }
 
-int					ftp_distrib(t_docker *data, uint8_t *str, int len, int who)
+int					ftp_distrib_purcent(t_docker *data, uint8_t *str, int len, int who)
 {
 	int				ref;
-	FT_INIT(char, c, data->zero == 1 ? '0' : ' ');
+
 	ref = len;
 	if (who == -1)
 	{
 		len += ftp_putstr(str);
-		return (len = ft_add_spaces((data->width - ftp_strlen(str)), len, c));
+		return (len = ft_add_spaces((data->width - ftp_strlen(str)), len, ' '));
 	}
 	else if (who == 0)
-		return (len += ftp_dot(str, data->precision));
+		return (len += ftp_dot_purcent(str, data->precision));
 	else if (who == 1)
 	{
-		len += ftp_dot(str, data->precision);
-		return (len = ft_add_spaces((data->width - (len - ref)), len, c));
+		len += ftp_dot_purcent(str, data->precision);
+		return (len = ft_add_spaces((data->width - (len - ref)), len, ' '));
 	}
 	else if (who == 2)
 	{
 		if ((len = ft_add_spaces(data->width - (ftp_strlen(str) >
-		data->precision ? data->precision : ftp_strlen(str)), len, c)) >= 0)
-			return (len += ftp_dot(str, data->precision));
+		data->precision ? data->precision : ftp_strlen(str)), len, ' ')) >= 0)
+			return (len += ftp_dot_purcent(str, data->precision));
 	}
 	else if (who == 3)
-		len = ft_add_spaces((data->width - ftp_strlen(str)), len, c);
+		len = ft_add_spaces((data->width - ftp_strlen(str)), len, ' ');
 	return (len += ftp_putstr(str));
 }
 
-int					call_putstr(const char *str, va_list args, t_docker *data)
+int					call_purcent(const char *str, va_list args, t_docker *data)
 {
 	uint8_t			*argument;
 
@@ -65,7 +65,7 @@ int					call_putstr(const char *str, va_list args, t_docker *data)
 	{
 		data->len += ftp_putstr((uint8_t *)"(null)");
 		return (0);
-	}
+	}/*
 	if (data->width >= 1 && data->dot == 0 && data->less == 0)
 		data->len = ftp_distrib(data, argument, data->len, 3);
 	else if (data->dot == 1 && data->less == 1)
@@ -77,6 +77,6 @@ int					call_putstr(const char *str, va_list args, t_docker *data)
 	else if (data->dot == 1 && data->less == 0 && data->width == 0)
 		data->len = ftp_distrib(data, argument, data->len, 0);
 	else
-		data->len = ftp_distrib(data, argument, data->len, 4);
-	return (0);
+	data->len = ftp_distrib(data, argument, data->len, 4);*/
+		return (0);
 }

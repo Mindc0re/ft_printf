@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/19 13:32:37 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/04 16:00:46 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_docker	*init_tabptr(void)
 	data->fct['C'] = &call_putwchar;
 	data->fct['S'] = &call_putwstr;
 	data->fct['p'] = &call_putadress;
+	data->fct['%'] = &call_purcent;
 	return (data);
 }
 
@@ -64,8 +65,11 @@ int			parser(va_list args, const char *str, t_docker *data)
 	{
 		ft_detect_flags(str, data);
 		detect_conversion(str, data);
-		if (ft_check_valid(str, data))
+		data->type = str[data->i];
+		if (ft_check_valid(str, data) == 1)
 			return ((*data->fct[(int)str[data->i]])(str, args, data));
+		else
+			return (ftp_putchar((uint8_t)str[data->i]));
 	}
 	return (0);
 }
@@ -108,15 +112,15 @@ int			ft_printf(const char *format, ...)
 	{
 		if (format[data->i] != '%')
 		{
-			ft_putchar(format[data->i]);
-//			data->i = (format[data->i == '\0'] ? data->i + 1 : data->i);
+			data->len += ftp_putchar((uint8_t)format[data->i]);
 			data->i++;
-			data->len++;
 		}
 		else
 		{
 			if (detect(format, data))
 				data->len += parser(args, format, data);
+			else
+				data->len += ftp_putchar((uint8_t)format[data->i]);
 			init_structure(data, 0);
 			data->i = (format[data->i == '\0'] ? data->i + 1 : data->i);
 		}
