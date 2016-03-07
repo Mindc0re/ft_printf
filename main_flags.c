@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/19 17:26:09 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/07 13:31:18 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/07 14:28:26 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,8 @@ int		main(void)
 //	ret += printf("%4.15S\n", L"我是一只猫");
 //	ret_ft += ft_printf("% \n");
 //	ret += printf("% \n");
-/*	ret_ft += ft_printf("FT__%#4o\n", 2500);
-	ret += printf("PR__%#4o\n", 2500);
-	ret += printf("PR__%0+5d\n", 42);
-	ret_ft += ft_printf("FT__%0+5d\n", 42);
-	ret += printf("PR__%0+5d\n", -42);
-	ret_ft += ft_printf("FT__%0+5d\n", -42);
-	ret += printf("PR__%-5+d\n", 42);
-	ret_ft += ft_printf("FT__%-5+d\n", 42);
-	ret += printf("PR__%-0+5d\n", 42);
-	ret_ft += ft_printf("FT__%-0+5d\n", 42);
-*/
-/*	ret_ft = ft_printf("NM__%#6o\n", 2500);
-	ret = printf("FT__%#6o\n", 2500);
-	printf("PRINTF renvoie %d caracteres et FT_PRINTF renvoie %d caracteres\n", ret, ret_ft); */
-	ret_ft = ft_printf("@moulitest: %#.o, %#.0o\n", 0, 0);
-	ret = printf("@moulitest: %#.o, %#.0o\n", 0, 0);
+	ret_ft = ft_printf("FT__%+o\n", 0);
+	ret = printf("NM__%+o\n", 0);
 	printf("PRINTF renvoie %d caracteres et FT_PRINTF renvoie %d caracteres\n", ret, ret_ft);
 	return (0);
 }

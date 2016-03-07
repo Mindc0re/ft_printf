@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/07 13:46:22 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/07 14:29:32 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		putbase_part2(t_docker *data, uint64_t result, int base, uint8_t flag)
 	FT_INIT(int, prec, 0);
 	FT_INIT(int, length, (data->less == 0 && data->width > 0 ? 1 : 0));
 	FT_INIT(int, len_nb, len_base(result, base));
-	if (data->precision == 0 && result == 0 && base == 8 && data->dieze == 1)
+	if (data->dot == 1 && data->precision == 0 && result == 0 && base == 8 && data->dieze == 1)
 		data->len += ftp_putchar('0');
 	if (data->dot == 1)
 	{
@@ -46,8 +46,8 @@ int		putbase_part2(t_docker *data, uint64_t result, int base, uint8_t flag)
 			return (0);
 		data->len += (length == 0) ? len_nb : 0;
 		length = data->precision - len_nb;
-		data->len = ft_add_spaces(length, data->len, '0');
 		prec = data->len;
+		data->len = ft_add_spaces(length, data->len, '0');
 	}
 	if (data->less == 1)
 	{
@@ -81,8 +81,8 @@ int		distrib_putbase(t_docker *data, uint64_t res, int base, uint8_t flag)
 	}
 	if (data->less == 0 && data->dot == 0 && data->width == 0)
 	{
-		data->len += TER(res == 0, 1, (len_nb + (data->dieze == 1 ?
-													TER(base == 8, 1, 2) : 0)));
+		data->len += TER(res == 0, TER(base == 8 && data->dieze == 1, 0, 1),
+					 (len_nb + (data->dieze == 1 ? TER(base == 8, 1, 2) : 0)));
 		data->len -= (data->dieze == 1 && res != 0 ? TER(base == 8, 1, 2) : 0);
 	}
 	if (putbase_part2(data, res, base, flag) == 0)

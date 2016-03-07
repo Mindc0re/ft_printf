@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/07 09:02:47 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/07 13:55:21 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,12 @@ int		longueur_nb(int64_t nb, t_docker *data)
 {
 	FT_INIT(int, i, 1);
 	i = nb >= 0 ? i : i + 1;
-//	i += (data->more == 1 && nb >= 0) ? 1 : 0;
 	nb = ft_abs(nb);
 	while (nb > 9)
 	{
 		nb = nb / 10;
 		i++;
 	}
-//	i = data->more == 1 ? i + 1 : i;
-//	i = data->space == 1 ? i + 1 : i;
-//	printf("coucou %d\n", i);
 	return (i);
 }
 
@@ -65,7 +61,7 @@ int		call_putnbr(const char *str, va_list args, t_docker *data)
 		return (call_putnbr_long(str, args, data));
 	FT_INIT(int, length, 0);
 	FT_INIT(int32_t, result, va_arg(args, int32_t));
-	FT_INIT(int, prec, 0);
+	FT_INIT(int, prec, (data->more == 1 && result >= 0 ? ftp_putchar('+') : 0));
 	FT_INIT(int, len_nb, longueur_nb(result, data) + data->more + data->space);
 	result = signed_conversion(result, data);
 	if (result == 0 && data->precision == 0 && data->width == 0 &&
@@ -86,6 +82,5 @@ int		call_putnbr(const char *str, va_list args, t_docker *data)
 		ftp_putchar('-');
 	if (call_putnbr_part2(data, length, prec, result) == 0)
 		return (0);
-	ftp_putnbr(result, data);
-	return (0);
+	return (ftp_putnbr(result, data));
 }
