@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/07 16:53:50 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/07 17:29:38 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ int		call_putnbr_part2(t_docker *data, int length, int prec, intmax_t result)
 		ftp_putchar('-');
 	if (data->dot == 1)
 	{
-		data->len += (length == 0 || (length == 1 && result < 0))
-		? longueur_nb(result, data) : 0;
-		printf("data->len = %d\n", data->len);
+		data->len += (length == 0) ? longueur_nb(result, data) : 0;
 		length = data->precision - longueur_nb(result, data);
 		length = result >= 0 ? length : length + 1;
 		prec = data->len;
@@ -44,7 +42,7 @@ int		call_putnbr_part2(t_docker *data, int length, int prec, intmax_t result)
 	}
 	if (data->less == 1)
 	{
-		length = data->width - longueur_nb(result, data);
+		length = data->width - longueur_nb(result, data) - data->more;
 		length -= prec != 0 ? (data->len - prec) : 0;
 		data->len += prec != 0 ? 0 : longueur_nb(result, data);
 		ftp_putnbr(result, data);
@@ -63,7 +61,8 @@ int		call_putnbr(const char *str, va_list args, t_docker *data)
 	FT_INIT(int, length, 0);
 	FT_INIT(int32_t, result, va_arg(args, int32_t));
 	FT_INIT(int, prec, (data->more == 1 && result >= 0 ? ftp_putchar('+') : 0));
-	FT_INIT(int, len_nb, longueur_nb(result, data) + data->more + data->space);
+	FT_INIT(int, len_nb, longueur_nb(result, data) +
+	(data->more == 1 && result >= 0 ? 1 : 0) + data->space);
 	result = signed_conversion(result, data);
 	if (data->zero == 1 && result < 0 && str != NULL)
 		ftp_putchar('-');
@@ -76,6 +75,7 @@ int		call_putnbr(const char *str, va_list args, t_docker *data)
 			(result == 0 && data->precision == 0 && data->dot == 1 ? 1 : 0);
 		data->len = ft_add_spaces(length, data->len,
 								  (data->zero == 1 && data->dot == 0 ? '0' : ' '));
+		length = -1;
 	}
 	if (data->less == 0 && data->dot == 0 && result < 0 && data->zero == 0)
 		ftp_putchar('-');
