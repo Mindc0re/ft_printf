@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/07 08:31:55 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/07 09:02:47 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		longueur_nb(int64_t nb, t_docker *data)
 {
 	FT_INIT(int, i, 1);
 	i = nb >= 0 ? i : i + 1;
-//	i += data->more ? 1 : 0;
+//	i += (data->more == 1 && nb >= 0) ? 1 : 0;
 	nb = ft_abs(nb);
 	while (nb > 9)
 	{
@@ -26,6 +26,7 @@ int		longueur_nb(int64_t nb, t_docker *data)
 	}
 //	i = data->more == 1 ? i + 1 : i;
 //	i = data->space == 1 ? i + 1 : i;
+//	printf("coucou %d\n", i);
 	return (i);
 }
 
@@ -77,9 +78,9 @@ int		call_putnbr(const char *str, va_list args, t_docker *data)
 		if (data->dot == 1)
 			if ((data->precision - len_nb + (result >= 0 ? 0 : 1)) > 0)
 				length -= data->precision - len_nb + (result >= 0 ? 0 : 1);
-		length += data->width - len_nb + data->more ? 1 : 0;
+		length += data->width - len_nb;
 		data->len = ft_add_spaces(length, data->len,
-								  ((data->zero == 1 && data->dot == 0) ? '0' : ' '));
+								  (data->zero == 1 && data->dot == 0 ? '0' : ' '));
 	}
 	if (data->less == 0 && data->dot == 0 && result < 0 && data->zero == 0)
 		ftp_putchar('-');

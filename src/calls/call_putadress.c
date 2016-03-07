@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:29:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/02 14:47:19 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/07 10:11:56 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		adresse_part2(t_docker *data, uint32_t result, int base, uint8_t flag)
 		length = data->width - len_nb - (!result ? 2 : 6);
 		length -= prec != 0 ? (data->len - prec) : 0;
 		data->len += prec != 0 ? 0 : len_nb;
-		ftp_putbase(result, base, flag, data->dieze);
+		ftp_putbase(result, base, flag, data);
 		data->len = ft_add_spaces(length, data->len, ' ');
 		return (0);
 	}
@@ -58,7 +58,7 @@ int		distrib_adresse(t_docker *data, uint32_t result, int base, uint8_t flag)
 	}
 	if (adresse_part2(data, result, base, flag) == 0)
 		return (0);
-	ftp_putbase(result, base, flag, data->dieze);
+	ftp_putbase(result, base, flag, data);
 	return (0);
 }
 

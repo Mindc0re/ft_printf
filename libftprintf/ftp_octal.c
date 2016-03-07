@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/11 09:06:28 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/02/12 12:24:03 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/07 10:29:40 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ int				ftp_distrib_oct(t_docker *data, uint32_t nb, int len, int who)
 {
 	if (who == -1)
 	{
-		len += ftp_putbase(nb, 8, 0, data->dieze);
+		len += ftp_putbase(nb, 8, 0, data);
 		return (len = ft_add_spaces((data->width - (int)ft_strlen(ft_itoa(nb))),
 									len, ' '));
 	}
-//	else if (who == 0)
-//		return (len += ftp_dot(nb, data->precision));
-	return (len += ftp_putbase(nb, 8, 0, data->dieze));
+	return (len += ftp_putbase(nb, 8, 0, data));
 }
 
 int				ftp_octal(uint32_t nb, va_list args, t_docker *data)

@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/04 15:32:10 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/07 10:09:35 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void				ft_detect_width(const char *str, t_docker *data, int who);
 int					distrib_putbase(t_docker *data, uint64_t result, int base, uint8_t flag);
 
 int					ftp_putbase(uint32_t n, uint32_t base, uint8_t flag,
-								uint32_t dieze);
+								t_docker *data);
 int					ftp_octal(uint32_t nb, va_list args, t_docker *data);
 int					ftp_putchar(uint32_t c);
 int					ftp_putstr(uint8_t *str);
