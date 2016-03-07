@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/04 17:34:27 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/07 08:31:55 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		longueur_nb(int64_t nb, t_docker *data)
 {
 	FT_INIT(int, i, 1);
 	i = nb >= 0 ? i : i + 1;
-	i += data->more ? 1 : 0;
+//	i += data->more ? 1 : 0;
 	nb = ft_abs(nb);
 	while (nb > 9)
 	{
