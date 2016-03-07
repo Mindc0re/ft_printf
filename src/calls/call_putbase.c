@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/07 11:55:44 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/07 12:22:56 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		putbase_part2(t_docker *data, uint64_t result, int base, uint8_t flag)
 	FT_INIT(int, len_nb, len_base(result, base));
 	if (data->dot == 1)
 	{
-		if (result == 0 && data->precision == 0)
+		if (result == 0 && data->precision == 0/* && base == 16*/)
 			return (0);
 		data->len += (length == 0) ? len_nb : 0;
 		length = data->precision - len_nb;
