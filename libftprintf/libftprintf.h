@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 14:18:19 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 11:01:23 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 12:33:24 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdarg.h>
 # include <wchar.h>
 
-int			ftp_putbase(uint32_t n, uint32_t base, uint8_t flag,
+int			ftp_putbase(uintmax_t n, uint32_t base, uint8_t flag,
 						t_docker *data);
 int			ftp_putchar(uint32_t c);
 int			ftp_putstr(uint8_t *str);

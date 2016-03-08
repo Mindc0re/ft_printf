@@ -6,14 +6,13 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 15:23:59 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/19 14:23:25 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 11:17:18 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 #include "../libftprintf/libftprintf.h"
 
-#define MASK_1 "0xxxxxxx"
 #define MASK_2 "110xxxxx 10xxxxxx"
 #define MASK_3 "1110xxxx 10xxxxxx 10xxxxxx"
 #define MASK_4 "11110xxx 10xxxxxx 10xxxxxx 10xxxxxx"

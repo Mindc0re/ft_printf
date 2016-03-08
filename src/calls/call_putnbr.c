@@ -6,14 +6,14 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 09:10:59 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 10:31:21 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 12:15:28 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
-#include <stdio.h>
+#include <limits.h>
 
-int		longueur_nb(int64_t nb, t_docker *data)
+int		longueur_nb(int64_t nb)
 {
 	FT_INIT(int, i, 1);
 	i = nb >= 0 ? i : i + 1;
@@ -28,43 +28,45 @@ int		longueur_nb(int64_t nb, t_docker *data)
 
 int		call_putnbr_part2(t_docker *data, int length, int prec, intmax_t res)
 {
-	data->len += !data->less && data->width > 0 ? longueur_nb(res, data) : 0;
+	data->len += !data->less && data->width > 0 ? longueur_nb(res) : 0;
 	if ((data->dot == 1 || data->less == 1) && res < 0 && data->zero == 0)
 		ftp_putchar('-');
 	data->more == 1 && res >= 0 && data->width != 0 && data->zero == 0
 		? ftp_putchar('+') : 0;
 	if (data->dot == 1)
 	{
-		data->len += (length == 0) ? longueur_nb(res, data) : 0;
-		length = data->precision - longueur_nb(res, data);
+		data->len += (length == 0) ? longueur_nb(res) : 0;
+		length = data->precision - longueur_nb(res);
 		length = res >= 0 ? length : length + 1;
 		prec = data->len;
 		data->len = ft_add_spaces(length, data->len, '0');
 	}
 	if (data->less == 1)
 	{
-		length = data->width - longueur_nb(res, data) - (data->more
+		length = data->width - longueur_nb(res) - (data->more
 			&& res >= 0 ? 1 : 0) - (prec != 0 ? (data->len - prec) : 0);
-		data->len += prec != 0 ? 0 : longueur_nb(res, data);
+		data->len += prec != 0 ? 0 : longueur_nb(res);
 		ftp_putnbr(res, data);
 		data->len = ft_add_spaces(length, data->len, data->zero ? '0' : ' ');
 		return (0);
 	}
 	if (data->less == 0 && data->dot == 0 && data->width == 0)
-		data->len += longueur_nb(res, data);
+		data->len += longueur_nb(res);
 	return (1);
 }
 
 int		call_putnbr(const char *str, va_list args, t_docker *data)
 {
-	if (data->length == l || data->length == ll)
-		return (call_putnbr_long(str, args, data));
-	FT_INIT(int32_t, result, va_arg(args, int32_t));
-	FT_INIT(int, len_nb, longueur_nb(result, data) +
+	FT_INIT(intmax_t, result, signed_conversion(data, args));
+	if (result == 258)
+	{
+		data->len += ftp_putstr((uint8_t *)"-9223372036854775808");
+		return (0);
+	}
+	FT_INIT(int, len_nb, longueur_nb(result) +
 	(data->more == 1 && result >= 0 ? 1 : 0) + data->space);
 	FT_INIT(int, prec, (data->more == 1 && result >= 0
 	&& (data->width == 0 || data->zero == 1)) ? ftp_putchar('+') : 0);
-	result = signed_conversion(result, data);
 	FT_INIT(int, length, 0);
 	data->zero == 1 && result < 0 && str ? ftp_putchar('-') : 0;
 	if (data->less == 0 && data->width > 0)

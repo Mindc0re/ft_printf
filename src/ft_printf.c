@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/04 16:00:46 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/08 12:15:10 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_docker	*init_tabptr(void)
 	data->fct['C'] = &call_putwchar;
 	data->fct['S'] = &call_putwstr;
 	data->fct['p'] = &call_putadress;
-	data->fct['%'] = &call_purcent;
+//	data->fct['%'] = &call_purcent;
 	return (data);
 }
 

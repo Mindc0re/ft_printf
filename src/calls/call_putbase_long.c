@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:07:37 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 10:43:46 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 12:53:56 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		base_long_2(t_docker *data, uintmax_t result, int base, uint8_t flag)
 	{
 		if (result == 0 && data->precision == 0)
 			return (0);
-//		data->len += (length == 0) ? len_nb : 0;
 		length = data->precision - len_nb;
 		prec = data->len;
 		data->len = ft_add_spaces(length, data->len, '0');
@@ -37,7 +36,6 @@ int		base_long_2(t_docker *data, uintmax_t result, int base, uint8_t flag)
 	}
 	if (!data->less && !data->dot && !data->width && !data->more)
 		data->len += TER(!result, 0, (data->dieze ? TER(base == 8, 1, 2) : 0));
-		//data->len += TER(result == 0, 1, (len_nb + (data->dieze == 1 ? TER(base == 8, 1, 2) : 0)));
 	return (1);
 }
 
@@ -50,7 +48,6 @@ int		base_long(t_docker *data, uintmax_t result, int base, uint8_t flag)
 		if ((data->precision - len_nb) > 0)
 			length -= data->precision - len_nb;
 		length += data->width - len_nb - (data->dieze == 1 ? 2 : 0);
-//		data->len += len_nb + (data->dieze == 1 ? 2 : 0);
 		data->len = ft_add_spaces(length, data->len, (data->zero ? '0' : ' '));
 	}
 	if (base_long_2(data, result, base, flag) == 0)
@@ -63,8 +60,7 @@ int		call_putbase_long(const char *str, va_list args, t_docker *data)
 {
 	uintmax_t	result;
 
-	result = va_arg(args, unsigned long int);
-	result = unsigned_conversion(result, data);
+	result = va_arg(args, unsigned long);
 	if (str[data->i] == 'O')
 		return (base_long(data, result, 8, 'a'));
 	else if (str[data->i] == 'U')

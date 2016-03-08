@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 10:04:14 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 10:45:42 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 12:22:44 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,38 +31,56 @@ void			detect_conversion(const char *str, t_docker *data)
 		data->i++;
 }
 
-uintmax_t		unsigned_conversion(uintmax_t val, t_docker *data)
+uintmax_t		unsigned_conversion(t_docker *data, va_list args)
 {
+	uintmax_t tmp;
+
+	tmp = 0;
 	if (data->length == hh)
-		return ((unsigned char)val);
+	{
+		tmp = va_arg(args, unsigned int);
+		return ((unsigned char)tmp);
+	}
 	if (data->length == h)
-		return ((unsigned short)val);
+	{
+		tmp = va_arg(args, unsigned int);
+		return ((unsigned short)tmp);
+	}
 	else if (data->length == l)
-		return ((unsigned long)val);
+		return (va_arg(args, unsigned long));
 	else if (data->length == ll)
-		return ((unsigned long long)val);
+		return (va_arg(args, unsigned long long));
 	else if (data->length == j)
-		return ((uintmax_t)val);
+		return (va_arg(args, uintmax_t));
 	else if (data->length == z)
-		return ((size_t)val);
+		return (va_arg(args, size_t));
 	else
-		return (val);
+		return (va_arg(args, unsigned int));
 }
 
-intmax_t		signed_conversion(intmax_t val, t_docker *data)
+intmax_t		signed_conversion(t_docker *data, va_list args)
 {
+	intmax_t tmp;
+
+	tmp = 0;
 	if (data->length == hh)
-		return ((signed char)val);
+	{
+		tmp = va_arg(args, int);
+		return ((signed char)tmp);
+	}
 	if (data->length == h)
-		return ((short)val);
+	{
+		tmp = va_arg(args, int);
+		return ((short)tmp);
+	}
 	if (data->length == ll)
-		return ((long)val);
+		return (va_arg(args, long long));
 	if (data->length == l)
-		return ((long long)val);
+		return (va_arg(args, long));
 	if (data->length == j)
-		return ((intmax_t)val);
+		return (va_arg(args, intmax_t));
 	if (data->length == z)
-		return ((size_t)val);
+		return (va_arg(args, size_t));
 	else
-		return (val);
+		return (va_arg(args, int));
 }

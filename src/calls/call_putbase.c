@@ -6,13 +6,13 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 10:36:26 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 12:32:50 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-int		len_base(uint32_t nb, uint32_t base)
+int		len_base(uintmax_t nb, uint32_t base)
 {
 	FT_INIT(int, len, 0);
 	if (base > 0 && base <= 10)
@@ -33,7 +33,7 @@ int		len_base(uint32_t nb, uint32_t base)
 	return (len);
 }
 
-int		putbase_part2(t_docker *data, uint64_t result, int base, uint8_t flag)
+int		putbase_part2(t_docker *data, uintmax_t result, int base, uint8_t flag)
 {
 	FT_INIT(int, prec, 0);
 	FT_INIT(int, length, (data->less == 0 && data->width > 0 ? 1 : 0));
@@ -62,7 +62,7 @@ int		putbase_part2(t_docker *data, uint64_t result, int base, uint8_t flag)
 	return (1);
 }
 
-int		distrib_putbase(t_docker *data, uint64_t res, int base, uint8_t flag)
+int		distrib_putbase(t_docker *data, uintmax_t res, int base, uint8_t flag)
 {
 	FT_INIT(int, length, 0);
 	FT_INIT(int, len_nb, len_base(res, base));
@@ -92,10 +92,9 @@ int		distrib_putbase(t_docker *data, uint64_t res, int base, uint8_t flag)
 
 int		call_putbase(const char *str, va_list args, t_docker *data)
 {
-	uint64_t result;
+	uintmax_t result;
 
-	result = va_arg(args, uint32_t);
-	result = unsigned_conversion(result, data);
+	result = unsigned_conversion(data, args);
 	if (str[data->i] == 'u')
 	{
 		if (result == 0 && data->precision == 0 && data->width == 0 &&

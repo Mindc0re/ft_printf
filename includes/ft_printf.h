@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 08:45:03 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/08 12:33:43 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ typedef struct		s_docker
 
 int					ft_printf(const char *format, ...);
 
-int					longueur_nb(int64_t nb, t_docker *data);
-int					len_base(uint32_t nb, uint32_t base);
+int					longueur_nb(int64_t nb);
+int					len_base(uintmax_t nb, uint32_t base);
 int					ft_add_spaces(int nb_spaces, int len, char c);
 
 void				ft_detect_flags(const char *str, t_docker *data);
 void				ft_detect_width(const char *str, t_docker *data, int who);
-int					distrib_putbase(t_docker *data, uint64_t result, int base, uint8_t flag);
+int					distrib_putbase(t_docker *data, uintmax_t result, int base, uint8_t flag);
 
-int					ftp_putbase(uint32_t n, uint32_t base, uint8_t flag,
+int					ftp_putbase(uintmax_t n, uint32_t base, uint8_t flag,
 								t_docker *data);
 int					ftp_octal(uint32_t nb, va_list args, t_docker *data);
 int					ftp_putchar(uint32_t c);
@@ -81,7 +81,7 @@ int					call_purcent(const char *str, va_list args, t_docker *data);
 
 t_docker			*init_tabptr(void);
 void				detect_conversion(const char *str, t_docker *data);
-uintmax_t			unsigned_conversion(uintmax_t val, t_docker *data);
-intmax_t			signed_conversion(intmax_t val, t_docker *data);
+uintmax_t			unsigned_conversion(t_docker *data, va_list args);
+intmax_t			signed_conversion(t_docker *data, va_list args);
 int					ft_check_valid(const char *str, t_docker *data);
 #endif
