@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/03/08 09:16:47 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/03/08 09:18:07 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -62,7 +62,7 @@ fclean: clean
 
 push:
 	@git add .
-	@read variable ; git commit -m "Makefile pushed"
+	@git commit -m "Makefile pushed"
 	@git push
 
 inutile:
