@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:56:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/07 16:53:50 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 08:53:39 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ int		call_putnbr_part2(t_docker *data, int length, int prec, intmax_t result)
 	{
 		data->len += (length == 0 || (length == 1 && result < 0))
 		? longueur_nb(result, data) : 0;
-		printf("data->len = %d\n", data->len);
-		length = data->precision - longueur_nb(result, data);
+ 		length = data->precision - longueur_nb(result, data);
 		length = result >= 0 ? length : length + 1;
 		prec = data->len;
 		data->len = ft_add_spaces(length, data->len, '0');
 	}
+	data->more == 1 && result >= 0 && data->width != 0 && data->zero == 0 ? ftp_putchar('+') : 0;
 	if (data->less == 1)
 	{
-		length = data->width - longueur_nb(result, data);
+		length = data->width - longueur_nb(result, data) - (data->more && result >= 0 ? 1 : 0);
 		length -= prec != 0 ? (data->len - prec) : 0;
 		data->len += prec != 0 ? 0 : longueur_nb(result, data);
 		ftp_putnbr(result, data);
@@ -62,9 +62,10 @@ int		call_putnbr(const char *str, va_list args, t_docker *data)
 		return (call_putnbr_long(str, args, data));
 	FT_INIT(int, length, 0);
 	FT_INIT(int32_t, result, va_arg(args, int32_t));
-	FT_INIT(int, prec, (data->more == 1 && result >= 0 ? ftp_putchar('+') : 0));
-	FT_INIT(int, len_nb, longueur_nb(result, data) + data->more + data->space);
+	FT_INIT(int, prec, (data->more == 1 && result >= 0
+	&& (data->width == 0 || data->zero == 1) ? ftp_putchar('+') : 0));
 	result = signed_conversion(result, data);
+	FT_INIT(int, len_nb, longueur_nb(result, data) + (data->more && result >= 0 ? 1 : 0) + data->space);
 	if (data->zero == 1 && result < 0 && str != NULL)
 		ftp_putchar('-');
 	if (data->less == 0 && data->width > 0)
