@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/03/03 13:39:50 by dvirgile         ###   ########.fr        #
+#    Updated: 2016/03/08 09:16:47 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -61,9 +61,8 @@ fclean: clean
 	@echo "\033[32m[OK]\033[0m"
 
 push:
-	@printf "Entrez votre commit \t"
 	@git add .
-	@read variable ; git commit -m $variable
+	@read variable ; git commit -m "Makefile pushed"
 	@git push
 
 inutile:
