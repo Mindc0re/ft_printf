@@ -6,38 +6,38 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:02 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/07 11:31:13 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 08:47:07 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 #include <stdio.h>
 
-void			ft_detect_flags(const char *str, t_docker *data)
+void			ft_detect_flags(const char *str, t_docker *d)
 {
-	if (ft_strchr("#0123456789-+ .", str[data->i]))
+	if (ft_strchr("#0123456789-+ .", str[d->i]))
 	{
-		data->dieze = (str[data->i] == '#' && ft_strchr("%-", str[data->i - 1])) ? 1 : data->dieze;
-		data->more = str[data->i] == '+' ? 1 : data->more;
-		data->zero = (str[data->i] == '0' && ft_strchr(" +%#", str[data->i - 1])) ? 1 : data->zero;
-		data->space = (str[data->i] == ' ' && str[data->i - 1] == '%') ? 1 : data->space;
-		if (str[data->i] == '.')
+		d->dieze = (str[d->i] == '#' && ft_strchr("%-", str[d->i - 1]))
+			? 1 : d->dieze;
+		d->more = str[d->i] == '+' ? 1 : d->more;
+		d->zero = (str[d->i] == '0' && ft_strchr(" +%#", str[d->i - 1]))
+			? 1 : d->zero;
+		d->space = (str[d->i] == ' ' && ft_strchr("%0", str[d->i - 1]))
+			? 1 : d->space;
+		if (str[d->i] == '.')
 		{
-			data->result = 0;
-			data->choice = 1;
-			data->dot = 1;
-			data->zero = 0;
+			MULTI(d->result, d->zero, 0);
+			MULTI(d->choice, d->dot, 1);
 		}
-		if (str[data->i] == '-')
+		if (str[d->i] == '-')
 		{
-			data->result = 0;
-			data->choice = -1;
-			data->zero = 0;
-			data->less = 1;
+			MULTI(d->result, d->zero, 0);
+			d->choice = -1;
+			d->less = 1;
 		}
-		ft_detect_width(str, data, data->choice);
-		data->i++;
-		ft_detect_flags(str, data);
+		ft_detect_width(str, d, d->choice);
+		d->i++;
+		ft_detect_flags(str, d);
 	}
 }
 
