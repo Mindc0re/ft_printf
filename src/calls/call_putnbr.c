@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 09:10:59 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 10:10:19 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 10:31:21 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int		longueur_nb(int64_t nb, t_docker *data)
 
 int		call_putnbr_part2(t_docker *data, int length, int prec, intmax_t res)
 {
-	if (data->less == 0 && data->width > 0)
-		data->len += longueur_nb(res, data);
+	data->len += !data->less && data->width > 0 ? longueur_nb(res, data) : 0;
 	if ((data->dot == 1 || data->less == 1) && res < 0 && data->zero == 0)
 		ftp_putchar('-');
 	data->more == 1 && res >= 0 && data->width != 0 && data->zero == 0
@@ -44,11 +43,11 @@ int		call_putnbr_part2(t_docker *data, int length, int prec, intmax_t res)
 	}
 	if (data->less == 1)
 	{
-		length = data->width - longueur_nb(res, data) - (data->more && res >= 0 ? 1 : 0);
-		length -= prec != 0 ? (data->len - prec) : 0;
+		length = data->width - longueur_nb(res, data) - (data->more
+			&& res >= 0 ? 1 : 0) - (prec != 0 ? (data->len - prec) : 0);
 		data->len += prec != 0 ? 0 : longueur_nb(res, data);
 		ftp_putnbr(res, data);
-		data->len = ft_add_spaces(length, data->len, data->zero == 1 ? '0' : ' ');
+		data->len = ft_add_spaces(length, data->len, data->zero ? '0' : ' ');
 		return (0);
 	}
 	if (data->less == 0 && data->dot == 0 && data->width == 0)
@@ -67,24 +66,20 @@ int		call_putnbr(const char *str, va_list args, t_docker *data)
 	&& (data->width == 0 || data->zero == 1)) ? ftp_putchar('+') : 0);
 	result = signed_conversion(result, data);
 	FT_INIT(int, length, 0);
-	if (data->zero == 1 && result < 0 && str != NULL)
-		ftp_putchar('-');
+	data->zero == 1 && result < 0 && str ? ftp_putchar('-') : 0;
 	if (data->less == 0 && data->width > 0)
 	{
-		if (data->dot == 1)
-			if ((data->precision - len_nb + (result >= 0 ? 0 : 1)) > 0)
-				length -= data->precision - len_nb + (result >= 0 ? 0 : 1);
-		length += data->width - len_nb + (result == 0 && data->precision == 0 && data->dot == 1 ? 1 : 0)
-			- (result >= 0 && data->more == 1 && data->zero == 0 ? 1 : 0);
+		if ((data->precision - len_nb + (result >= 0 ? 0 : 1)) > 0 && data->dot)
+			length -= data->precision - len_nb + (result >= 0 ? 0 : 1);
+		length += data->width - len_nb + (!result && !data->precision
+	&& data->dot ? 1 : 0) - (result >= 0 && data->more && !data->zero ? 1 : 0);
 		data->len = ft_add_spaces(length, data->len,
-								  (data->zero == 1 && data->dot == 0 ? '0' : ' '));
+		(data->zero == 1 && data->dot == 0 ? '0' : ' '));
 		length = -1;
 	}
-	if (data->less == 0 && data->dot == 0 && result < 0 && data->zero == 0)
-		ftp_putchar('-');
-	if (result == 0 && data->precision == 0 && data->dot == 1 && data->less == 0)
-		return (0);
-	if (call_putnbr_part2(data, length, prec, result) == 0)
+	!(data->less + data->dot + data->zero) && result < 0 ? ft_putchar('-') : 0;
+	if ((!result && !data->precision && data->dot && !data->less)
+		|| call_putnbr_part2(data, length, prec, result) == 0)
 		return (0);
 	return (ftp_putnbr(result, data));
 }
