@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 09:11:45 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 12:50:25 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 13:08:00 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@ int		main(void)
 //	ret += printf("%4.15S\n", L"我是一只猫");
 //	ret_ft += ft_printf("% \n");
 //	ret += printf("% \n");
-
-	ret_ft = ft_printf("FT__%d\n", INT_MIN - 1);
-	ret = printf("NM__%d\n", INT_MIN - 1);
-	printf("PRINTF renvoie {%d} caracteres et FT_PRINTF renvoie {%d} caracteres\n", ret, ret_ft);
-
 
 	return (0);
 }
