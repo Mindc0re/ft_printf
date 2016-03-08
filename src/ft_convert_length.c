@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 10:04:14 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/18 11:10:20 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 10:45:42 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ uintmax_t		unsigned_conversion(uintmax_t val, t_docker *data)
 		return (val);
 }
 
-intmax_t	signed_conversion(intmax_t val, t_docker *data)
+intmax_t		signed_conversion(intmax_t val, t_docker *data)
 {
 	if (data->length == hh)
 		return ((signed char)val);

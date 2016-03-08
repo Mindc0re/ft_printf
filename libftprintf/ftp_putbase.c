@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 13:53:55 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/07 14:18:38 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 11:00:16 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ int		ftp_putbase(uint32_t n, uint32_t base, uint8_t flag, t_docker *data)
 		{
 			if (n == 0 && data->precision == 0)
 				return (ftp_putchar('0'));
-			else
-				data->len += ftp_putchar('0');
+			data->len += n || data->precision ? ftp_putchar('0') : 0;
 			data->dieze = 0;
 		}
-		if (n >= base)
-			ftp_putbase((n / base), base, flag, data);
+		n >= base ? ftp_putbase((n / base), base, flag, data) : 0;
 		ft_putchar((n % base) + '0');
 	}
 	else if (base == 16)

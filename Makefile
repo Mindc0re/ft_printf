@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/03/08 09:18:07 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/03/08 11:03:05 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,7 @@ LIBFT = ./libft/
 
 L = ./libftprintf/
 
-LIBSRC = $(L)ftp_octal.c $(L)ftp_putbase.c $(L)ftp_putbase_long.c \
+LIBSRC = $(L)ftp_putbase.c $(L)ftp_putbase_long.c \
 	$(L)ftp_putchar.c $(L)ftp_putnbr.c $(L)ftp_putnbr_long.c \
 	$(L)ftp_putstr.c $(L)ftp_strlen.c
 

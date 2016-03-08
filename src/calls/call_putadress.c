@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:29:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/07 10:11:56 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 10:41:40 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int		adresse_part2(t_docker *data, uint32_t result, int base, uint8_t flag)
 	if (data->dot == 1)
 	{
 		data->len += (length == 0) ? len_nb : 0;
-		length = data->precision - len_nb;
-		prec = data->len;
+		MULTI(length, prec, data->precision - len_nb);
 		data->len = ft_add_spaces(length, data->len, '0');
 	}
 	if (data->less == 1)
@@ -52,8 +51,7 @@ int		distrib_adresse(t_docker *data, uint32_t result, int base, uint8_t flag)
 			length -= data->precision - len_nb;
 		length += data->width - len_nb - (data->dieze == 1 ? 2 : 0);
 		data->len += len_nb + (data->dieze == 1 ? 2 : 0);
-		data->len = ft_add_spaces(length, data->len, (data->zero == 1 ?
-													  '0' : ' '));
+		data->len = ft_add_spaces(length, data->len, (data->zero ? '0' : ' '));
 		ft_putstr((!result ? "0x" : "0x7fff"));
 	}
 	if (adresse_part2(data, result, base, flag) == 0)
@@ -62,11 +60,10 @@ int		distrib_adresse(t_docker *data, uint32_t result, int base, uint8_t flag)
 	return (0);
 }
 
-int			call_putadress(const char *str, va_list args, t_docker *data)
+int		call_putadress(const char *str, va_list args, t_docker *data)
 {
-	FT_INIT(uint32_t,result,va_arg(args, uint32_t));
-	FT_INIT(int,len,0);
-
+	FT_INIT(uint32_t, result, va_arg(args, uint32_t));
+	FT_INIT(int, len, 0);
 /*	if (str[data->i] == 'p')
 	{
 		ft_putstr((!result ? "0x" : "0x7fff"));

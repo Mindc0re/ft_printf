@@ -6,14 +6,13 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:02:53 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/02 15:25:42 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/08 10:44:53 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
-#include <stdio.h>
 
-int			putnbr_long_part2(t_docker *data, int length, int prec, int64_t result)
+int		putnbr_long_part2(t_docker *data, int length, int prec, int64_t result)
 {
 	if (data->less == 0 && data->width > 0)
 		data->len += longueur_nb(result, data);
@@ -42,7 +41,7 @@ int			putnbr_long_part2(t_docker *data, int length, int prec, int64_t result)
 	return (1);
 }
 
-int			call_putnbr_long(const char *str, va_list args, t_docker *data)
+int		call_putnbr_long(const char *str, va_list args, t_docker *data)
 {
 	FT_INIT(int, length, 0);
 	FT_INIT(int64_t, result, va_arg(args, int64_t));
@@ -61,7 +60,7 @@ int			call_putnbr_long(const char *str, va_list args, t_docker *data)
 				length -= data->precision - len_nb + (result >= 0 ? 0 : 1);
 		length += data->width - len_nb;
 		data->len = ft_add_spaces(length, data->len,
-								  (data->zero == 1 && data->dot == 0 ? '0' : ' '));
+			(data->zero == 1 && data->dot == 0 ? '0' : ' '));
 	}
 	if (data->less == 0 && data->dot == 0 && result < 0 && data->zero == 0)
 		ftp_putchar('-');

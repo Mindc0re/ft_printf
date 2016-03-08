@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:07:37 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/23 17:05:08 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 10:43:46 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int		base_long_2(t_docker *data, uintmax_t result, int base, uint8_t flag)
 		data->len = ft_add_spaces(length, data->len, ' ');
 		return (0);
 	}
-	if (data->less == 0 && data->dot == 0 && data->width == 0 && data->more == 0)
-		data->len += TER(result == 0, 0, (data->dieze == 1 ? TER(base == 8, 1, 2) : 0));
+	if (!data->less && !data->dot && !data->width && !data->more)
+		data->len += TER(!result, 0, (data->dieze ? TER(base == 8, 1, 2) : 0));
 		//data->len += TER(result == 0, 1, (len_nb + (data->dieze == 1 ? TER(base == 8, 1, 2) : 0)));
 	return (1);
 }
@@ -51,8 +51,7 @@ int		base_long(t_docker *data, uintmax_t result, int base, uint8_t flag)
 			length -= data->precision - len_nb;
 		length += data->width - len_nb - (data->dieze == 1 ? 2 : 0);
 //		data->len += len_nb + (data->dieze == 1 ? 2 : 0);
-		data->len = ft_add_spaces(length, data->len, (data->zero == 1 ?
-													  '0' : ' '));
+		data->len = ft_add_spaces(length, data->len, (data->zero ? '0' : ' '));
 	}
 	if (base_long_2(data, result, base, flag) == 0)
 		return (0);

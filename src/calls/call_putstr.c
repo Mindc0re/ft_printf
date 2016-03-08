@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:30 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/04 16:37:03 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/08 10:33:39 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int					ftp_dot(uint8_t *str, unsigned int len)
 int					ftp_distrib(t_docker *data, uint8_t *str, int len, int who)
 {
 	int				ref;
+
 	FT_INIT(char, c, data->zero == 1 ? '0' : ' ');
 	ref = len;
 	if (who == -1)

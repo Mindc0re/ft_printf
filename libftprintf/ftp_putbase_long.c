@@ -6,13 +6,13 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 08:57:17 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/22 18:31:23 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/08 11:02:03 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ftp_putbase_long(uintmax_t n, uint32_t base, uint8_t flag, t_docker *data)
+int	ftp_putbase_long(uintmax_t n, uint32_t base, uint8_t flag, t_docker *data)
 {
 	FT_INIT(int, len, 0);
 	if (base > 0 && base <= 10)
