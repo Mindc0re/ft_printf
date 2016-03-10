@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/10 10:22:01 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/10 10:41:13 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,32 +68,6 @@ int			parser(va_list args, const char *str, t_docker *data)
 			return (ftp_putchar((uint8_t)str[data->i]));
 		else
 			return (0);
-}
-
-int			detect(const char *s, t_docker *data)
-{
-	data->i++;
-	if ((s[data->i] == ' ' && s[data->i + 1] == ' ')
-		|| (s[data->i] == ' ' && s[data->i + 1] == '%'))
-	{
-		while (s[data->i] != '\0' && s[data->i] == ' ')
-			data->i++;
-		if (s[data->i] == '%')
-			return (1);
-	}
-	if (s[data->i] == 's' || s[data->i] == 'S' || s[data->i] == 'p'
-		|| s[data->i] == 'd' || s[data->i] == 'D' || s[data->i] == 'i'
-		|| s[data->i] == 'o' || s[data->i] == 'O' || s[data->i] == 'u'
-		|| s[data->i] == 'U' || s[data->i] == 'x' || s[data->i] == 'X'
-		|| s[data->i] == 'c' || s[data->i] == 'C' || s[data->i] == '%'
-		|| s[data->i] == '#' || s[data->i] == '0' || s[data->i] == '-'
-		|| s[data->i] == '+' || s[data->i] == 'h' || s[data->i] == 'l'
-		|| s[data->i] == 'j' || s[data->i] == 'z' || s[data->i] == '.'
-		|| (s[data->i] >= '0' && s[data->i] <= '9')
-		|| (s[data->i] == ' ' && s[data->i - 1] == '%'))
-		return (1);
-	else
-		return (0);
 }
 
 int			ft_check_printf(const char *s, t_docker *data)
