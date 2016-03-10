@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 17:40:51 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 15:50:42 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 17:48:11 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,6 @@ int			ftp_distribw(t_docker *data, wchar_t *str, int len, int who)
 	FT_INIT(int, ref, len);
 	FT_INIT(int, count, 0);
 	count = count_wchar(str);
-/*	FT_INIT(int, width, data->width);
-	if (width > 100)
-	{
-		printf("tamer %d\n", width);
-		exit(EXIT_SUCCESS);
-		}*/
 	if (who == -1)
 	{
 		len += count;
@@ -73,6 +67,8 @@ int			ftp_distribw(t_docker *data, wchar_t *str, int len, int who)
 	}
 	else if (who == 2)
 	{
+		if (data->dot == !data->precision)
+			return (len = ft_add_spaces(data->width, len, '0'));
 		if (((len = ft_add_spaces(data->width - count > data->precision
 								  ? data->precision : count, len, ' ')) >= 0))
 			return (len += ftp_dotw(str, data->precision));

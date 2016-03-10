@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:58:24 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 12:32:50 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 17:41:48 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		distrib_putbase(t_docker *data, uintmax_t res, int base, uint8_t flag)
 	FT_INIT(int, length, 0);
 	FT_INIT(int, len_nb, len_base(res, base));
 	len_nb = data->precision == 0 && res == 0 ? 0 : len_nb;
-	if (data->dieze == 1 && base == 16 && res != 0 && data->zero == 1)
+	if (data->dieze == 1 && base == 16 && res != 0 && (data->zero || data->dot))
 		data->len += (ftp_putchar('0') + ftp_putchar(flag + 23));
 	if (data->less == 0 && data->width > 0)
 	{

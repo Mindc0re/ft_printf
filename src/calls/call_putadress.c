@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:29:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 10:08:32 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 17:37:30 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		adresse_part2(t_docker *data, uint32_t result, int base, uint8_t flag)
 	FT_INIT(int, len_nb, len_base(result, base));
 	if (data->dot == 1)
 	{
+		if (result == 0 && data->precision == 0)
+			return (ftp_putstr((uint8_t*)(!result ? "0x" : "0x7fff")));
 		data->len += (length == 0) ? len_nb : 0;
 		MULTI(length, prec, data->precision - len_nb);
 		data->len = ft_add_spaces(length, data->len, '0');
@@ -56,7 +58,8 @@ int		distrib_adresse(t_docker *data, uint32_t result, int base, uint8_t flag)
 	}
 	if (adresse_part2(data, result, base, flag) == 0)
 		return (0);
-	ftp_putbase(result, base, flag, data);
+	if (result)
+		ftp_putbase(result, base, flag, data);
 	return (0);
 }
 

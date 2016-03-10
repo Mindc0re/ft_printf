@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:30 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/10 14:38:06 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 16:55:05 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,21 @@ int					ftp_dot(uint8_t *str, unsigned int len)
 	int				i;
 
 	i = 0;
-	while (str[i] && i < ftp_strlen(str) && i < (int)len)
+	if (str)
 	{
-		ft_putchar(str[i]);
-		i++;
+		while (str[i] && i < ftp_strlen(str) && i < (int)len)
+		{
+			ft_putchar(str[i]);
+			i++;
+		}
 	}
 	return (i);
 }
 
 int					ftp_distrib(t_docker *data, uint8_t *str, int len, int who)
 {
-	int				ref;
-
+	FT_INIT(int, ref, len);
 	FT_INIT(char, c, data->zero == 1 ? '0' : ' ');
-	ref = len;
 	if (who == -1)
 	{
 		len += ftp_putstr(str);
@@ -45,6 +46,7 @@ int					ftp_distrib(t_docker *data, uint8_t *str, int len, int who)
 	}
 	else if (who == 2)
 	{
+		c = !str ? '0' : c;
 		if ((len = ft_add_spaces(data->width - (ftp_strlen(str) >
 		data->precision ? data->precision : ftp_strlen(str)), len, c)) >= 0)
 			return (len += ftp_dot(str, data->precision));
@@ -64,6 +66,11 @@ int					call_putstr(const char *str, va_list args, t_docker *data)
 		argument = va_arg(args, uint8_t *);
 	if (argument == NULL)
 	{
+		if (data->width >= 1 && data->dot == 1 && data->less == 0)
+		{
+			data->len = ftp_distrib(data, argument, data->len, 2);
+			return (0);
+		}
 		data->len += ftp_putstr((uint8_t *)"(null)");
 		return (0);
 	}
