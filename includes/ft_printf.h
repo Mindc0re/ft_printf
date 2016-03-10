@@ -6,19 +6,17 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/09 10:35:56 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/10 10:05:42 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include <stdarg.h>
-# include "../libft/includes/libft.h"
-
 # define FT_INIT(type,name,value)		type name = value
 # define TER(si,alors,sinon)			si ? alors : sinon
 # define MULTI(val_a, val_b, val_c)		val_a = val_b = val_c
+
 typedef struct		s_docker
 {
 	int				result;
@@ -47,7 +45,9 @@ typedef struct		s_docker
 	};
 }					t_docker;
 
+# include <stdarg.h>
 # include "../libftprintf/libftprintf.h"
+# include "../libft/includes/libft.h"
 
 int					ft_printf(const char *format, ...);
 
@@ -84,4 +84,5 @@ void				detect_conversion(const char *str, t_docker *data);
 uintmax_t			unsigned_conversion(t_docker *data, va_list args);
 intmax_t			signed_conversion(t_docker *data, va_list args);
 int					ft_check_valid(const char *str, t_docker *data);
+
 #endif

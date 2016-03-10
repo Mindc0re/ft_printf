@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 17:40:51 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/03 15:06:46 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/10 09:50:39 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,12 @@ int			ftp_dotw(wchar_t *str, unsigned int len)
 
 int			ftp_distribw(t_docker *data, wchar_t *str, int len, int who)
 {
-	int		ref;
-
-	ref = len;
+	FT_INIT(int, ref, len);
+	FT_INIT(int, width, data->width);
 	if (who == -1)
 	{
 		len += ft_putwstr(str);
-		return (len = ft_add_spaces((data->width -
+		return (len = ft_add_spaces((width -
 		ftp_wstrlen(str)), len, ' '));
 	}
 	else if (who == 0)
@@ -49,16 +48,16 @@ int			ftp_distribw(t_docker *data, wchar_t *str, int len, int who)
 	else if (who == 1)
 	{
 		len += ftp_dotw(str, data->precision);
-		return (len = ft_add_spaces((data->width - (len - ref)), len, ' '));
+		return (len = ft_add_spaces((width - (len - ref)), len, ' '));
 	}
 	else if (who == 2)
 	{
-		if ((len = ft_add_spaces(data->width - (ftp_wstrlen(str) >
+		if ((len = ft_add_spaces(width - (ftp_wstrlen(str) >
 		data->precision ? data->precision : ftp_wstrlen(str)), len, ' ')) >= 0)
 			return (len += ftp_dotw(str, data->precision));
 	}
 	else if (who == 3)
-		len = ft_add_spaces((data->width - ftp_wstrlen(str)), len, ' ');
+		len = ft_add_spaces((width - ftp_wstrlen(str)), len, ' ');
 	return (len += ft_putwstr(str));
 }
 

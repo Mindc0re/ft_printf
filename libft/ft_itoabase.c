@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/05 14:19:50 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/08 15:52:17 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 09:49:44 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char			*ft_itoa_base(int n, int base)
 		return (ft_itoa(n));
 	if (base < 2 || base > 16 || (base != 10 && n < 0))
 		return (NULL);
-	str = (char *)malloc(sizeof(str) * (size(n, base) + 1));
+	str = (char *)malloc(sizeof(char) * (size(n, base) + 1));
 	if (!str)
 		return (NULL);
 	i = size(n, base);
