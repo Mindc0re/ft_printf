@@ -6,48 +6,39 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 11:57:21 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 11:57:37 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 15:35:55 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
+#include <locale.h>
 
 int		main(void)
 {
 	int ret_ft = 0;
 	int ret = 0;
 
-//	int ret_ft = 0;
-//	int ret = 0;
-//	ret_ft = ft_printf("%");
-//	ret = printf("%");
-//	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
-/*	ret_ft = ft_printf("%");
-	printf("|\n");
-	ret = printf("%");
-	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
-	ret_ft = ft_printf("FT__{% h}\n");
-	ret = printf("NM__{% h}\n");
-	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);*/
-/*	ret_ft += ft_printf("%+03d\n", 0); // Probleme d'affichage
-	ret += printf("%+03d\n", 0);
-	ret_ft += ft_printf("% 03d\n", 0); // Probleme d'affichage
-	ret += printf("% 03d\n", 0); */
-//	ret_ft += ft_printf("%4.15S\n", L"我是一只猫");
-//	ret += printf("%4.15S\n", L"我是一只猫");
-//	ret_ft += ft_printf("% \n");
-//	ret += printf("% \n");
-//	ft_printf("%hhld", "128");
-//	printf("%hhld", "128");
-//	ft_putstr("\n");
-/*	ret_ft = ft_printf("FT__%%   %", "test");
-	printf("\n");
-	ret = printf("NM__%%   %", "test");
-	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);*/
-
-	ret_ft = ft_printf("@main_ftprintf: {%###-#0000 33...12..#0+0d}\n", 256);
+	char *l = setlocale(LC_ALL, "");
+	if (l == NULL)
+		printf("tamer\n");
+	else
+		printf("locale = %s\n", l);
+/*	ret_ft = ft_printf("FT__{%10R}\n");
+	ret = printf("NM__{%10R}\n");
+	printf("ft_printf renvoie %d caracteres et printf renvoie %d caracteres\n", ret_ft, ret);*/
+	ret_ft = ft_printf("{%30S}", L"我是一只猫。");
+	ft_putchar('\n');
+	ret = printf("{%30S}", L"我是一只猫。");
+	ft_putchar('\n');
+	printf("ft_printf renvoie %d caracteres et printf renvoie %d caracteres\n", ret_ft, ret);
+/*	ret_ft = ft_printf("{%-30S}", L"我是一只猫。");
+	ft_putchar('\n');
+	ret = printf("{%-30S}", L"我是一只猫。");
+	ft_putchar('\n');
+	printf("ft_printf renvoie %d caracteres et printf renvoie %d caracteres\n", ret_ft, ret);*/
+/*	ret_ft = ft_printf("@main_ftprintf: {%###-#0000 33...12..#0+0d}\n", 256);
 	ret  = printf("@main_ftprintf: {%###-#0000 33...12..#0+0d}\n", 256);
 	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
 	ret_ft = ft_printf("@main_ftprintf: {%####0000 33..1d}\n", 256);
@@ -55,22 +46,6 @@ int		main(void)
 	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
 	ret_ft = ft_printf("{%5+d}\n", 42);
 	ret = printf("{%5+d}\n", 42);
-	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
-//	ret_ft = ft_printf("% ");
-//	ret = printf("% ");
-//	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
-/*	ret_ft = ft_printf("FT__{% Z}\n", 42);
-	ret = printf("NM__{% Z}\n", 42);
 	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);*/
 	return (0);
 }
-
-
-
-
-
-
-
-
-
-

@@ -6,12 +6,13 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 15:23:59 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 10:11:06 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 15:45:08 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 #include "../libftprintf/libftprintf.h"
+#include <stdio.h>
 
 #define MASK_2 "110xxxxx 10xxxxxx"
 #define MASK_3 "1110xxxx 10xxxxxx 10xxxxxx"
@@ -58,7 +59,7 @@ static char		**set_mask(char *bin_value, char *mask_macro)
 	return (ft_strsplit(mask, ' '));
 }
 
-int				ft_putwchar(wchar_t c)
+int				ft_putwchar(wchar_t c, int count)
 {
 	char	**final;
 
@@ -78,9 +79,10 @@ int				ft_putwchar(wchar_t c)
 	while (final[i])
 	{
 		octet = ft_atoibase(final[i], 2);
-		write(1, &octet, 1);
+		if (count == 0)
+			write(1, &octet, 1);
 		i++;
 	}
 	ft_memdel_tab(final);
-	return (1);
+	return (i);
 }

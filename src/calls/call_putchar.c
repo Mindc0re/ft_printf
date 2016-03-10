@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/01 17:53:50 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/04 16:35:01 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/10 14:37:49 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		call_putchar(const char *str, va_list args, t_docker *data)
 	int32_t	argument;
 
 	if (data->length == l)
-		return (ft_putwchar(va_arg(args, wint_t)));
+		return (ft_putwchar(va_arg(args, wint_t), 0));
 	else
 		argument = va_arg(args, uint32_t);
 	if (data->width >= 1 && data->less == 0)

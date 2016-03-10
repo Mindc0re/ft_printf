@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 14:45:04 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/02/24 17:01:42 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 14:32:06 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,6 @@ void				ft_printhex(unsigned char n);
 char				*ft_strtolower(char *str);
 char				*ft_strtoupper(char *str);
 
-int					ft_putwchar(wchar_t c);
-int					ft_putwstr(wchar_t *str);
+int					ft_putwchar(wchar_t c, int count);
+int					ft_putwstr(wchar_t *str, int write);
 #endif

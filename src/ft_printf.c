@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/10 11:44:29 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 15:11:22 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int			ft_printf(const char *format, ...)
 			data->i = (format[data->i == '\0'] ? data->i + 1 : data->i);
 		}
 	}
+	free(data);
 	va_end(args);
 	return (data->len);
 }
