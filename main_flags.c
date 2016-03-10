@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/08 09:11:45 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 10:11:03 by dvirgile         ###   ########.fr       */
+/*   Created: 2016/03/10 10:35:57 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/03/10 10:36:06 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ int		main(void)
 {
 	int ret_ft = 0;
 	int ret = 0;
+	ret_ft = ft_printf("%");
+	ret = printf("%");
+	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
+/*	ret_ft = ft_printf("%");
+	printf("|\n");
+	ret = printf("%");
+	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
+	ret_ft = ft_printf("FT__{% h}\n");
+	ret = printf("NM__{% h}\n");
+	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);*/
 /*	ret_ft += ft_printf("%+03d\n", 0); // Probleme d'affichage
 	ret += printf("%+03d\n", 0);
 	ret_ft += ft_printf("% 03d\n", 0); // Probleme d'affichage
