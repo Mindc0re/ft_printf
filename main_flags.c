@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 11:57:21 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 15:35:55 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 16:01:24 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		main(void)
 {
 	int ret_ft = 0;
 	int ret = 0;
+	char c;
 
 	char *l = setlocale(LC_ALL, "");
 	if (l == NULL)
@@ -28,11 +29,6 @@ int		main(void)
 /*	ret_ft = ft_printf("FT__{%10R}\n");
 	ret = printf("NM__{%10R}\n");
 	printf("ft_printf renvoie %d caracteres et printf renvoie %d caracteres\n", ret_ft, ret);*/
-	ret_ft = ft_printf("{%30S}", L"我是一只猫。");
-	ft_putchar('\n');
-	ret = printf("{%30S}", L"我是一只猫。");
-	ft_putchar('\n');
-	printf("ft_printf renvoie %d caracteres et printf renvoie %d caracteres\n", ret_ft, ret);
 /*	ret_ft = ft_printf("{%-30S}", L"我是一只猫。");
 	ft_putchar('\n');
 	ret = printf("{%-30S}", L"我是一只猫。");
