@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/03/10 10:39:16 by dvirgile         ###   ########.fr       */
-=======
-/*   Updated: 2016/03/10 10:33:36 by sgaudin          ###   ########.fr       */
->>>>>>> 7341cb5f16863a94a494c1178e36e580b19f0a0b
+/*   Created: 2016/03/10 11:35:09 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/03/10 11:35:33 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +48,6 @@ typedef struct		s_docker
 	};
 }					t_docker;
 
-<<<<<<< HEAD
-# include "../libftprintf/libftprintf.h"
-=======
->>>>>>> 7341cb5f16863a94a494c1178e36e580b19f0a0b
 # include "../libft/includes/libft.h"
 # include "../libftprintf/libftprintf.h"
 
