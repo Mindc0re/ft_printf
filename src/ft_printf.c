@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/08 12:15:10 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 09:39:48 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_docker	*init_tabptr(void)
 	data->fct['C'] = &call_putwchar;
 	data->fct['S'] = &call_putwstr;
 	data->fct['p'] = &call_putadress;
-//	data->fct['%'] = &call_purcent;
+	data->fct['%'] = &call_purcent;
 	return (data);
 }
 
@@ -59,10 +59,6 @@ void		init_structure(t_docker *data, int check)
 
 int			parser(va_list args, const char *str, t_docker *data)
 {
-	if (str[data->i] == '%')
-		return (ftp_putchar('%'));
-	else
-	{
 		ft_detect_flags(str, data);
 		detect_conversion(str, data);
 		data->type = str[data->i];
@@ -70,7 +66,6 @@ int			parser(va_list args, const char *str, t_docker *data)
 			return ((*data->fct[(int)str[data->i]])(str, args, data));
 		else
 			return (ftp_putchar((uint8_t)str[data->i]));
-	}
 	return (0);
 }
 
@@ -100,6 +95,33 @@ int			detect(const char *s, t_docker *data)
 		return (0);
 }
 
+int			ft_check_printf(const char *s, t_docker *data)
+{
+	while (s[data->i] && data->i < ft_strlen(s))
+	{
+		if (s[data->i] != '%')
+			data->i++;
+		else
+		{
+			if (detect(s, data))
+			{
+				ft_detect_flags(s, data);
+				detect_conversion(s, data);
+				data->type = s[data->i];
+				if (!ft_check_valid(s, data) && !ft_strchr("h ", s[data->i - 1]))
+					if (s[data->i] != '%')
+						return (0);
+			}
+			init_structure(data, 0);
+			data->i = (s[data->i == '\0'] ? data->i + 1 : data->i);
+		}
+	}
+	init_structure(data, 1);
+	data->len = 0;
+	data->i = 0;
+	return (1);
+}
+
 int			ft_printf(const char *format, ...)
 {
 	va_list		args;
@@ -108,9 +130,11 @@ int			ft_printf(const char *format, ...)
 	data = init_tabptr();
 	init_structure(data, 1);
 	va_start(args, format);
-	while (format[data->i])
+	if (!ft_check_printf(format, data))
+		return (0);
+	while (format[data->i] && data->i < ft_strlen(format))
 	{
-		if (format[data->i] != '%')
+		if (format[data->i] != '%' && format[data->i] != '\0')
 		{
 			data->len += ftp_putchar((uint8_t)format[data->i]);
 			data->i++;

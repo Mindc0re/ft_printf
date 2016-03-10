@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 10:04:14 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 12:22:44 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/09 14:46:25 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void			detect_conversion(const char *str, t_docker *data)
 	else if (data->length == l || data->length == h || data->length == j
 			|| data->length == z)
 		data->i++;
+	if (ft_strchr("hljz", str[data->i]) && str[data->i])
+		detect_conversion(str, data);
 }
 
 uintmax_t		unsigned_conversion(t_docker *data, va_list args)

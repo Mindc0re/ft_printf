@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:02 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/08 08:47:07 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/09 11:02:09 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void			ft_detect_flags(const char *str, t_docker *d)
 		}
 		ft_detect_width(str, d, d->choice);
 		d->i++;
-		ft_detect_flags(str, d);
+		str[d->i] != '\0' ? ft_detect_flags(str, d) : 0;
 	}
 }
 
