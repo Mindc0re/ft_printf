@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 11:35:09 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 11:35:33 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 11:50:15 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 # define FT_INIT(type,name,value)		type name = value
 # define TER(si,alors,sinon)			si ? alors : sinon
 # define MULTI(val_a, val_b, val_c)		val_a = val_b = val_c
-# include <stdarg.h>
 
 # include <stdarg.h>
+# include <wchar.h>
+# include "../libft/includes/libft.h"
 
 typedef struct		s_docker
 {
@@ -39,17 +40,14 @@ typedef struct		s_docker
 	int				length;
 
 	enum {
-					hh = 1,
-					h,
-					ll,
-					l,
-					j,
-					z
-	};
+		hh = 1,
+		h,
+		ll,
+		l,
+		j,
+		z
+	}				enum_length;
 }					t_docker;
-
-# include "../libft/includes/libft.h"
-# include "../libftprintf/libftprintf.h"
 
 int					ft_printf(const char *format, ...);
 
@@ -59,7 +57,8 @@ int					ft_add_spaces(int nb_spaces, int len, char c);
 
 void				ft_detect_flags(const char *str, t_docker *data);
 void				ft_detect_width(const char *str, t_docker *data, int who);
-int					distrib_putbase(t_docker *data, uintmax_t result, int base, uint8_t flag);
+int					distrib_putbase(t_docker *data, uintmax_t result, int base
+									, uint8_t flag);
 
 int					ftp_putbase(uintmax_t n, uint32_t base, uint8_t flag,
 								t_docker *data);
@@ -69,16 +68,22 @@ int					ftp_putstr(uint8_t *str);
 int					ftp_strlen(uint8_t *str);
 int					ftp_putnbr(int64_t n, t_docker *data);
 int					ftp_putnbr_long(int64_t n, t_docker *data);
+int					ftp_putbase_long(uintmax_t n, uint32_t base, uint8_t flag,
+									t_docker *data);
 
 int					call_putstr(const char *str, va_list args, t_docker *data);
 int					call_putchar(const char *str, va_list args, t_docker *data);
 int					call_putnbr(const char *str, va_list args, t_docker *data);
 int					call_putbase(const char *str, va_list args, t_docker *data);
-int					call_putbase_long(const char *str, va_list args, t_docker *data);
-int					call_putnbr_long(const char *str, va_list args, t_docker *data);
-int					call_putwchar(const char *str, va_list args, t_docker *data);
+int					call_putbase_long(const char *str, va_list args,
+									t_docker *data);
+int					call_putnbr_long(const char *str, va_list args,
+									t_docker *data);
+int					call_putwchar(const char *str, va_list args,
+									t_docker *data);
 int					call_putwstr(const char *str, va_list args, t_docker *data);
-int					call_putadress(const char *str, va_list args, t_docker *data);
+int					call_putadress(const char *str, va_list args,
+									t_docker *data);
 int					call_purcent(const char *str, va_list args, t_docker *data);
 
 t_docker			*init_tabptr(void);

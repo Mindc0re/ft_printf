@@ -6,11 +6,9 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/03/10 10:52:30 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/03/10 11:52:29 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
-
-# Ceci est un Makefile TEMPORAIRE
 
 NAME = ft_printf
 
@@ -51,9 +49,9 @@ $(NAME):
 	@make -C $(LFT) re
 	@printf "\033[32m   Library done !\n\033[0m"
 	@printf "\033[31mCompilation\033[0m "
-	@gcc -o $(NAME) -I./includes/ft_printf.h $(LIBSRC) $(SRC) \
+	@$(CC) -o $(NAME) -I./includes/ft_printf.h $(LIBSRC) $(SRC) \
 	$(CALLS) main_flags.c -I./includes/libft.h -L./libft/ -lft
-	@gcc -c -I./ $(LIBSRC) $(SRC) -I./includes/libft.h
+	@$(CC) -c -I./ $(LIBSRC) $(SRC) -I./includes/libft.h
 	@mv $(SRCBIN) $(L)
 	@ar rcs libftprintf.a $(LIBBNRY) $(L)$(SRCBIN) ./includes/ft_printf.h
 	@echo "\033[32m[OK]\033[0m"

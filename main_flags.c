@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 10:35:57 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 10:36:06 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 11:39:30 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 int		main(void)
 {
-	int ret_ft = 0;
-	int ret = 0;
-	ret_ft = ft_printf("%");
-	ret = printf("%");
-	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
+//	int ret_ft = 0;
+//	int ret = 0;
+//	ret_ft = ft_printf("%");
+//	ret = printf("%");
+//	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
 /*	ret_ft = ft_printf("%");
 	printf("|\n");
 	ret = printf("%");
@@ -43,9 +43,9 @@ int		main(void)
 	printf("\n");
 	ret = printf("NM__%%   %", "test");
 	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);*/
-	ret_ft = ft_printf("% ");
-	ret = printf("% ");
-	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
+//	ret_ft = ft_printf("% ");
+//	ret = printf("% ");
+//	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
 /*	ret_ft = ft_printf("FT__{% Z}\n", 42);
 	ret = printf("NM__{% Z}\n", 42);
 	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);*/
