@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/05 11:23:26 by sgaudin           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/03/10 10:39:16 by dvirgile         ###   ########.fr       */
-=======
-/*   Updated: 2016/03/10 10:33:36 by sgaudin          ###   ########.fr       */
->>>>>>> 7341cb5f16863a94a494c1178e36e580b19f0a0b
+/*   Created: 2016/03/10 10:44:19 by dvirgile          #+#    #+#             */
+/*   Updated: 2016/03/10 10:49:59 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +16,6 @@
 # define FT_INIT(type,name,value)		type name = value
 # define TER(si,alors,sinon)			si ? alors : sinon
 # define MULTI(val_a, val_b, val_c)		val_a = val_b = val_c
-# include <stdarg.h>
-
 # include <stdarg.h>
 
 typedef struct		s_docker
@@ -52,10 +46,6 @@ typedef struct		s_docker
 	};
 }					t_docker;
 
-<<<<<<< HEAD
-# include "../libftprintf/libftprintf.h"
-=======
->>>>>>> 7341cb5f16863a94a494c1178e36e580b19f0a0b
 # include "../libft/includes/libft.h"
 # include "../libftprintf/libftprintf.h"
 

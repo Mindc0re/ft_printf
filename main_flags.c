@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 10:35:57 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 10:36:06 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 11:09:32 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ int		main(void)
 {
 	int ret_ft = 0;
 	int ret = 0;
-	ret_ft = ft_printf("%");
-	ret = printf("%");
-	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
 /*	ret_ft = ft_printf("%");
 	printf("|\n");
 	ret = printf("%");
@@ -43,11 +40,28 @@ int		main(void)
 	printf("\n");
 	ret = printf("NM__%%   %", "test");
 	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);*/
-	ret_ft = ft_printf("% ");
-	ret = printf("% ");
+
+	ret_ft = ft_printf("@main_ftprintf: {%###-#0000 33...12..#0+0d}\n", 256);
+	ret  = printf("@main_ftprintf: {%###-#0000 33...12..#0+0d}\n", 256);
+	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
+	ret_ft = ft_printf("@main_ftprintf: {%####0000 33..1d}\n", 256);
+	ret = printf("@main_ftprintf: {%####0000 33..1d}\n", 256);
+	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
+	ret_ft = ft_printf("{%5+d}\n", 42);
+	ret = printf("{%5+d}\n", 42);
 	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
 /*	ret_ft = ft_printf("FT__{% Z}\n", 42);
 	ret = printf("NM__{% Z}\n", 42);
 	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);*/
 	return (0);
 }
+
+
+
+
+
+
+
+
+
+

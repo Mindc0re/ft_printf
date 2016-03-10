@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 09:10:59 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 10:09:03 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 11:31:44 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int		call_putnbr_part2(t_docker *data, int length, int prec, intmax_t res)
 		length = data->width - longueur_nb(res) - (data->more
 			&& res >= 0 ? 1 : 0) - (prec != 0 ? (data->len - prec) : 0);
 		data->len += prec != 0 ? 0 : longueur_nb(res);
-		ftp_putnbr(res, data);
-		data->len = ft_add_spaces(length, data->len, data->zero ? '0' : ' ');
+		data->len = ftp_putnbr(res, data) +
+		ft_add_spaces(length, data->len, data->zero && !data->dot ? '0' : ' ');
 		return (0);
 	}
 	if (data->less == 0 && data->dot == 0 && data->width == 0)
@@ -69,7 +69,8 @@ int		call_putnbr(const char *str, va_list args, t_docker *data)
 		if ((data->precision - len_nb + (result >= 0 ? 0 : 1)) > 0 && data->dot)
 			length -= data->precision - len_nb + (result >= 0 ? 0 : 1);
 		length += data->width - len_nb + (!result && !data->precision
-	&& data->dot ? 1 : 0) - (result >= 0 && data->more && !data->zero ? 1 : 0);
+		&& data->dot ? 1 : 0)  - (data->precision && result >= 0 && data->more
+		&& !data->zero ? 1 : 0);
 		data->len = ft_add_spaces(length, data->len,
 		(data->zero == 1 && data->dot == 0 ? '0' : ' '));
 		length = -1;

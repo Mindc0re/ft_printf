@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/25 14:18:19 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 10:40:52 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/10 10:50:37 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFTPRINTF_H
 
 # include "../includes/ft_printf.h"
-# include <stdarg.h>
 # include <wchar.h>
 
 int			ftp_putbase(uintmax_t n, uint32_t base, uint8_t flag,
