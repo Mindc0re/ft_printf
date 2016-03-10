@@ -3,15 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2016/03/10 10:44:19 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/10 10:49:59 by dvirgile         ###   ########.fr       */
-=======
-/*   Created: 2016/03/10 11:35:09 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 11:50:15 by sgaudin          ###   ########.fr       */
->>>>>>> e19ad430f5bfdc6f0f7f92bc45a047734fbeb87a
+/*   Created: 2016/03/10 11:56:33 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/03/10 11:57:01 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +17,10 @@
 # define TER(si,alors,sinon)			si ? alors : sinon
 # define MULTI(val_a, val_b, val_c)		val_a = val_b = val_c
 
-<<<<<<< HEAD
-=======
 # include <stdarg.h>
 # include <wchar.h>
 # include "../libft/includes/libft.h"
 
->>>>>>> e19ad430f5bfdc6f0f7f92bc45a047734fbeb87a
 typedef struct		s_docker
 {
 	int				result;
@@ -57,12 +49,6 @@ typedef struct		s_docker
 	}				enum_length;
 }					t_docker;
 
-<<<<<<< HEAD
-# include "../libft/includes/libft.h"
-# include "../libftprintf/libftprintf.h"
-
-=======
->>>>>>> e19ad430f5bfdc6f0f7f92bc45a047734fbeb87a
 int					ft_printf(const char *format, ...);
 
 int					longueur_nb(int64_t nb);

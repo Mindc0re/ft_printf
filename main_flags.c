@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/10 10:35:57 by sgaudin           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2016/03/10 11:09:32 by dvirgile         ###   ########.fr       */
-=======
-/*   Updated: 2016/03/10 11:39:30 by sgaudin          ###   ########.fr       */
->>>>>>> e19ad430f5bfdc6f0f7f92bc45a047734fbeb87a
+/*   Created: 2016/03/10 11:57:21 by sgaudin           #+#    #+#             */
+/*   Updated: 2016/03/10 11:57:37 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +16,14 @@
 
 int		main(void)
 {
-<<<<<<< HEAD
 	int ret_ft = 0;
 	int ret = 0;
-=======
+
 //	int ret_ft = 0;
 //	int ret = 0;
 //	ret_ft = ft_printf("%");
 //	ret = printf("%");
 //	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
->>>>>>> e19ad430f5bfdc6f0f7f92bc45a047734fbeb87a
 /*	ret_ft = ft_printf("%");
 	printf("|\n");
 	ret = printf("%");
@@ -52,7 +46,6 @@ int		main(void)
 	printf("\n");
 	ret = printf("NM__%%   %", "test");
 	printf("\nFT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);*/
-<<<<<<< HEAD
 
 	ret_ft = ft_printf("@main_ftprintf: {%###-#0000 33...12..#0+0d}\n", 256);
 	ret  = printf("@main_ftprintf: {%###-#0000 33...12..#0+0d}\n", 256);
@@ -63,11 +56,9 @@ int		main(void)
 	ret_ft = ft_printf("{%5+d}\n", 42);
 	ret = printf("{%5+d}\n", 42);
 	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
-=======
 //	ret_ft = ft_printf("% ");
 //	ret = printf("% ");
 //	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);
->>>>>>> e19ad430f5bfdc6f0f7f92bc45a047734fbeb87a
 /*	ret_ft = ft_printf("FT__{% Z}\n", 42);
 	ret = printf("NM__{% Z}\n", 42);
 	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);*/
