@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 15:23:59 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 11:17:18 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 10:11:06 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ static char		**set_mask(char *bin_value, char *mask_macro)
 int				ft_putwchar(wchar_t c)
 {
 	char	**final;
+
 	FT_INIT(char *, bin_value, ft_strnew(33));
 	FT_INIT(int, i, 0);
 	FT_INIT(int, octet, 0);
-
 	bin_value = ft_itoa_base((int)c, 2);
 	if (ft_strlen(bin_value) <= 7)
 		return (ftp_putchar((char)c));

@@ -6,13 +6,13 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:30 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/09 11:52:48 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/10 10:07:59 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-int				ftp_purcent(t_docker *data, int32_t str, int len, int who)
+int			ftp_purcent(t_docker *data, int32_t str, int len, int who)
 {
 	int			ref;
 
@@ -29,7 +29,7 @@ int				ftp_purcent(t_docker *data, int32_t str, int len, int who)
 	return (len += str ? ftp_putchar(str) : 0);
 }
 
-int		call_purcent(const char *str, va_list args, t_docker *data)
+int			call_purcent(const char *str, va_list args, t_docker *data)
 {
 	int32_t argument;
 

@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 09:10:59 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 12:15:28 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 10:09:03 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,6 @@ int		call_putnbr_part2(t_docker *data, int length, int prec, intmax_t res)
 int		call_putnbr(const char *str, va_list args, t_docker *data)
 {
 	FT_INIT(intmax_t, result, signed_conversion(data, args));
-	if (result == 258)
-	{
-		data->len += ftp_putstr((uint8_t *)"-9223372036854775808");
-		return (0);
-	}
 	FT_INIT(int, len_nb, longueur_nb(result) +
 	(data->more == 1 && result >= 0 ? 1 : 0) + data->space);
 	FT_INIT(int, prec, (data->more == 1 && result >= 0
