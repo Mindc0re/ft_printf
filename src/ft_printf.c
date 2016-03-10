@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/10 09:39:48 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/10 10:22:01 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,10 @@ int			parser(va_list args, const char *str, t_docker *data)
 		data->type = str[data->i];
 		if (ft_check_valid(str, data) == 1)
 			return ((*data->fct[(int)str[data->i]])(str, args, data));
-		else
+		else if (!ft_strchr("sSpdDioOuUxXcC% hljz", str[data->i]))
 			return (ftp_putchar((uint8_t)str[data->i]));
-	return (0);
+		else
+			return (0);
 }
 
 int			detect(const char *s, t_docker *data)
@@ -117,8 +118,6 @@ int			ft_check_printf(const char *s, t_docker *data)
 		}
 	}
 	init_structure(data, 1);
-	data->len = 0;
-	data->i = 0;
 	return (1);
 }
 
@@ -141,6 +140,8 @@ int			ft_printf(const char *format, ...)
 		}
 		else
 		{
+			if (!format[data->i + 1])
+				break;
 			if (detect(format, data))
 				data->len += parser(args, format, data);
 			else
