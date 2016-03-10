@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/10 10:41:13 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/10 11:44:29 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int			parser(va_list args, const char *str, t_docker *data)
 
 int			ft_check_printf(const char *s, t_docker *data)
 {
-	while (s[data->i] && data->i < ft_strlen(s))
+	while (s[data->i] && data->i < (int)ft_strlen(s))
 	{
 		if (s[data->i] != '%')
 			data->i++;
@@ -105,7 +105,7 @@ int			ft_printf(const char *format, ...)
 	va_start(args, format);
 	if (!ft_check_printf(format, data))
 		return (0);
-	while (format[data->i] && data->i < ft_strlen(format))
+	while (format[data->i] && data->i < (int)ft_strlen(format))
 	{
 		if (format[data->i] != '%' && format[data->i] != '\0')
 		{
