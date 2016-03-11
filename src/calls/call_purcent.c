@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:30 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/10 11:38:03 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 16:58:03 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 int			ftp_purcent(t_docker *data, int32_t str, int len, int who)
 {
 	int			ref;
+	char		c;
 
 	ref = len;
+	c = data->zero ? '0' : ' ';
 	if (who == -1)
 	{
 		len += ftp_putchar(str);
@@ -24,8 +26,11 @@ int			ftp_purcent(t_docker *data, int32_t str, int len, int who)
 									data->zero == 1 ? '0' : ' '));
 	}
 	else if (who == 3)
-		len = ft_add_spaces((data->width - 1), len,
-							data->zero == 1 ? '0' : ' ');
+	{
+		if (data->dot == 1)
+			c = '0';
+		len = ft_add_spaces((data->width - 1), len, c);
+	}
 	return (len += str ? ftp_putchar(str) : 0);
 }
 

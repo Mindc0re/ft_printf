@@ -6,7 +6,11 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 11:57:21 by sgaudin           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2016/03/10 15:33:12 by dvirgile         ###   ########.fr       */
+=======
+/*   Updated: 2016/03/10 17:43:36 by sgaudin          ###   ########.fr       */
+>>>>>>> e146b7fd7f1cef3fcca27f6ad54e63473fbeca82
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +23,7 @@ int		main(void)
 {
 	int ret_ft = 0;
 	int ret = 0;
+<<<<<<< HEAD
 	char *test;
 
 	test = setlocale(LC_ALL, "");
@@ -58,15 +63,27 @@ int		main(void)
 /*	ret_ft = ft_printf("FT__{% Z}\n", 42);
 	ret = printf("NM__{% Z}\n", 42);
 	printf("FT renvoi : %d, NM renvoi : %d\n", ret_ft, ret);*/
+=======
+	char c;
+
+	char *l = setlocale(LC_ALL, "");
+	if (l == NULL)
+		printf("tamer\n");
+	else
+		printf("locale = %s\n", l);
+/*	ret_ft = ft_printf("FT__{%10R}\n");
+	ret = printf("NM__{%10R}\n");
+	printf("ft_printf renvoie %d caracteres et printf renvoie %d caracteres\n", ret_ft, ret);*/
+
+	ret_ft = ft_printf("{%05.S}", L"42 c est cool");
+	ft_putchar('\n');
+	ret = printf("{%05.S}", L"42 c est cool");
+	printf("\nft_printf renvoie %d caracteres et printf renvoie %d caracteres\n", ret_ft, ret);
+
+/*	ret_ft = ft_printf("FT__{%#.3o}", 1);
+	ft_putchar('\n');
+	ret = printf("NM__{%#.3o}", 1);
+	printf("\nft_printf renvoie %d caracteres et printf renvoie %d caracteres\n", ret_ft, ret);*/
+>>>>>>> e146b7fd7f1cef3fcca27f6ad54e63473fbeca82
 	return (0);
 }
-
-
-
-
-
-
-
-
-
-
