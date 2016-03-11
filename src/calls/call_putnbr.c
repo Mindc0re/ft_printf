@@ -6,12 +6,11 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 09:10:59 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/11 16:13:43 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 18:26:16 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
-#include <limits.h>
 
 int		longueur_nb(int64_t nb)
 {
@@ -73,7 +72,7 @@ int		call_putnbr(const char *str, va_list args, t_docker *data)
 		length += data->width - len_nb + (!result && !data->precision
 		&& data->dot ? 1 : 0)  - (data->precision && result >= 0 && data->more
 		&& !data->zero ? 1 : 0);
-//		data->len += data->space ? ftp_putchar(' ') : 0;
+		data->len += data->space && !data->dot ? ftp_putchar(' ') : 0;
 		data->len = ft_add_spaces(length, data->len,
 		(data->zero == 1 && data->dot == 0 ? '0' : ' '));
 		length = -1;

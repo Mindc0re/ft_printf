@@ -6,33 +6,31 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/11 17:30:32 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 18:10:10 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-#include <stdio.h>
 
-t_docker	*init_tabptr(void)
+t_docker	init_tabptr(void)
 {
-	t_docker *data;
+	t_docker data;
 
-	data = (t_docker *)malloc(sizeof(data));
-	data->fct['s'] = &call_putstr;
-	data->fct['c'] = &call_putchar;
-	data->fct['d'] = &call_putnbr;
-	data->fct['i'] = &call_putnbr;
-	data->fct['u'] = &call_putbase;
-	data->fct['o'] = &call_putbase;
-	data->fct['x'] = &call_putbase;
-	data->fct['X'] = &call_putbase;
-	data->fct['D'] = &call_putnbr_long;
-	data->fct['O'] = &call_putbase_long;
-	data->fct['U'] = &call_putbase_long;
-	data->fct['C'] = &call_putwchar;
-	data->fct['S'] = &call_putwstr;
-	data->fct['p'] = &call_putadress;
-	data->fct['%'] = &call_purcent;
+	data.fct['s'] = &call_putstr;
+	data.fct['c'] = &call_putchar;
+	data.fct['d'] = &call_putnbr;
+	data.fct['i'] = &call_putnbr;
+	data.fct['u'] = &call_putbase;
+	data.fct['o'] = &call_putbase;
+	data.fct['x'] = &call_putbase;
+	data.fct['X'] = &call_putbase;
+	data.fct['D'] = &call_putnbr_long;
+	data.fct['O'] = &call_putbase_long;
+	data.fct['U'] = &call_putbase_long;
+	data.fct['C'] = &call_putwchar;
+	data.fct['S'] = &call_putwstr;
+	data.fct['p'] = &call_putadress;
+	data.fct['%'] = &call_purcent;
 	return (data);
 }
 
@@ -100,37 +98,32 @@ int			ft_printf(const char *format, ...)
 {
 	va_list		args;
 
-	FT_INIT(t_docker *, data, init_tabptr());
+	FT_INIT(t_docker , data, init_tabptr());
 	FT_INIT(int, ret, 0);
-	init_structure(data, 1);
+	init_structure(&data, 1);
 	va_start(args, format);
-	if (!ft_check_printf(format, data))
+	if (!ft_check_printf(format, &data))
 		return (0);
-	while (format[data->i] && data->i < (int)ft_strlen(format))
+	while (format[data.i] && data.i < (int)ft_strlen(format))
 	{
-		if (format[data->i] != '%' && format[data->i] != '\0')
+		if (format[data.i] != '%' && format[data.i] != '\0')
 		{
-			data->len += ftp_putchar((uint8_t)format[data->i]);
-			data->i++;
+			data.len += ftp_putchar((uint8_t)format[data.i]);
+			data.i++;
 		}
 		else
 		{
-			if (!format[data->i + 1])
+			if (!format[data.i + 1])
 				break;
-			if (detect(format, data))
-				data->len += parser(args, format, data);
+			if (detect(format, &data))
+				data.len += parser(args, format, &data);
 			else
-				data->len += ftp_putchar((uint8_t)format[data->i]);
-			init_structure(data, 0);
-			data->i = (format[data->i == '\0'] ? data->i + 1 : data->i);
+				data.len += ftp_putchar((uint8_t)format[data.i]);
+			init_structure(&data, 0);
+			data.i = (format[data.i == '\0'] ? data.i + 1 : data.i);
 		}
 	}
-	printf("NTM1\n");
-	ret = data->len;
-	printf("NTM2\n");
+	ret = data.len;
 	va_end(args);
-	printf("NTM3\n");
-	ft_memdel((void **)&data);
-	printf("NTM4\n");
 	return (ret);
 }
