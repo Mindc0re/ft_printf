@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:30 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/11 12:04:34 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 16:46:59 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int			call_purcent(const char *str, va_list args, t_docker *data)
 {
 	int32_t argument;
 
-	argument = '%';
+	argument = data->type;
 	if (args)
 		;
 	if (data->width >= 1 && data->less == 0)

@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/11 16:38:36 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 17:30:32 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int			parser(va_list args, const char *str, t_docker *data)
 		data->type = str[data->i];
 		if (ft_check_valid(str, data) == 1)
 			return ((*data->fct[(int)str[data->i]])(str, args, data));
-		else if (!ft_strchr("sSpdDioOuUxXcC% hljz", str[data->i]))
-			return (ftp_putchar((uint8_t)str[data->i]));
+		else if (!ft_strchr("sSpdDioOuUxXcC hljz", str[data->i]))
+			return ((*data->fct['%'])(str, args, data));
 		else
 			return (0);
 }
@@ -84,8 +84,8 @@ int			ft_check_printf(const char *s, t_docker *data)
 				ft_detect_flags(s, data);
 				detect_conversion(s, data);
 				data->type = s[data->i];
-				if (!ft_check_valid(s, data) && !ft_strchr("h ", s[data->i - 1]))
-					if (s[data->i] != '%')
+				if (!ft_check_valid(s, data))
+					if (s[data->i] != '%' && data->length)
 						return (0);
 			}
 			init_structure(data, 0);
@@ -99,9 +99,9 @@ int			ft_check_printf(const char *s, t_docker *data)
 int			ft_printf(const char *format, ...)
 {
 	va_list		args;
-	t_docker	*data;
 
-	data = init_tabptr();
+	FT_INIT(t_docker *, data, init_tabptr());
+	FT_INIT(int, ret, 0);
 	init_structure(data, 1);
 	va_start(args, format);
 	if (!ft_check_printf(format, data))
@@ -125,7 +125,12 @@ int			ft_printf(const char *format, ...)
 			data->i = (format[data->i == '\0'] ? data->i + 1 : data->i);
 		}
 	}
-	free(data);
+	printf("NTM1\n");
+	ret = data->len;
+	printf("NTM2\n");
 	va_end(args);
-	return (data->len);
+	printf("NTM3\n");
+	ft_memdel((void **)&data);
+	printf("NTM4\n");
+	return (ret);
 }

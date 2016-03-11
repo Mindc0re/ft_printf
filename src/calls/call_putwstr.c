@@ -6,11 +6,12 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 17:40:51 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/11 16:07:23 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 17:12:34 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
+#include <stdio.h>
 
 int			count_wstr(wchar_t *str, int n, t_docker *data)
 {
