@@ -6,52 +6,78 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 17:40:51 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/11 12:38:18 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 16:07:23 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/ft_printf.h"
 
-int			count_wchar(wchar_t *str)
+int			count_wstr(wchar_t *str, int n, t_docker *data)
 {
 	FT_INIT(int, count, 0);
 	FT_INIT(char *, bin, 0);
 	FT_INIT(int, i, 0);
-	while (str[i])
+	if (!n)
+		while (str[n])
+			n++;
+	while (str[i] && i < n)
 	{
 		bin = ft_itoa_base(str[i], 2);
-		if (ft_strlen(bin) <= 11)
+		if (ft_strlen(bin) <= 7)
+			count += 1;
+		else if (ft_strlen(bin) <= 11)
 			count += 2;
 		else if (ft_strlen(bin) > 11 && ft_strlen(bin) <= 16)
 			count += 3;
 		else
 			count += 4;
 		free(bin);
+		data->wide_width = i == 0 ? i + 1 : i;
 		i++;
 	}
+	return (count);
+}
+
+int			count_wchar(wchar_t c)
+{
+	FT_INIT(int, count, 0);
+	FT_INIT(char *, bin, 0);
+	bin = ft_itoa_base(c, 2);
+	if (ft_strlen(bin) <= 7)
+		count += 1;
+	else if (ft_strlen(bin) <= 11)
+		count += 2;
+	else if (ft_strlen(bin) > 11 && ft_strlen(bin) <= 16)
+		count += 3;
+	else
+		count += 4;
+	free(bin);
 	return (count);
 }
 
 int			ftp_dotw(wchar_t *str, unsigned int len)
 {
 	int		i;
-	int count;
+	int		count;
+	int		count_check;
 
 	i = 0;
-	count = count_wchar(str);
-	while (str[i] && i < count && i < (int)len)
+	count = 0;
+	count_check = 0;
+	while (str[i] && (count_check += count_wchar(str[i])) <= len)
 	{
 		ft_putwchar(str[i], 0);
 		i++;
+		count += count_wchar(str[i]);
 	}
-	return (i);
+	return (count);
 }
 
 int			ftp_distribw(t_docker *data, wchar_t *str, int len, int who)
 {
 	FT_INIT(int, ref, len);
 	FT_INIT(int, count, 0);
-	count = count_wchar(str);
+	count = count_wstr(str, data->precision, data);
 	if (who == -1)
 	{
 		len += count;
@@ -67,10 +93,9 @@ int			ftp_distribw(t_docker *data, wchar_t *str, int len, int who)
 	}
 	else if (who == 2)
 	{
-		if (data->dot == !data->precision)
-			return (len = ft_add_spaces(data->width, len, '0'));
-		if (((len = ft_add_spaces(data->width - count > data->precision
-								  ? data->precision : count, len, ' ')) >= 0))
+		if (data->dot && !data->precision)
+			return (len = ft_add_spaces(data->width, len, (data->zero ? '0' : ' ')));
+		if (((len = ft_add_spaces(data->width - data->wide_width, len, ' ')) >= 0))
 			return (len += ftp_dotw(str, data->precision));
 	}
 	else if (who == 3)

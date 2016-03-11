@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 16:54:43 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 10:38:50 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/11 16:06:23 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,26 @@ int		detect(const char *s, t_docker *data)
 int		ft_check_valid(const char *str, t_docker *data)
 {
 	if (ft_strchr("sSpdDioOuUxXcC%", str[data->i]) && str[data->i])
+	{
+		if (!ft_strchr("S", str[data->i]))
+			data->zero = data->dot && data->zero ? 0 : data->zero;
 		return (1);
+	}
 	else
 		return (0);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

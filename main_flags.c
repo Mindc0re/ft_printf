@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 11:32:37 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/11 12:46:03 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 16:32:47 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ int		main(void)
 	if (!test)
 		exit(EXIT_FAILURE);
 
-	ret_ft = ft_printf("{%05p}", &test);
+	ret_ft = ft_printf("{%10R}", 4242);
 	printf("\n");
-	ret = printf("{%05p}", &test);
+	ret = printf("{%10R}", 4242);
 	printf("\nft_printf renvoie %d caracteres et printf renvoie %d caracteres\n", ret_ft, ret);
+
 	return (0);
 }

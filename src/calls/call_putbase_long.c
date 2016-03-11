@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:07:37 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 12:53:56 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 13:39:33 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		base_long_2(t_docker *data, uintmax_t result, int base, uint8_t flag)
 	FT_INIT(int, len_nb, len_base(result, base));
 	if (data->dot == 1)
 	{
-		if (result == 0 && data->precision == 0)
+		if (!result && !data->precision  && !data->dieze)
 			return (0);
 		length = data->precision - len_nb;
 		prec = data->len;

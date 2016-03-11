@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:02 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/10 15:23:31 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 16:05:22 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void			ft_detect_flags(const char *str, t_docker *d)
 			? 1 : d->space;
 		if (str[d->i] == '.')
 		{
-			MULTI(d->result, d->zero, 0);
+			d->result = 0;
+//			MULTI(d->result, d->zero, 0);
 			MULTI(d->choice, d->dot, 1);
 		}
 		if (str[d->i] == '-')

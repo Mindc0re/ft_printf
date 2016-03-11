@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 11:56:33 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 11:57:01 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 15:31:26 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct		s_docker
 	char			type;
 	int				choice;
 	int				length;
-
+	int				wide_width;
 	enum {
 		hh = 1,
 		h,

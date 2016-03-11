@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/10 15:11:22 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 16:38:36 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void		init_structure(t_docker *data, int check)
 	data->length = 0;
 	data->choice = 0;
 	data->result = 0;
+	data->wide_width = 0;
 }
 
 int			parser(va_list args, const char *str, t_docker *data)
