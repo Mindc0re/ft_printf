@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:30 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/10 16:58:03 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 12:04:34 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ int			call_purcent(const char *str, va_list args, t_docker *data)
 	argument = '%';
 	if (args)
 		;
-	while (str[data->i + 1] == '%')
-		data->i++;
 	if (data->width >= 1 && data->less == 0)
 		data->len = ftp_purcent(data, argument, data->len, 3);
 	else if (data->less == 1 && str)

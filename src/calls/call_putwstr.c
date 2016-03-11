@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 17:40:51 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 17:48:11 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 12:38:18 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int			ftp_distribw(t_docker *data, wchar_t *str, int len, int who)
 			return (len += ftp_dotw(str, data->precision));
 	}
 	else if (who == 3)
-		len = ft_add_spaces((data->width - count), len, ' ');
+		len = ft_add_spaces((data->width - count), len, data->zero ? '0' : ' ');
 	return (len += ft_putwstr(str, 0));
 }
 

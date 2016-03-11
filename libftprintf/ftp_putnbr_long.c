@@ -6,17 +6,18 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 08:44:49 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 11:01:46 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 11:51:59 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
 
 int			ftp_putnbr_long(int64_t n, t_docker *data)
 {
 	int					len;
 
+	if (n < -9223372036854775807)
+		return (data->len += ftp_putstr((uint8_t *)"9223372036854775808"));
 	len = 0;
 	if (data->precision >= 0)
 	{

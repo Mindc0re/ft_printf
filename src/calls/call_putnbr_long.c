@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/03 09:02:53 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/08 12:08:39 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 11:55:44 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		putnbr_long_part2(t_docker *data, int length, int prec, int64_t result)
 		data->len = ft_add_spaces(length, data->len, ' ');
 		return (0);
 	}
-	if (data->less == 0 && data->dot == 0 && data->width == 0)
+	if (!data->less && !data->dot && !data->width)
 		data->len += longueur_nb(result);
 	return (1);
 }
@@ -47,7 +47,6 @@ int		call_putnbr_long(const char *str, va_list args, t_docker *data)
 	FT_INIT(int64_t, result, va_arg(args, int64_t));
 	FT_INIT(int, prec, 0);
 	FT_INIT(int, len_nb, longueur_nb(result));
-	result = signed_conversion(data, args);
 	if (result == 0 && data->precision == 0 && data->width == 0 &&
 		data->dot == 1 && data->less == 0)
 		return (0);

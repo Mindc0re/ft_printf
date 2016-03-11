@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/18 14:29:48 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/11 11:30:57 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 12:41:43 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int		adresse_part2(t_docker *data, uintmax_t result, int base, uint8_t flag)
 	}
 	if (data->less == 1)
 	{
+		data->len += !data->dot ? ftp_putstr((uint8_t *)"0x") : 0;
 		length = data->width - len_nb - (!result ? 2 : 6);
 		length -= prec != 0 ? (data->len - prec) : 0;
 		data->len += prec != 0 ? 0 : len_nb;
@@ -50,8 +51,9 @@ int		distrib_adresse(t_docker *data, uintmax_t result, int base, uint8_t flag)
 			length -= data->precision - len_nb;
 		length += data->width - len_nb - (data->dieze == 1 ? 2 : 0) - 2;
 		data->len += len_nb + (data->dieze == 1 ? 2 : 0);
+		data->len += data->zero ? ftp_putstr((uint8_t *)"0x") : 0;
 		data->len = ft_add_spaces(length, data->len, (data->zero ? '0' : ' '));
-		data->len += !data->dot ? ftp_putstr((uint8_t *)"0x") : 0;
+		data->len += !data->dot && !data->zero ? ftp_putstr((uint8_t *)"0x") : 0;
 	}
 	if (adresse_part2(data, result, base, flag) == 0)
 		return (0);
