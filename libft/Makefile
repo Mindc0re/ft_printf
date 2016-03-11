@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/28 17:00:24 by sgaudin           #+#    #+#              #
-#    Updated: 2016/02/18 13:55:17 by dvirgile         ###   ########.fr        #
+#    Updated: 2016/03/11 19:04:41 by sgaudin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ all: $(NAME)
 $(NAME):
 	@gcc -Wall -Wextra -Werror -c -I./includes/ $(SRC)
 	@ar rcs $(NAME) $(BINARY)
-	@mv *.o ../libftprintf
+
 clean:
 	@rm -rf $(BINARY)
 

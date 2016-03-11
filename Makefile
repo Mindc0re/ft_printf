@@ -6,15 +6,11 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/03/10 13:24:30 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/03/11 19:08:09 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
 NAME = ft_printf
-
-# TILDE = ./src/*.c~ ./src/calls/*.c~  includes/*.h~ includes/*.h.gch Makefile~ \
-./libptf/*.h~ ./libptf/*.h.gch ./libptf/*.c~ a.out /libftprintf/*.h~ \
-./libftprintf/*.h.gch main.c~ Makefile~
 
 LFT = ./libft/
 
@@ -36,9 +32,22 @@ CALLS = $(C)call_purcent.c $(C)call_putadress.c $(C)call_putbase.c \
 		$(C)call_putnbr_long.c $(C)call_putstr.c $(C)call_putwchar.c \
 		$(C)call_putwstr.c $(C)ft_add_spaces.c
 
-SRCBIN = *.o
 
-LIBBNRY = $(LIBSRC:.c=.o)
+SRCBIN = ftp_putbase.o ftp_putbase_long.o ftp_putchar.o ftp_putnbr.o \
+		ftp_putnbr_long.o ftp_putstr.o ftp_strlen.o call_purcent.o \
+		call_putadress.o call_putbase.o call_putbase_long.o call_putchar.o \
+		call_putnbr.o call_putnbr_long.o call_putstr.o call_putwchar.o \
+		call_putwstr.o ft_add_spaces.o ft_check_valid.o ft_convert_length.o \
+		ft_detection.o ft_printf.o
+
+SRCBIN_L = $(L)ftp_putbase.o $(L)ftp_putbase_long.o $(L)ftp_putchar.o \
+		$(L)ftp_putnbr.o $(L)ftp_putnbr_long.o $(L)ftp_putstr.o \
+		$(L)ftp_strlen.o $(L)call_purcent.o $(L)call_putadress.o \
+		$(L)call_putbase.o $(L)call_putbase_long.o $(L)call_putchar.o \
+		$(L)call_putnbr.o $(L)call_putnbr_long.o $(L)call_putstr.o \
+		$(L)call_putwchar.o $(L)call_putwstr.o $(L)ft_add_spaces.o \
+		$(L)ft_check_valid.o $(L)ft_convert_length.o $(L)ft_detection.o \
+		$(L)ft_printf.o
 
 CC = gcc -Wall -Wextra -Werror
 
@@ -53,20 +62,19 @@ $(NAME):
 	$(CALLS) main_flags.c -I./includes/libft.h -L./libft/ -lft
 	@gcc -c -I./ $(LIBSRC) $(SRC) $(CALLS) -I./includes/libft.h
 	@mv $(SRCBIN) $(L)
-	@ar rcs libftprintf.a $(LIBBNRY) $(L)$(SRCBIN) ./includes/ft_printf.h
+	@ar rcs libftprintf.a $(SRCBIN_L) ./includes/ft_printf.h
 	@echo "\033[32m[OK]\033[0m"
 
 clean:
 	@printf "\033[31mNettoyage des dossiers\033[0m "
-#	@rm -rf $(TILDE)
-	@rm -rf $(LIBBNRY)
-	@rm -rf $(L)*.o
+	@rm -rf $(SRCBIN_L)
 	@echo "\033[32m[OK]\033[0m"
 
 fclean: clean
 	@printf "\033[31mNettoyage de tous les dossiers\033[0m "
 	@make -C $(LFT) fclean
 	@rm -rf $(NAME) inutile
+#	@rm -rf inutile
 	@rm -rf libftprintf.a
 	@echo "\033[32m[OK]\033[0m"
 
@@ -75,9 +83,9 @@ push:
 	@git commit -m "Makefile pushed"
 	@git push
 
-inutile:
-	@find . -name "*~" -delete
-	@find . -name "*#" -delete
-	@find . -name "*.h.gch" -delete
+#inutile:
+#	@find . -name "*~" -delete
+#	@find . -name "*#" -delete
+#	@find . -name "*.h.gch" -delete
 
 re: fclean all
