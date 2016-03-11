@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 11:57:21 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/10 17:43:36 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/11 11:29:31 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,8 @@ int		main(void)
 	ret = printf("NM__{%10R}\n");
 	printf("ft_printf renvoie %d caracteres et printf renvoie %d caracteres\n", ret_ft, ret);*/
 
-	ret_ft = ft_printf("{%05.S}", L"42 c est cool");
-	ft_putchar('\n');
-	ret = printf("{%05.S}", L"42 c est cool");
+	ret_ft = ft_printf("FT__%p\n", &c);
+	ret = printf("NM__%p\n", &c);
 	printf("\nft_printf renvoie %d caracteres et printf renvoie %d caracteres\n", ret_ft, ret);
 
 /*	ret_ft = ft_printf("FT__{%#.3o}", 1);
