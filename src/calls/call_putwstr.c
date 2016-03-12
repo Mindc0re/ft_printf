@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/08 17:40:51 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/11 17:12:34 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/12 14:45:24 by dvirgile         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int			ftp_dotw(wchar_t *str, unsigned int len)
 	i = 0;
 	count = 0;
 	count_check = 0;
-	while (str[i] && (count_check += count_wchar(str[i])) <= len)
+	while (str[i] && (count_check += count_wchar(str[i])) <= (int)len)
 	{
 		ft_putwchar(str[i], 0);
 		i++;

@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/25 16:57:13 by sgaudin           #+#    #+#              #
-#    Updated: 2016/03/11 19:08:09 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/03/12 16:04:04 by dvirgile         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -49,6 +49,24 @@ SRCBIN_L = $(L)ftp_putbase.o $(L)ftp_putbase_long.o $(L)ftp_putchar.o \
 		$(L)ft_check_valid.o $(L)ft_convert_length.o $(L)ft_detection.o \
 		$(L)ft_printf.o
 
+LIBFTBIN = $(LFT)ft_atoi.o $(LFT)ft_bzero.o $(LFT)ft_isalnum.o $(LFT)ft_isalpha.o \
+		$(LFT)ft_isascii.o $(LFT)ft_isdigit.o $(LFT)ft_isprint.o $(LFT)ft_itoa.o \
+		$(LFT)ft_memalloc.o $(LFT)ft_memccpy.o $(LFT)ft_memchr.o $(LFT)ft_memcmp.o \
+		$(LFT)ft_memcpy.o $(LFT)ft_memdel.o $(LFT)ft_memmove.o $(LFT)ft_memset.o \
+		$(LFT)ft_putchar.o $(LFT)ft_putchar_fd.o $(LFT)ft_putendl.o $(LFT)ft_putendl_fd.o \
+		$(LFT)ft_putnbr.o $(LFT)ft_putnbr_fd.o $(LFT)ft_putstr.o $(LFT)ft_putstr_fd.o \
+		$(LFT)ft_strcat.o $(LFT)ft_strchr.o $(LFT)ft_strclr.o $(LFT)ft_strcmp.o \
+		$(LFT)ft_strcpy.o $(LFT)ft_strdel.o $(LFT)ft_strdup.o $(LFT)ft_strequ.o \
+		$(LFT)ft_striter.o $(LFT)ft_striteri.o $(LFT)ft_strjoin.o $(LFT)ft_strlcat.o \
+		$(LFT)ft_strlen.o $(LFT)ft_strmap.o $(LFT)ft_strmapi.o $(LFT)ft_strncat.o $(LFT)ft_strncmp.o \
+		$(LFT)ft_strncpy.o $(LFT)ft_strnequ.o $(LFT)ft_strnew.o $(LFT)ft_strnstr.o $(LFT)ft_strrchr.o \
+		$(LFT)ft_strsplit.o $(LFT)ft_strstr.o $(LFT)ft_strsub.o $(LFT)ft_strtrim.o $(LFT)ft_tolower.o \
+		$(LFT)ft_toupper.o $(LFT)ft_lstnew.o $(LFT)ft_lstdelone.o $(LFT)ft_lstdel.o $(LFT)ft_lstadd.o \
+		$(LFT)ft_lstiter.o $(LFT)ft_lstmap.o $(LFT)ft_sqrt.o $(LFT)ft_capitalize.o $(LFT)ft_printbase.o \
+		$(LFT)ft_printhex.o $(LFT)ft_strtolower.o $(LFT)ft_strtoupper.o $(LFT)ft_abs.o \
+		$(LFT)ft_print_list.o $(LFT)ft_lstadd_bottom.o $(LFT)ft_itoabase.o $(LFT)ft_putwchar.o \
+		$(LFT)ft_atoibase.o $(LFT)ft_recursive_pow.o $(LFT)ft_putwstr.o
+
 CC = gcc -Wall -Wextra -Werror
 
 all: $(NAME)
@@ -58,23 +76,23 @@ $(NAME):
 	@make -C $(LFT) re
 	@printf "\033[32m   Library done !\n\033[0m"
 	@printf "\033[31mCompilation\033[0m "
-	@gcc -o $(NAME) -I./includes/ft_printf.h $(LIBSRC) $(SRC) \
-	$(CALLS) main_flags.c -I./includes/libft.h -L./libft/ -lft
-	@gcc -c -I./ $(LIBSRC) $(SRC) $(CALLS) -I./includes/libft.h
+	@$(CC) -c $(LIBSRC) $(SRC) $(CALLS) -I./includes/libft.h
+	@$(CC) -o $(NAME) -I./includes/ft_printf.h $(LIBSRC) $(SRC) \
+	$(CALLS) main.c -I./includes/libft.h -L./libft/ -lft
 	@mv $(SRCBIN) $(L)
-	@ar rcs libftprintf.a $(SRCBIN_L) ./includes/ft_printf.h
+	@ar rcs libftprintf.a $(SRCBIN_L) $(LIBFTBIN) ./includes/ft_printf.h
 	@echo "\033[32m[OK]\033[0m"
 
 clean:
 	@printf "\033[31mNettoyage des dossiers\033[0m "
-	@rm -rf $(SRCBIN_L)
+	@make -C $(LFT) clean
+	@rm -rf $(SRCBIN_L) main.o
 	@echo "\033[32m[OK]\033[0m"
 
 fclean: clean
 	@printf "\033[31mNettoyage de tous les dossiers\033[0m "
 	@make -C $(LFT) fclean
-	@rm -rf $(NAME) inutile
-#	@rm -rf inutile
+	@rm -rf $(NAME)
 	@rm -rf libftprintf.a
 	@echo "\033[32m[OK]\033[0m"
 
@@ -82,10 +100,5 @@ push:
 	@git add .
 	@git commit -m "Makefile pushed"
 	@git push
-
-#inutile:
-#	@find . -name "*~" -delete
-#	@find . -name "*#" -delete
-#	@find . -name "*.h.gch" -delete
 
 re: fclean all
