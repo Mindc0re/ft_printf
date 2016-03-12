@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/12 15:44:08 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/12 18:19:40 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int			parser(va_list args, const char *str, t_docker *data)
 	ft_detect_flags(str, data);
 	detect_conversion(str, data);
 	data->type = str[data->i];
+	if (ft_strchr("#0-+ ", str[data->i]))
+		ft_detect_flags(str, data);
 	if (ft_check_valid(str, data) == 1)
 		return ((*data->fct[(int)str[data->i]])(str, args, data));
 	else if (!ft_strchr("sSpdDioOuUxXcC hljz", str[data->i]))
@@ -84,7 +86,8 @@ int			ft_check_printf(const char *s, t_docker *data)
 				detect_conversion(s, data);
 				data->type = s[data->i];
 				if (!ft_check_valid(s, data))
-					if (s[data->i] != '%' && data->length && !data->space)
+					if (s[data->i] != '%' && data->length && !data->space
+						&& !detect(s, data))
 						return (0);
 			}
 			init_structure(data, 0);

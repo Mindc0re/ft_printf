@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 11:56:33 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/11 18:06:23 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/12 17:16:22 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ typedef struct		s_docker
 	int				length;
 	int				wide_width;
 	enum {
-		hh = 1,
-		h,
+		z = 1,
+		j,
 		ll,
 		l,
-		j,
-		z
+		hh,
+		h
 	}				enum_length;
 }					t_docker;
 

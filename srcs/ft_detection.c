@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:50:02 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/12 15:42:53 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/12 17:00:35 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void			ft_detect_flags(const char *str, t_docker *d)
 {
 	if (ft_strchr("#0123456789-+ .", str[d->i]))
 	{
-		d->dieze = (str[d->i] == '#' && ft_strchr("%-", str[d->i - 1]))
+		d->dieze = (str[d->i] == '#')
 			? 1 : d->dieze;
 		d->more = str[d->i] == '+' ? 1 : d->more;
 		d->zero = (str[d->i] == '0' && ft_strchr(" +%#", str[d->i - 1]))

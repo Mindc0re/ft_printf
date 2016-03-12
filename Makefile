@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/12 16:15:02 by sgaudin           #+#    #+#              #
-#    Updated: 2016/03/12 16:16:25 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/03/12 16:30:18 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -77,8 +77,6 @@ $(NAME):
 	@printf "\033[32m   Library done !\n\033[0m"
 	@printf "\033[31mCompilation\033[0m "
 	@$(CC) -c $(LIBSRC) $(SRC) $(CALLS) -I./includes/libft.h
-	@$(CC) -o $(NAME) -I./includes/ft_printf.h $(LIBSRC) $(SRC) \
-	$(CALLS) main.c -I./includes/libft.h -L./libft/ -lft
 	@mv $(SRCBIN) $(L)
 	@ar rcs libftprintf.a $(SRCBIN_L) $(LIBFTBIN) ./includes/ft_printf.h
 	@echo "\033[32m[OK]\033[0m"
@@ -86,13 +84,13 @@ $(NAME):
 clean:
 	@printf "\033[31mNettoyage des dossiers\033[0m "
 	@make -C $(LFT) clean
-	@rm -rf $(SRCBIN_L) main.o
+	@rm -rf $(SRCBIN_L)
 	@echo "\033[32m[OK]\033[0m"
 
 fclean: clean
 	@printf "\033[31mNettoyage de tous les dossiers\033[0m "
 	@make -C $(LFT) fclean
-	@rm -rf $(NAME)
+#	@rm -rf $(NAME)
 	@rm -rf libftprintf.a
 	@echo "\033[32m[OK]\033[0m"
 

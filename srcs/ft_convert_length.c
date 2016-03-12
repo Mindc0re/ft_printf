@@ -6,31 +6,39 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 10:04:14 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/11 19:35:12 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/12 18:18:40 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+#include <stdio.h>
 
 void			detect_conversion(const char *str, t_docker *data)
 {
-	data->length = (str[data->i] == 'h' && str[data->i + 1] == 'h') ? hh
-					: 0;
-	data->length = (str[data->i] == 'h' && data->length != hh) ? h
-					: data->length;
-	data->length = (str[data->i] == 'l' && str[data->i + 1] == 'l') ? ll
-					: data->length;
-	data->length = (str[data->i] == 'l' && data->length != ll) ? l
-					: data->length;
-	data->length = (str[data->i] == 'j') ? j : data->length;
-	data->length = (str[data->i] == 'z') ? z : data->length;
-	if (data->length == hh || data->length == ll)
-		data->i += 2;
-	else if (data->length == l || data->length == h || data->length == j
-			|| data->length == z)
-		data->i++;
+	FT_INIT(int, tmp, 0);
 	while (ft_strchr("hljz", str[data->i]) && str[data->i])
-		data->i++;
+	{
+		data->length = (str[data->i] == 'h' && str[data->i + 1] == 'h') ? hh
+			: 0;
+		data->length = (str[data->i] == 'h' && data->length != hh) ? h
+			: data->length;
+		data->length = (str[data->i] == 'l' && str[data->i + 1] == 'l') ? ll
+			: data->length;
+		data->length = (str[data->i] == 'l' && data->length != ll) ? l
+			: data->length;
+		data->length = (str[data->i] == 'j') ? j : data->length;
+		data->length = (str[data->i] == 'z') ? z : data->length;
+		if (tmp)
+			data->length = (tmp < data->length ? tmp : data->length);
+		tmp = data->length;
+		if (data->length == hh || data->length == ll)
+			data->i += 2;
+		else if (data->length == l || data->length == h || data->length == j
+			|| data->length == z)
+			data->i++;
+		else
+			data->i++;
+	}
 }
 
 uintmax_t		unsigned_conversion(t_docker *data, va_list args)
