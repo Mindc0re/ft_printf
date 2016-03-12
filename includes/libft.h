@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 14:45:04 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/01/25 09:49:27 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/10 14:32:06 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 
 int					ft_atoi(const char *str);
+int					ft_atoibase(char *nb, int base);
 
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);
@@ -73,6 +74,9 @@ char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
 
 char				*ft_itoa(int n);
+char				*ft_itoa_base(int n, int base);
+
+int					ft_recursive_pow(int n, int power);
 
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
@@ -100,10 +104,12 @@ void				ft_lstadd_bottom(t_list **alst, t_list *new);
 void				ft_print_list(t_list **alst);
 
 int					ft_sqrt(int n);
-int					ft_abs(int n);
+int64_t				ft_abs(int64_t n);
 void				ft_printbase(unsigned char n, int base);
 void				ft_printhex(unsigned char n);
 char				*ft_strtolower(char *str);
 char				*ft_strtoupper(char *str);
 
+int					ft_putwchar(wchar_t c, int count);
+int					ft_putwstr(wchar_t *str, int write);
 #endif

@@ -6,7 +6,7 @@
 /*   By: dvirgile <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/16 08:51:01 by dvirgile          #+#    #+#             */
-/*   Updated: 2016/03/11 19:05:12 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/12 15:44:08 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,15 @@ t_docker	init_tabptr(void)
 
 int			parser(va_list args, const char *str, t_docker *data)
 {
-		ft_detect_flags(str, data);
-		detect_conversion(str, data);
-		data->type = str[data->i];
-		if (ft_check_valid(str, data) == 1)
-			return ((*data->fct[(int)str[data->i]])(str, args, data));
-		else if (!ft_strchr("sSpdDioOuUxXcC hljz", str[data->i]))
-			return ((*data->fct['%'])(str, args, data));
-		else
-			return (0);
+	ft_detect_flags(str, data);
+	detect_conversion(str, data);
+	data->type = str[data->i];
+	if (ft_check_valid(str, data) == 1)
+		return ((*data->fct[(int)str[data->i]])(str, args, data));
+	else if (!ft_strchr("sSpdDioOuUxXcC hljz", str[data->i]))
+		return ((*data->fct['%'])(str, args, data));
+	else
+		return (0);
 }
 
 int			ft_check_printf(const char *s, t_docker *data)
@@ -99,7 +99,7 @@ int			ft_printf(const char *format, ...)
 {
 	va_list		args;
 
-	FT_INIT(t_docker , data, init_tabptr());
+	FT_INIT(t_docker, data, init_tabptr());
 	FT_INIT(int, ret, 0);
 	va_start(args, format);
 	if (!ft_check_printf(format, &data))
@@ -111,9 +111,9 @@ int			ft_printf(const char *format, ...)
 		else
 		{
 			if (!format[data.i + 1])
-				break;
-			data.len += detect(format, &data) ?	parser(args, format, &data) :
-				ftp_putchar((uint8_t)format[data.i]);
+				break ;
+			data.len += detect(format, &data) ? parser(args, format, &data)
+				: ftp_putchar((uint8_t)format[data.i]);
 			init_structure(&data, 0);
 		}
 		data.i++;

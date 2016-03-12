@@ -6,7 +6,7 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/08 09:10:59 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/11 18:26:16 by dvirgile         ###   ########.fr       */
+/*   Updated: 2016/03/12 15:54:47 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		call_putnbr(const char *str, va_list args, t_docker *data)
 		if ((data->precision - len_nb + (result >= 0 ? 0 : 1)) > 0 && data->dot)
 			length -= data->precision - len_nb + (result >= 0 ? 0 : 1);
 		length += data->width - len_nb + (!result && !data->precision
-		&& data->dot ? 1 : 0)  - (data->precision && result >= 0 && data->more
+		&& data->dot ? 1 : 0) - (data->precision && result >= 0 && data->more
 		&& !data->zero ? 1 : 0);
 		data->len += data->space && !data->dot ? ftp_putchar(' ') : 0;
 		data->len = ft_add_spaces(length, data->len,
