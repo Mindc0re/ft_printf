@@ -6,7 +6,7 @@
 #    By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/12 16:15:02 by sgaudin           #+#    #+#              #
-#    Updated: 2016/03/12 16:30:18 by sgaudin          ###   ########.fr        #
+#    Updated: 2016/03/14 11:10:26 by sgaudin          ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -72,11 +72,11 @@ CC = gcc -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME):
-	@printf "\033[31mCompilation de la libftprintf.a\033[0m"
-	@make -C $(LFT) re
+	@printf "\033[31mCompilation de la libft.a\033[0m"
+	@make -C $(LFT)
 	@printf "\033[32m   Library done !\n\033[0m"
-	@printf "\033[31mCompilation\033[0m "
-	@$(CC) -c $(LIBSRC) $(SRC) $(CALLS) -I./includes/libft.h
+	@printf "\033[31mCompilation de la libftprintf.a\033[0m "
+	@$(CC) -c -I./includes/libft.h $(LIBSRC) $(SRC) $(CALLS)
 	@mv $(SRCBIN) $(L)
 	@ar rcs libftprintf.a $(SRCBIN_L) $(LIBFTBIN) ./includes/ft_printf.h
 	@echo "\033[32m[OK]\033[0m"

@@ -6,31 +6,27 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/11 11:32:37 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/12 17:58:49 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/03/14 11:02:04 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
-#include <stdio.h>
-#include <limits.h>
 #include <locale.h>
+#include <stdio.h>
 
 int		main(void)
 {
 	int ret_ft = 0, ret = 0;
-	ret_ft = ft_printf("FT__%ll#x", 9223372036854775807);
-	ft_printf("\n");
-	ret = printf("NM__%ll#x", 9223372036854775807);
-	printf("\nft_printf retourne %d caracteres et printf retourne %d caracteres\n", ret_ft, ret);
-
-	ret_ft = ft_printf("%zhd", 4294967296);
-	ft_printf("\n");
-	ret = printf("%zhd", 4294967296);
-	printf("\nft_printf retourne %d caracteres et printf retourne %d caracteres\n", ret_ft, ret);
-
-	ret_ft = ft_printf("%hhld", 128);
-	ft_printf("\n");
-	ret = printf("%hhld", 128);
+	char *l = setlocale(LC_ALL, "");
+	if (l == NULL)
+		exit(EXIT_FAILURE);
+	ret_ft = ft_printf("%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S",
+				L"Α α", L"Β β", L"Γ γ", L"Δ δ", L"Ε ε", L"Ζ ζ", L"Η η", L"Θ θ", L"Ι ι", L"Κ κ", L"Λ λ", L"Μ μ",
+					L"Ν ν", L"Ξ ξ", L"Ο ο", L"Π π", L"Ρ ρ", L"Σ σ", L"Τ τ", L"Υ υ", L"Φ φ", L"Χ χ", L"Ψ ψ", L"Ω ω", L"");
+	printf("\n");
+	ret = printf("%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S%S",
+				L"Α α", L"Β β", L"Γ γ", L"Δ δ", L"Ε ε", L"Ζ ζ", L"Η η", L"Θ θ", L"Ι ι", L"Κ κ", L"Λ λ", L"Μ μ",
+					L"Ν ν", L"Ξ ξ", L"Ο ο", L"Π π", L"Ρ ρ", L"Σ σ", L"Τ τ", L"Υ υ", L"Φ φ", L"Χ χ", L"Ψ ψ", L"Ω ω", L"");
 	printf("\nft_printf retourne %d caracteres et printf retourne %d caracteres\n", ret_ft, ret);
 	return (0);
 }
