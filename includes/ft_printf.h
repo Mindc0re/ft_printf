@@ -6,17 +6,24 @@
 /*   By: sgaudin <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/10 11:56:33 by sgaudin           #+#    #+#             */
-/*   Updated: 2016/03/12 17:16:22 by sgaudin          ###   ########.fr       */
+/*   Updated: 2016/05/16 14:51:44 by sgaudin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# define FT_INIT(type,name,value)		type name = value
-# define TER(si,alors,sinon)			si ? alors : sinon
-# define MULTI(val_a, val_b, val_c)		val_a = val_b = val_c
+# ifndef FT_INIT
+	# define FT_INIT(type,name,value)		type name = value
+# endif
 
+#ifndef TER
+	# define TER(si,alors,sinon)			si ? alors : sinon
+# endif
+
+# ifndef MULTI
+	# define MULTI(val_a, val_b, val_c)		val_a = val_b = val_c
+# endif
 # include <stdarg.h>
 # include <wchar.h>
 # include "../libft/includes/libft.h"
